@@ -13,6 +13,13 @@ class IndexController extends Action {
 		$this->render('index');
 	}
 
+
+	public function cadastrar(){
+
+
+		$this->render('cadastrar');
+	}
+
 }
 
 
