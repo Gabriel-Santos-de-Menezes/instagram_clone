@@ -7,6 +7,7 @@ use MF\Model\Model;
 class Usuario extends Model{
     private $id;
     private $nome;
+    private $email;
     private $usuario;
     private $senha;
 
@@ -21,11 +22,12 @@ class Usuario extends Model{
     //Salvar
     public function salvar(){
 
-        $query = "insert into usuarios(nome, usuario, senha)values(:nome, :usuario, :senha)";
+        $query = "insert into tb_usuarios(nome, usuario, email, senha)values(:nome, :usuario, :email, :senha)";
 
-        $stmt = $this->db->prepare($quey);
+        $stmt = $this->db->prepare($query);
         //pegar o atributoe atribuir como indice dinâmico da query
         $stmt->bindValue(':nome', $this->__get('nome'));
+        $stmt->bindValue(':email', $this->__get('email'));
         $stmt->bindValue(':usuario', $this->__get('usuario'));
         $stmt->bindValue(':senha', $this->__get('senha'));
         $stmt->execute();
@@ -38,16 +40,16 @@ class Usuario extends Model{
     public function validarCadastro(){//verifica se todos os campos estão validos
 
         $valido = true;
-        if(strlen($this->__get('telefone')) > 9){//Retorna o tamanho da string
+        if(strlen($this->__get('email')) < 5){//Retorna o tamanho da string
             $valido = false;
         }
-        if(strlen($this->__get('nome')) > 3){//Retorna o tamanho da string
+        if(strlen($this->__get('nome')) < 3){//Retorna o tamanho da string
             $valido = false;
         }
-        if(strlen($this->__get('usuario')) > 3){//Retorna o tamanho da string
+        if(strlen($this->__get('usuario')) < 3){//Retorna o tamanho da string
             $valido = false;
         }
-        if(strlen($this->__get('senha')) > 6){//Retorna o tamanho da string
+        if(strlen($this->__get('senha')) < 6){//Retorna o tamanho da string
             $valido = false;
         }
 
@@ -58,7 +60,7 @@ class Usuario extends Model{
     //recuperar um usuário por usuario e email
     public function getUsuario(){
         
-        $qury = "select nome, usuario, email from usuarios where usuario = :usuario or email = :email";
+        $query = "select nome, usuario, email from tb_usuarios where usuario = :usuario or email = :email";
 
         $stmt = $this->db->prepare($query);
         $stmt->bindValue(':usuario', $this->__get('usuario'));
