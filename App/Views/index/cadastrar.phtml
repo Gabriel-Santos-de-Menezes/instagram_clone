@@ -10,21 +10,29 @@
                     </div>
                     <div class="container">
                         <div class="form-group pt-4">
-                            <input type="text" name="nome" class="form-control" placeholder="nome" id="pwd">
+                            <input type="text" name="nome" class="form-control" placeholder="nome" id="nome" value="<?= $this->view->usuario['nome'] ?>">
                         </div>
                         <div class="form-group">
-                            <input type="text" name="email" class="form-control" placeholder="E-mail" id="email">
+                            <input type="text" name="email" class="form-control" placeholder="E-mail" id="email" value="<?= $this->view->usuario['email'] ?>">
                         </div>
                         <div class="form-group">
-                            <input type="text" name="usuario" class="form-control" placeholder="Nome do usuário" id="pwd">
+                            <input type="text" name="usuario" class="form-control" placeholder="Nome do usuário" id="usuario" value="<?= $this->view->usuario['usuario'] ?>">
                         </div>
                         <div class="form-group">
-                            <input type="password" name="senha" class="form-control" placeholder="Senha" id="pwd">
+                            <input type="password" name="senha" class="form-control" placeholder="Senha" id="senha">
                         </div>
     
                         <button class="btn btn-primary btn-block mb-2" >Cadastre-se</button>
-                        
+                        <?php if($this->view->erroCadastro){ ?>
+                            <p class="text-danger">*Erro ao tentar se cadastrar, confira os dados e tente novamente</p>
+                        <?php } ?>
+
+                        <?php if($this->view->erroCadastroUsuario){ ?>
+                            <p class="text-danger">*E-mail ou usuário já cadastrados</p>
+                        <?php } ?>
+
                         <small>Ao se cadastrar, você concorda com nossos Termos, Política de Dados e Política de Cookies.</small>
+                        
                     </div>
                 </form>
                 <div class="border mt-1 text-center">
