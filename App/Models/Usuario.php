@@ -69,8 +69,28 @@ class Usuario extends Model{
 
         return $stmt->fetchAll(\PDO::FETCH_ASSOC);//retorna um array associativo
     }
+
+    //metodo responsável, por checar no banco de dados, se o usuário existe
+    public function autenticar(){
+        //query para recuperar o id do usuario e o usuario
+        $query = "select id, nome, usuario from tb_usuarios where usuario = :usuario or email = :usuario and senha = :senha";
+
+        $stmt = $this->db->prepare($query);
+        $stmt->bindValue(':usuario', $this->__get('usuario'));   
+        $stmt->bindValue(':senha', $this->__get('senha'));   
+        $stmt->execute();
+
+        //pegar o registro retornado
+        $usuario = $stmt->fetch(\PDO::FETCH_ASSOC);
+
+        //verificar se o usuario e senha foram encaminhados corretamente
+        if($usuario['id'] != '' && $usuario['usuario'] != '' && $usuario['nome'] != ''){
+            $this->__set('id', $usuario['id']);
+            $this->__set('nome', $usuario['nome']);
+            $this->__set('usuario', $usuario['usuario']);
+        }
+
+        return $this;//Retorna o objeto
+    }
 }
-
-
-
 ?>
