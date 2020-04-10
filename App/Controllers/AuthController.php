@@ -17,7 +17,6 @@ class AuthController extends Action{
         //Pegar os valores dos inputes e colocar nos atributos
         //$usuario->__set('nome',$_POST['nome']); 
         //$usuario->__set('email',$_POST['email']);
-        print_r($_POST);
         $usuario->__set('usuario',$_POST['usuario']);
         $usuario->__set('senha', md5($_POST['senha']));
 
@@ -25,8 +24,19 @@ class AuthController extends Action{
         $usuario->autenticar();//dados do banco já setado nos atributos
         
         if($usuario->__get('id') != '' && $usuario->__get('nome') != '' && $usuario->__get('usuario') != ''){
-
             
+            session_start();
+
+            //Setar a supler global session com os indices id, nome e usuário
+            $_SESSION['id'] = $usuario->__get('id');
+            $_SESSION['nome'] = $usuario->__get('nome');
+            $_SESSION['usuario'] = $usuario->__get('usuario');
+
+            header('location: /timeline');
+       }
+       //Se tiver erro, será direcionado para a página index
+       else{
+            header('location: /?login=erro');
        }
     }
 
