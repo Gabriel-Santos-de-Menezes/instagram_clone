@@ -23,6 +23,32 @@
 #logo_timiline{
     width: 100px;
 }
+.input_pesquisa{
+    width: 180px;
+}
+.pesquisa{
+    height: 30px;
+}
 
+#pagina_home{
+    margin-top: 70px;
+}
+
+.start {
+    align-items: start;
+    text-align: left;
+}
+.end {
+    align-items: end;
+    text-align: right;
+}
+.center {
+    align-items: center;
+    text-align: center;
+}
+
+.postagem{
+    width: 100%;
+}
 
 /* ********** Fim da página Timeline ********* */
