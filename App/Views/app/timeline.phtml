@@ -21,49 +21,61 @@
     <hr>
 </header>
 
-<section class="container" id="pagina_home">
-    <div>
-        stories
-    </div>
-
-    <div class="mt-2 border">
-        <div class="row mt-2">
-            <div class="ml-2 col-1 start">
-                <a href="#"><img class="rounded-circle border" src="img/perfil.png" alt="perfil"></a>
-            </div>
-            <div class="col-3 start">
-                <p>Gabriel</p>
-            </div>
-            <div class="col-7 end mt-2">
-                <a href="#"><img src="img/pontos.png" alt="opções"></a>
-            </div>
-        </div>
-
-        <div class="">
-            <img src="img/postagem.jpg" class="postagem" alt="postagem">
-            <div class="container">
-                <div class="row">
-                    <div class="col-1">
-                        <a href=""><img src="img/coracao.png"></a>
-                    </div>
-                    <div class="col-1">
-                        <a href=""><img src="img/comentario.png"></a>
-                    </div>
-                </div>
-                <p class="">Curtido por 2 pessoas</p>
-
-                <div class="descricao">
-                    <p><strong>Gabriel</strong> Que lindo</p>
-                </div>
-
-                <div class="hora">
-                    <small class="text-secondary">HÁ 1 HORA</small>
-                </div>
-            </div>
-        </div>
-
+<section class="d-flex justify-content-center" aling="center" id="pagina_home">
+    <div class="align-items-center">
         <div>
-            <img src="">
+            stories
+        </div>
+
+        <div class="mt-2 border post">
+            <div class="row mt-2">
+                <div class="ml-2 col-1 start">
+                    <a href="#"><img class="rounded-circle border" src="img/perfil.png" alt="perfil"></a>
+                </div>
+                <div class="col-3 start">
+                    <p>Gabriel</p>
+                </div>
+                <div class="col-7 end mt-2">
+                    <a href="#"><img src="img/pontos.png" alt="opções"></a>
+                </div>
+            </div>
+
+            <div class="">
+                <img src="img/postagem.jpg" class="postagem" alt="postagem">
+                <div class="ml-2">
+                    <div class="row">
+                        <div class="col-1">
+                            <a href="#"><img id="curtir"  onclick="curtir(this)" src="img/coracao.png"></a>
+                        </div>
+                        <div class="col-1">
+                            <a href="#"><img src="img/comentario.png"></a>
+                        </div>
+                    </div>
+                    <p class="">Curtido por 2 pessoas</p>
+
+                    <div class="descricao">
+                        <p><strong>Gabriel</strong> Que lindo</p>
+                    </div>
+
+                    <div class="hora">
+                        <small class="text-secondary">HÁ 1 HORA</small>
+                    </div>
+                    <hr class="ml-none">
+
+                    <div class="addComentario">
+                        <div class="input-group mb-3">
+                            <input type="text" class="form-control" placeholder="Adicione um comentário..." aria-label="Recipient's username" aria-describedby="basic-addon2">
+                            <div class="input-group-append">
+                                <button class="btn btn-outline-primary" type="button">Publicar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div>
+                <img src="">
+            </div>
         </div>
     </div>
 </section>

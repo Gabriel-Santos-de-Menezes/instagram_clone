@@ -18,5 +18,15 @@ class AppController extends Action{
         $this->render('/timeline');
     }
 
+    public function validaAutenticacao(){
+        session_start();
+
+        //veriricar se os atributos não estão setados e são diferentes de vazio
+        if(!isset($_SESSION['id']) || $_SESSION['id'] == '' || !isset($_SESSION['usuario']) || $_SESSION['usuario'] == ''){
+
+            header('Locaction: /?login=erro');//redirecionado para a página de login
+        }
+    }
+
 }
 ?>

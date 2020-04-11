@@ -38,7 +38,12 @@ class Route extends Bootstrap {
 			'controller' => 'AppController',
 			'action' => 'timeline'
 		);
-
+		
+		$routes['post'] = array(
+			'route' => '/post',
+			'controller' => 'AppController',
+			'action' => 'post'
+		);
 
 		$this->setRoutes($routes);
 	}

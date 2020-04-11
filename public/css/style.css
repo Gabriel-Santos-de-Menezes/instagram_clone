@@ -46,9 +46,38 @@
     align-items: center;
     text-align: center;
 }
-
+.post{
+    max-width: 620px;
+}
 .postagem{
     width: 100%;
+    max-width: 620px;
+}
+
+.addComentario input{
+    box-shadow: 0 0 0 0;
+    border: 0 none;
+    outline: 0;
+}
+.addComentario input:focus{
+    box-shadow: 0 0 0 0;
+    border: 0 none;
+    outline: 0;
+}
+.addComentario button{
+    box-shadow: 0 0 0 0;
+    border: 0 none;
+    outline: 0;
+}
+.addComentario button:focus{
+    box-shadow: 0 0 0 0;
+    border: 0 none;
+    outline: 0;
+}
+.addComentario button:hover{
+    box-shadow: 0 0 0 0;
+    border: 0 none;
+    outline: 0;
 }
 
 /* ********** Fim da página Timeline ********* */
