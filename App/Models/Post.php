@@ -1,6 +1,6 @@
 <?php 
 //Modelo para trabalhar com os posts no banco de dados
-namespace App\Model;
+namespace App\Models;
 
 use MF\Model\Model;
 
@@ -9,6 +9,7 @@ class Post extends Model{
     private $id_usuario;
     private $post;
     private $data;
+
     //pegar
     public function __get($atributo){
         return $this->$atributo;
@@ -19,7 +20,22 @@ class Post extends Model{
     }
 
     //salvar
-    
+    public function salvar(){
+        $query = "insert into posts(id_usuario, post)values(:id_usuario, :post)";
+        $stmt = $this->db->prepare($query);
+
+        $stmt->bindValue(':id_usuario', $this->__get('id_usuario'));
+        $stmt->bindValue(':post', $this->__get('post'));
+        $stmt->execute();
+
+        return $this;//Retorna o post
+    }
+
+
+    //pegar todos os posts do usuario
+    public function getAll(){
+
+    }
 
 
 }

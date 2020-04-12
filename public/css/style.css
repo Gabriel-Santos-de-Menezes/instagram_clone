@@ -32,6 +32,7 @@
 
 #pagina_home{
     margin-top: 70px;
+    background-color: whitesmoke;
 }
 
 .start {
@@ -48,10 +49,13 @@
 }
 .post{
     max-width: 620px;
+    background-color: white;
 }
 .postagem{
     width: 100%;
     max-width: 620px;
+    padding-left: 1px;
+    padding-right: 1px;
 }
 
 .addComentario input{
@@ -79,5 +83,65 @@
     border: 0 none;
     outline: 0;
 }
+
+/* ****** Parte do modal de postagem ***** */
+
+.botaoAddPost{
+    width: 25px;
+}
+
+.post {
+    border: 1px solid rgb(0, 0, 0);
+    border-radius: 4px;
+    display: inline-block;
+}
+div.upload {
+    width: 200px;
+    height: 57px;
+    overflow: hidden;
+    position: relative;
+    background-color: rgb(33, 106, 241);
+    float: left;
+}
+
+div.upload input {
+    display: block !important;
+    width: 200px !important;
+    height: 57px !important;
+    opacity: 0 !important;
+    overflow: hidden !important;
+    cursor: text;
+}
+.upload user agent stylesheetdiv input[type="button"], .upload input[type="submit"], .upload input[type="reset"], .upload input[type="file"]::-webkit-file-upload-button, .upload button {
+    cursor: text !important;
+    /* Correção para Botáo Fantasma - forçar cursor:text */
+}
+
+.inputFileOverlay {
+    position: absolute;
+    width: 100%;
+    color: rgb(255, 255, 255);
+    font-family: sans-serif;
+    font-weight: bold;
+    line-height: 57px;
+    text-align: center;
+}
+
+.post input.enviar {
+    float: left;
+    height: 57px;
+    background-color: #7B5368;
+    color: #fff;
+    font-family: sans-serif;
+    font-weight: bold;
+    font-size: 15px;
+    border: 0;
+    padding: 0 17px;
+    cursor: pointer;
+}
+
+/* ****** Fim da parte do modal de postagem ***** */
+
+
 
 /* ********** Fim da página Timeline ********* */

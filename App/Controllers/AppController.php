@@ -13,6 +13,13 @@ class AppController extends Action{
     //renderiza a view timile
     public function timeline(){
 
+        $this->validaAutenticacao();//se for falso ira ser redirecionado para a página de login
+
+        //recuperar os posts
+        $post = Container::getModel('Post');//retorna a conexão com o banco configurada
+        
+        $post->__set('id_usuario', $_SESSION['id']);
+
         
 
         $this->render('/timeline');

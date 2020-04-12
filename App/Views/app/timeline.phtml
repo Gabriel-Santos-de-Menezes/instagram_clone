@@ -23,8 +23,51 @@
 
 <section class="d-flex justify-content-center" aling="center" id="pagina_home">
     <div class="align-items-center">
-        <div>
-            stories
+        <div class="text-center">
+
+            <!-- Button trigger modal -->
+            <button type="button" class="btn " data-toggle="modal" data-target="#exampleModal">
+            <img src="img/adicionar.png" class="botaoAddPost">
+            </button>
+
+            <!-- Modal -->
+            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Adicionar post</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+
+                    <form action="" method="">
+                    <div class="d-flex justify-content-center">
+                        <div class="post align-items-center">
+                            <div class="upload">
+                                <div class="inputFileOverlay">Selecione a imagem</div>
+                                <input type="file" name="img_post" accept="image/png, image/jpeg"  />
+                            </div>
+
+                            
+                        </div>
+                    </div>  
+                    <div class="addComentario">
+                        <div class="input-group mb-3 mt-3">
+                            <input type="text" class="form-control" placeholder="Adicione um comentário..." aria-label="Recipient's username" aria-describedby="basic-addon2">
+                        </div>
+                    </div>
+                    </form>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-success">Postar</button>
+                </div>
+                </div>
+            </div>
+            </div>
         </div>
 
         <div class="mt-2 border post">
