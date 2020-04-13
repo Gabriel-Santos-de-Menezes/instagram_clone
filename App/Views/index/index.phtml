@@ -15,13 +15,14 @@
                             <input type="text" class="form-control" name="usuario" placeholder="Telefone, nome de usuário ou e-mail" id="usuario">
                         </div>
                         <div class="form-group">
-                            <input type="password" name="senha" class="form-control" placeholder="Senha" id="pwd">
+                            <input type="password" name="senha" class="form-control" placeholder="Senha" id="senha">
                         </div>
     
                         <button class="btn btn-primary btn-block">Entrar</button>
 
-                        <p class="text-danger">Usuário ou senha incorretos</p>
-
+                        <?php if(isset($_GET['login']) &&  $_GET['login'] == "erro"){ ?>
+                            <p class="text-danger">Usuário ou senha incorretos</p>
+                        <?php } ?>
                         <hr class="pt-3">
                         
                         <a href=""><small class="text-secondary">Esqueceu a senha?</small></a>

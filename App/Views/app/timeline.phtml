@@ -42,22 +42,22 @@
                 </div>
                 <div class="modal-body">
 
-                    <form action="" method="">
-                    <div class="d-flex justify-content-center">
-                        <div class="post align-items-center">
-                            <div class="upload">
-                                <div class="inputFileOverlay">Selecione a imagem</div>
-                                <input type="file" name="img_post" accept="image/png, image/jpeg"  />
-                            </div>
+                    <form action="/post" method="post" enctype="multipart/form-data">
+                        <div class="d-flex justify-content-center">
+                            <div class="post align-items-center">
+                                <div class="upload">
+                                    <div class="inputFileOverlay">Selecione a imagem</div>
+                                    <input required type="file" id="img_post" name="img_post" accept="image/png, image/jpeg"  />
+                                </div>
 
-                            
+                                
+                            </div>
+                        </div>  
+                        <div class="addComentario">
+                            <div class="input-group mb-3 mt-3">
+                                <input type="text" class="form-control" placeholder="Adicione um comentário..." aria-label="Recipient's username" aria-describedby="basic-addon2">
+                            </div>
                         </div>
-                    </div>  
-                    <div class="addComentario">
-                        <div class="input-group mb-3 mt-3">
-                            <input type="text" class="form-control" placeholder="Adicione um comentário..." aria-label="Recipient's username" aria-describedby="basic-addon2">
-                        </div>
-                    </div>
                     </form>
 
                 </div>

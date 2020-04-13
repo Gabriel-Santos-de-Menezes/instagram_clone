@@ -22,3 +22,22 @@ function curtir(img){
     
 
 }
+
+
+
+
+function nome_imagem(){
+    var img_post = document.getElementById('img_post').value;
+    console.log(img_post);
+
+    while (img_post == ''){
+        img_post = document.getElementById('img_post').value;
+        if(img_post != ''){
+            Console.log(img_post);
+        }
+    }
+
+}
+
+
+

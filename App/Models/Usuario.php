@@ -73,7 +73,7 @@ class Usuario extends Model{
     //metodo responsável, por checar no banco de dados, se o usuário existe
     public function autenticar(){
         //query para recuperar o id do usuario e o usuario
-        $query = "select id, nome, usuario from tb_usuarios where usuario = :usuario or email = :usuario and senha = :senha";
+        $query = "select id, nome, usuario from tb_usuarios where usuario = :usuario and senha = :senha or email = :usuario ";
 
         $stmt = $this->db->prepare($query);
         $stmt->bindValue(':usuario', $this->__get('usuario'));   

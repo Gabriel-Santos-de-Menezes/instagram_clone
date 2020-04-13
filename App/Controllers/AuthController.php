@@ -27,7 +27,7 @@ class AuthController extends Action{
             
             session_start();
 
-            //Setar a supler global session com os indices id, nome e usuário
+            //Setar a super global session com os indices id, nome e usuário
             $_SESSION['id'] = $usuario->__get('id');
             $_SESSION['nome'] = $usuario->__get('nome');
             $_SESSION['usuario'] = $usuario->__get('usuario');
