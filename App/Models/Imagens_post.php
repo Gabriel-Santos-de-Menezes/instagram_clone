@@ -5,9 +5,10 @@ namespace App\Models;
 
 use MF\Model\Model;
 
-class ImagensPost extends Model{
+class Imagens_post extends Model{
 
     private $id;
+    private $id_usuario;
     private $imagem;
     private $data;
 
@@ -22,11 +23,11 @@ class ImagensPost extends Model{
 
     //Salvar
     public function salvar(){
-        $query = "inset into imagens_post(id_post, imagem)values(:id_post,imagem)";
+        $query = "insert into imagens_posts(id_usuario, imagem)values(:id_usuario,:novo_nome)";
         $stmt = $this->db->prepare($query);
         //evitar sql injection
-        $stmt->bindValue(':id_post', $this->__get('id_post'));
-        $stmt->bindValue(':imagem', $this->__get('imagem'));
+        $stmt->bindValue(':id_usuario', $this->__get('id_usuario'));
+        $stmt->bindValue(':novo_nome', $this->__get('imagem'));
         $stmt->execute();
 
         return $this;//retornando a imagem
