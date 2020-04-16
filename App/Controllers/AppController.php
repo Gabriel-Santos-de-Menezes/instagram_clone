@@ -62,6 +62,7 @@ class AppController extends Action{
             $post->salvar();//metodo que salva os dados setados, no banco
             $postImg->salvar();//metodo que salva os dados setados, no banco 
 
+            header('Location: /timeline');
         }
 
 
