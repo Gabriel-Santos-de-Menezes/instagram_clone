@@ -37,7 +37,7 @@ class Post extends Model{
 
         $query = "
             select
-                p.id, p.id_usuario, u.nome, p.post, DATEDIFF(Second, p.data_post, now()) as data_post
+                p.id, p.id_usuario, u.nome, p.post, TIMESTAMPDIFF(Second,p.data_post, now()) as data_post
             from 
                 posts as p
                 left join tb_usuarios as u on (p.id_usuario = u.id)

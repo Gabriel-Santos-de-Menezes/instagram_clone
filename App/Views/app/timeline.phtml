@@ -99,9 +99,25 @@
                     </div>
 
                     <div class="hora">
-                        <small class="text-secondary">Há 
+                        <small class="text-secondary">
                             <?php 
-                                echo $data_post = $post['data_post'];
+                                $data_post = $post['data_post'];
+
+                                if($data_post < 60){
+                                    echo "HÁ ".floor($data_post) . " SEGUNDOS";
+                                }
+                                else if($data_post >= 60 && $data_post < 3600){
+                                    $data_post = $data_post / 60;
+                                    echo "HÁ ".floor($data_post) . " MINUTOS";
+                                }
+                                else if($data_post >= 3600 || $data_post < 86400){
+                                    $data_post = $data_post / 3600;
+                                    echo "HÁ ". floor($data_post) . " HORAS";
+                                }
+                                else if($data_post >= 86400 || $data_post < 604800){
+                                    $data_post = $data_post / 86400;
+                                    echo "HÁ ". floor($data_post) . " DIAS";
+                                }
                                 
                                 //$data_atual = new DateTime();
                                 //$data_atual->format('d-m-Y H:i:s');
