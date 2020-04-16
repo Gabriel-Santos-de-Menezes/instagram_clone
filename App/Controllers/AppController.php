@@ -39,8 +39,7 @@ class AppController extends Action{
     public function post(){
         $this->validaAutenticacao();//se for falso ira ser redirecionado para a página de login
         $post = Container::getModel('Post');//retorna a conexão com o banco configurada
-        $postImg = Container::getModel('Imagens_post');//retorna a conexão com o banco configurada        
-
+        
         if(isset($_FILES['img_post'])){
             //Se o arquivo existir, poderá ser salvo no bd
             $post->__set('post', $_POST['post']);
@@ -55,12 +54,9 @@ class AppController extends Action{
             
             //Efetua o upload
             move_uploaded_file($_FILES['img_post']['tmp_name'], $diretorio.$novo_nome);
+            $post->__set('imagem',$novo_nome);
             
-            $postImg->__set('id_usuario',$_SESSION['id']);
-            $postImg->__set('imagem', $novo_nome);
-    
             $post->salvar();//metodo que salva os dados setados, no banco
-            $postImg->salvar();//metodo que salva os dados setados, no banco 
 
             header('Location: /timeline');
         }

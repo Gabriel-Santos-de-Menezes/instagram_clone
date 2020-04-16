@@ -8,6 +8,7 @@ class Post extends Model{
     private $id;
     private $id_usuario;
     private $post;
+    private $imagem;
     private $data;
 
     //pegar
@@ -21,11 +22,12 @@ class Post extends Model{
 
     //salvar
     public function salvar(){
-        $query = "insert into posts(id_usuario, post)values(:id_usuario, :post)";
+        $query = "insert into posts(id_usuario, post, imagem)values(:id_usuario, :post, :imagem)";
         $stmt = $this->db->prepare($query);
 
         $stmt->bindValue(':id_usuario', $this->__get('id_usuario'));
         $stmt->bindValue(':post', $this->__get('post'));
+        $stmt->bindValue(':imagem', $this->__get('imagem'));
         $stmt->execute();
 
         return $this;//Retorna o post
@@ -37,13 +39,13 @@ class Post extends Model{
 
         $query = "
             select
-                p.id, p.id_usuario, u.nome, p.post, TIMESTAMPDIFF(Second,p.data_post, now()) as data_post
+                p.id, p.id_usuario, u.nome, p.imagem, p.post, TIMESTAMPDIFF(Second,p.data_post, now()) as data_post
             from 
                 posts as p
                 left join tb_usuarios as u on (p.id_usuario = u.id)
             where
-                id_usuario = :id_usuario
-            order by data_post desc
+                p.id_usuario = :id_usuario
+            order by p.data_post desc
         ";
 
         $stmt = $this->db->prepare($query);

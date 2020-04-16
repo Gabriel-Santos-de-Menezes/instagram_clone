@@ -52,8 +52,9 @@
     background-color: white;
 }
 .postagem{
-    width: 100%;
+
     max-width: 620px;
+    min-width: 620px;
     padding-left: 1px;
     padding-right: 1px;
 }
