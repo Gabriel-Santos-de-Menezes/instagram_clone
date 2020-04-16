@@ -32,6 +32,12 @@ class Route extends Bootstrap {
 			'controller' => 'AuthController',
 			'action' => 'autenticar'
 		);
+		
+		$routes['sair'] = array(
+			'route' => '/sair',
+			'controller' => 'AuthController',
+			'action' => 'sair'
+		);
 
 		$routes['timeline'] = array(
 			'route' => '/timeline',

@@ -92,5 +92,27 @@ class Usuario extends Model{
 
         return $this;//Retorna o objeto
     }
+
+    //recuperar todos os usuários com base no termo pesquisado
+    public function getAll(){
+        $query = "
+            select 
+                id, usuario, nome, email
+            from 
+                tb_usuarios
+            where
+                usuario like :usuario and id != :id_usuario
+        ";
+
+        $stmt = $this->db->prepare($query);
+
+        //atribui o valor retornado do banco com o atributo nome,
+        //podendo ter qualquer coisa antes e depois do nome pesquisado
+        $stmt->bindValue(':usuario', '%'.$this->__get('usuario').'%');
+        $stmt->bindValue(':id_usuario', $this->__get('id'));
+        $stmt->execute();
+
+        return $stmt->fetchAll(\PDO::FETCH_ASSOC);//retornar a pesquisa em forma de array
+    }
 }
 ?>

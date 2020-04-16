@@ -12,10 +12,27 @@
             </div>
         </div>
         <div class="col-5 home_icones ">
-            <a class="" href=""><img src="/img/home.png" alt="Home"></a>
-            <a class="pl-2" href=""><img src="/img/enviar.png" alt="Enviar"></a>
-            <a class="pl-2" href=""><img src="/img/coracao.png" alt="Curtidas"></a>
-            <a class="pl-2" href=""><img class="rounded-circle" src="/img/home.png" alt="Usuario"></a>
+    
+            <ul class="nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="#"><img src="/img/home.png" alt="Home"></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#"><img src="/img/enviar.png" alt="Enviar"></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#"><img src="/img/coracao.png" alt="Curtidas"></a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"><img class="rounded-circle border" src="img/perfil.png" alt="perfil"></a>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="#">Action</a>
+                        <a class="dropdown-item" href="#">Another action</a>
+                        <a class="dropdown-item" href="#">Something else here</a>
+                        <a class="dropdown-item" href="/sair">Sair</a>
+                    </div>
+                </li>
+            </ul>
         </div>
     </div>
     <hr>
@@ -74,10 +91,20 @@
                     <a href="#"><img class="rounded-circle border" src="img/perfil.png" alt="perfil"></a>
                 </div>
                 <div class="col-3 start">
-                    <p><?=$post['nome']?></p>
+                    <p><?=$post['usuario']?></p>
                 </div>
-                <div class="col-7 end mt-2">
-                    <a href="#"><img src="img/pontos.png" alt="opções"></a>
+                <div class="col-7 mt-2">
+                    <ul class="nav text-right">
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"><img src="img/pontos.png" alt="opções"></a>
+                            <div class="dropdown-menu">
+                                <a class="dropdown-item" href="#">Action</a>
+                                <a class="dropdown-item" href="#">Another action</a>
+                                <a class="dropdown-item" href="#">Something else here</a>
+                            </div>
+                        </li>
+                    </ul>
+                    
                 </div>
             </div>
 
@@ -95,7 +122,7 @@
                     <p class="">Curtido por 2 pessoas</p>
 
                     <div class="descricao">
-                        <p><strong><?=$post['nome']?></strong> <?=$post['post']?></p>
+                        <p><strong><?=$post['usuario']?></strong> <?=$post['post']?></p>
                     </div>
 
                     <div class="hora">
@@ -146,55 +173,5 @@
         </div>
         <?php } ?>
 
-        <div class="mt-2 border post">
-            <div class="row mt-2">
-                <div class="ml-2 col-1 start">
-                    <a href="#"><img class="rounded-circle border" src="img/perfil.png" alt="perfil"></a>
-                </div>
-                <div class="col-3 start">
-                    <p>Gabriel</p>
-                </div>
-                <div class="col-7 end mt-2">
-                    <a href="#"><img src="img/pontos.png" alt="opções"></a>
-                </div>
-            </div>
-
-            <div class="">
-                <img src="img/postagem.jpg" class="postagem" alt="postagem">
-                <div class="ml-2">
-                    <div class="row">
-                        <div class="col-1">
-                            <a href="#"><img id="curtir"  onclick="curtir(this)" src="img/coracao.png"></a>
-                        </div>
-                        <div class="col-1">
-                            <a href="#"><img src="img/comentario.png"></a>
-                        </div>
-                    </div>
-                    <p class="">Curtido por 2 pessoas</p>
-
-                    <div class="descricao">
-                        <p><strong>Gabriel</strong> Que lindo</p>
-                    </div>
-
-                    <div class="hora">
-                        <small class="text-secondary">HÁ 1 HORA</small>
-                    </div>
-                    <hr class="ml-none">
-
-                    <div class="addComentario">
-                        <div class="input-group mb-3">
-                            <input type="text" class="form-control" placeholder="Adicione um comentário..." aria-label="Recipient's username" aria-describedby="basic-addon2">
-                            <div class="input-group-append">
-                                <button class="btn btn-outline-primary" type="button">Publicar</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div>
-                <img src="">
-            </div>
-        </div>
     </div>
 </section>

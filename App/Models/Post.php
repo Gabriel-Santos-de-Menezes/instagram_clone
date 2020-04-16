@@ -39,6 +39,15 @@ class Post extends Model{
 
         $query = "
             select
+                p.id, p.id_usuario, u.usuario, p.imagem, p.post, TIMESTAMPDIFF(Second,p.data_post, now()) as data_post
+            from 
+                posts as p
+                left join tb_usuarios as u on (p.id_usuario = u.id)
+           
+            order by p.data_post desc
+        ";
+        /*$query = "
+            select
                 p.id, p.id_usuario, u.nome, p.imagem, p.post, TIMESTAMPDIFF(Second,p.data_post, now()) as data_post
             from 
                 posts as p
@@ -46,7 +55,7 @@ class Post extends Model{
             where
                 p.id_usuario = :id_usuario
             order by p.data_post desc
-        ";
+        ";*/
 
         $stmt = $this->db->prepare($query);
         $stmt->bindValue(':id_usuario', $this->__get('id_usuario'));
