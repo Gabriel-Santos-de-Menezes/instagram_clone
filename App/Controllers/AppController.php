@@ -24,7 +24,7 @@ class AppController extends Action{
 
         $posts = $post->getAll();//retorna um array de todos os posts
 
-        $this->view->posts = $post;//Manda o array de posts para a timeline
+        $this->view->posts = $posts;//Manda o array de posts para a timeline
 
         $usuario = Container::getModel('Usuario');
         $usuario->__set('id', $_SESSION['id']);
@@ -50,6 +50,7 @@ class AppController extends Action{
             //Pegar a extensão
             $extensao = strtolower(substr($_FILES['img_post']['name'], -4));
             $novo_nome = md5(time()). $extensao;
+            
             $diretorio = "uploads/";
             
             //Efetua o upload

@@ -37,13 +37,13 @@ class Post extends Model{
 
         $query = "
             select
-                id, id_usuario, nome, post, DATE_FORMAT(%d/%m/%Y %H:%i) as data_post
+                p.id, p.id_usuario, u.nome, p.post, DATEDIFF(Second, p.data_post, now()) as data_post
             from 
                 posts as p
-                left join tb_usuarios as u on (t.id_usuario = u.id)
+                left join tb_usuarios as u on (p.id_usuario = u.id)
             where
                 id_usuario = :id_usuario
-            order by data desc
+            order by data_post desc
         ";
 
         $stmt = $this->db->prepare($query);

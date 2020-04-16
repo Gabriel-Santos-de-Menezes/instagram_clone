@@ -1,4 +1,4 @@
-<header class="fixed-top">
+<header class="fixed-top bg-white">
     <div class="row text-center mt-3">
         <div class="col-3">
             <a href=""><img alt="Instagram" class="img-fluid " id="logo_timiline" src="/img/instagram.png"></a>
@@ -32,41 +32,103 @@
 
             <!-- Modal -->
             <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Adicionar post</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Adicionar post</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                        <div class="modal-body">
 
-                    <form action="/post" method="post" enctype="multipart/form-data">
-                        <div class="d-flex justify-content-center">
-                            <div class="post align-items-center">
-                                <div class="upload">
-                                    <div class="inputFileOverlay">Selecione a imagem</div>
-                                    <input required type="file" id="img_post" name="img_post" accept="image/png, image/jpeg"  />
+                            <form action="/post" method="post" enctype="multipart/form-data">
+                                <div class="d-flex justify-content-center">
+                                    <div class="post align-items-center">
+                                        <div class="upload">
+                                            <div class="inputFileOverlay">Selecione a imagem</div>
+                                            <input required type="file" id="img_post" name="img_post" accept="image/png, image/jpeg"  />
+                                        </div>
+                                    </div>
+                                </div>  
+                                <div class="addComentario">
+                                    <div class="input-group mb-3 mt-3">
+                                        <input name="post" type="text" class="form-control" placeholder="Descrição..." >
+                                    </div>
                                 </div>
-                            </div>
-                        </div>  
-                        <div class="addComentario">
-                            <div class="input-group mb-3 mt-3">
-                                <input name="post" type="text" class="form-control" placeholder="Descrição..." >
-                            </div>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
-                            <input type="submit" nome="postar" value="Postar" class="btn btn-success"></input>
-                        </div>
-                    </form>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+                                    <input type="submit" nome="postar" value="Postar" class="btn btn-success"></input>
+                                </div>
+                            </form>
 
+                        </div>
+                    </div>
                 </div>
-                </div>
-            </div>
             </div>
         </div>
+        <?php foreach($this->view->posts as $id_post => $post){ ?>
+        <div class="mt-2 border post">
+            <div class="row mt-2">
+                <div class="ml-2 col-1 start">
+                    <a href="#"><img class="rounded-circle border" src="img/perfil.png" alt="perfil"></a>
+                </div>
+                <div class="col-3 start">
+                    <p><?=$post['nome']?></p>
+                </div>
+                <div class="col-7 end mt-2">
+                    <a href="#"><img src="img/pontos.png" alt="opções"></a>
+                </div>
+            </div>
+
+            <div class="">
+                <img src="img/postagem.jpg" class="postagem" alt="postagem">
+                <div class="ml-2">
+                    <div class="row">
+                        <div class="col-1">
+                            <a href="#"><img id="curtir"  onclick="curtir(this)" src="img/coracao.png"></a>
+                        </div>
+                        <div class="col-1">
+                            <a href="#"><img src="img/comentario.png"></a>
+                        </div>
+                    </div>
+                    <p class="">Curtido por 2 pessoas</p>
+
+                    <div class="descricao">
+                        <p><strong><?=$post['nome']?></strong> <?=$post['post']?></p>
+                    </div>
+
+                    <div class="hora">
+                        <small class="text-secondary">Há 
+                            <?php 
+                                echo $data_post = $post['data_post'];
+                                
+                                //$data_atual = new DateTime();
+                                //$data_atual->format('d-m-Y H:i:s');
+                                //$tempo_post =  $data_atual->format('d-m-Y H:i:s') - $data_post;
+                                
+                            
+                            ?>
+                        </small>
+                    </div>
+                    <hr class="ml-none">
+
+                    <div class="addComentario">
+                        <div class="input-group mb-3">
+                            <input type="text" class="form-control" placeholder="Adicione um comentário..." aria-label="Recipient's username" aria-describedby="basic-addon2">
+                            <div class="input-group-append">
+                                <button class="btn btn-outline-primary" type="button">Publicar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div>
+                <img src="">
+            </div>
+        </div>
+        <?php } ?>
 
         <div class="mt-2 border post">
             <div class="row mt-2">
