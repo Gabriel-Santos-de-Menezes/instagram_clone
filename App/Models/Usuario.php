@@ -101,7 +101,7 @@ class Usuario extends Model{
             from 
                 tb_usuarios
             where
-                usuario like :usuario and id != :id_usuario
+                usuario like :usuario and id != :id_usuario limit 5
         ";
 
         $stmt = $this->db->prepare($query);

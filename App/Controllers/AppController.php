@@ -74,5 +74,34 @@ class AppController extends Action{
         }
     }
 
+
+    public function pesquisarUsuario(){
+
+        //ver se a autenticação foi realizada
+        $this->validaAutenticacao();//se for falso ira ser redirecionado para a página de login
+
+        //if ternário
+        $pesquisarPor = isset($_GET['pesquisarPor']) ? $_GET['pesquisarPor'] : '';
+
+        $usuarios = array();
+
+        if($pesquisarPor != ""){
+
+            //retorna um obj com a conexão com banco de dados
+            $usuario = Container::getModel('Usuario');
+            $usuario->__set('usuario', $pesquisarPor);
+            $usuario->__set('id', $_SESSION['id']);
+            //retorna um array com os usuarios pesquisados
+            $usuarios = $usuario->getAll(); 
+        }
+
+        $usuario = Container::getMOdel('Usuario');
+        $usuario->__set('id', $_SESSION['id']);
+
+        $this->view->usuarios = $usuarios;
+
+        $this->render('timiline');
+    }
+
 }
 ?>
