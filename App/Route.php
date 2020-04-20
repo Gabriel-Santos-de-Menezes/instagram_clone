@@ -50,6 +50,12 @@ class Route extends Bootstrap {
 			'controller' => 'AppController',
 			'action' => 'post'
 		);
+		
+		$routes['pesquisarUsuario'] = array(
+			'route' => '/pesquisarUsuario',
+			'controller' => 'AppController',
+			'action' => 'pesquisarUsuario'
+		);
 
 		$this->setRoutes($routes);
 	}

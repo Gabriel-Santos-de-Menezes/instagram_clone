@@ -23,9 +23,6 @@ function curtir(img){
 
 }
 
-
-
-
 function nome_imagem(){
     var img_post = document.getElementById('img_post').value;
     console.log(img_post);
@@ -36,8 +33,14 @@ function nome_imagem(){
             Console.log(img_post);
         }
     }
-
 }
+
+
+$(function(){
+    $("#pesquisar").autocomplete({
+        source: "php"
+    });
+});
 
 
 

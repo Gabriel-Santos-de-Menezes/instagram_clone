@@ -1,4 +1,4 @@
-<header class="fixed-top bg-white">
+<header class="fixed-top bg-white head">
     <div class="row text-center mt-3">
         <div class="col-3">
             <a href=""><img alt="Instagram" class="img-fluid " id="logo_timiline" src="/img/instagram.png"></a>
@@ -6,9 +6,9 @@
         <div class="col-4">
             <fomr action="pesquisarUsuario" method="get">
                 <div class="input-group input_pesquisa mx-auto">
-                        <input type="text" class="form-control pesquisa" nome="persquisar" placeholder="Search">
+                        <input onkeyup="getDados();" type="text" class="form-control pesquisa" id="pesquisar" nome="usuario" placeholder="Search">
                     <div class="input-group-append">
-                        <a class="btn-sm btn-secondary"><img src="img/pesquisar.png" alt="pesquisar"></a>
+                        <a class="btn-sm btn-secondary" ><img src="img/pesquisar.png" alt="pesquisar"></a>
                     </div>
                 </div>
             </form>
@@ -40,17 +40,13 @@
     <hr>
 </header>
 
-<div class="container mt-4">
-    <p>
-    <a class="btn btn-primary" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
-        Link with href
-    </a>
-    </p>
-    <div class="collapse" id="collapseExample">
-        <div class="card card-body">
-            Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
-        </div>
-    </div>
+
+<div class="container mt-5 pt-5">
+    
+<div id="Resultado">
+    
+</div>
+   
 </div>
 
 <section class="d-flex justify-content-center" aling="center" id="pagina_home">
@@ -152,11 +148,11 @@
                                     $data_post = $data_post / 60;
                                     echo "HÁ ".floor($data_post) . " MINUTOS";
                                 }
-                                else if($data_post >= 3600 || $data_post < 86400){
+                                else if($data_post >= 3600 && $data_post < 86400){
                                     $data_post = $data_post / 3600;
                                     echo "HÁ ". floor($data_post) . " HORAS";
                                 }
-                                else if($data_post >= 86400 || $data_post < 604800){
+                                else if($data_post >= 86400 && $data_post < 604800){
                                     $data_post = $data_post / 86400;
                                     echo "HÁ ". floor($data_post) . " DIAS";
                                 }

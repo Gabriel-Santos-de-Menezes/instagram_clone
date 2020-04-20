@@ -80,27 +80,31 @@ class AppController extends Action{
         //ver se a autenticação foi realizada
         $this->validaAutenticacao();//se for falso ira ser redirecionado para a página de login
 
-        //if ternário
-        $pesquisarPor = isset($_GET['pesquisarPor']) ? $_GET['pesquisarPor'] : '';
-
-        $usuarios = array();
-
-        if($pesquisarPor != ""){
-
+        //Verifica se existe a variável usuario
+        if(isset($_GET['usuario'])){
             //retorna um obj com a conexão com banco de dados
             $usuario = Container::getModel('Usuario');
-            $usuario->__set('usuario', $pesquisarPor);
+            $usuario->__set('usuario', $_GET['usuario']);
             $usuario->__set('id', $_SESSION['id']);
-            //retorna um array com os usuarios pesquisados
-            $usuarios = $usuario->getAll(); 
+            if(empty($usuario)){
+
+            }else{
+                //retorna um array com os usuarios pesquisados
+                $usuarios = $usuario->getAll(); 
+                if($usuarios != ''){
+                    $this->view->usuarios = $usuarios;
+                    foreach ($this->view->usuarios as $key => $usuario) {
+                        echo '<div class="container center">';
+                        echo '<p>' . $usuario['usuario']. '</p>';
+                        echo '<p>' . $usuario['nome'];
+                        echo '</div>';
+                    }
+                } else {
+                    // Se a consulta não retornar nenhum valor, exibi mensagem para o usuário
+                    echo "Não foram encontrados registros!";
+                }
+            }
         }
-
-        $usuario = Container::getMOdel('Usuario');
-        $usuario->__set('id', $_SESSION['id']);
-
-        $this->view->usuarios = $usuarios;
-
-        $this->render('timiline');
     }
 
 }

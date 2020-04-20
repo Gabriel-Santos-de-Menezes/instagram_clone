@@ -97,7 +97,7 @@ class Usuario extends Model{
     public function getAll(){
         $query = "
             select 
-                id, usuario, nome, email
+                id, usuario, nome
             from 
                 tb_usuarios
             where
@@ -114,5 +114,6 @@ class Usuario extends Model{
 
         return $stmt->fetchAll(\PDO::FETCH_ASSOC);//retornar a pesquisa em forma de array
     }
+
 }
 ?>

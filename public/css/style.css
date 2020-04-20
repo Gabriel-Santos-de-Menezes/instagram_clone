@@ -20,6 +20,9 @@
 
 
 /* ********** Página Timeline ********* */
+.head{
+    margin-bottom: 100px;
+}
 #logo_timiline{
     width: 100px;
 }
@@ -31,7 +34,7 @@
 }
 
 #pagina_home{
-    margin-top: 70px;
+    margin-top: 60px;
     background-color: whitesmoke;
 }
 
