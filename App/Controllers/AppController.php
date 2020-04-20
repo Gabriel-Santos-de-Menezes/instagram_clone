@@ -81,27 +81,28 @@ class AppController extends Action{
         $this->validaAutenticacao();//se for falso ira ser redirecionado para a página de login
 
         //Verifica se existe a variável usuario
-        if(isset($_GET['usuario'])){
+        if(isset($_GET['usuario']) && $_GET['usuario'] != ''){
             //retorna um obj com a conexão com banco de dados
             $usuario = Container::getModel('Usuario');
             $usuario->__set('usuario', $_GET['usuario']);
             $usuario->__set('id', $_SESSION['id']);
             if(empty($usuario)){
-
+                
             }else{
                 //retorna um array com os usuarios pesquisados
                 $usuarios = $usuario->getAll(); 
-                if($usuarios != ''){
+                if(!empty($usuarios)){
                     $this->view->usuarios = $usuarios;
                     foreach ($this->view->usuarios as $key => $usuario) {
-                        echo '<div class="container center">';
-                        echo '<p>' . $usuario['usuario']. '</p>';
-                        echo '<p>' . $usuario['nome'];
+                        echo '<div class="px-2">';
+                        echo '<p><a>' . $usuario['usuario']. '</a></p>';
+                        echo '<small><a>' . $usuario['nome'] . '</a></small>';
+                        echo '<hr>';
                         echo '</div>';
                     }
                 } else {
                     // Se a consulta não retornar nenhum valor, exibi mensagem para o usuário
-                    echo "Não foram encontrados registros!";
+                    echo "Nenhum usuário encontrado!";
                 }
             }
         }
