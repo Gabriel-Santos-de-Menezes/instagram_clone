@@ -11,7 +11,7 @@ class IndexController extends Action {
 
 	public function index() {
 
-		$this->render('index');
+		$this->render('index', 'layout');
 	}
 
 
@@ -29,7 +29,7 @@ class IndexController extends Action {
 		$this->view->erroCadastroUsuario = false;
 		
 		
-		$this->render('cadastrar');
+		$this->render('cadastrar', 'layout');
 	}
 	
 	
@@ -53,7 +53,7 @@ class IndexController extends Action {
 
 			$usuario->salvar();//gravar dados no banco
 		
-			$this->render('cadastrar');
+			$this->render('/', 'layout');
 		}
 
 		//erro
@@ -66,7 +66,7 @@ class IndexController extends Action {
 
 			$this->view->erroCadastroUsuario = true;//atributo criado dinamicamente apartir do extends de Action, 
 			
-			$this->render('cadastrar');
+			$this->render('cadastrar', 'layout');
 		}
 
 		//erro
@@ -78,7 +78,7 @@ class IndexController extends Action {
 			);
 
 			$this->view->erroCadastro = true;//atributo criado dinamicamente apartir do extends de Action, 
-			$this->render('cadastrar');
+			$this->render('cadastrar', 'layout');
 		}
 
 	}

@@ -40,7 +40,7 @@
 }
 
 #pagina_home{
-    margin-top: 60px;
+    margin-top: 65px;
     background-color: whitesmoke;
 }
 
@@ -52,6 +52,7 @@
     left: 0;
     right: 0;
     width: 225px;
+    text-align: center;
 }
 .resultado_pesquisa p{
     color: black;
@@ -175,9 +176,14 @@ div.upload input {
     padding: 0 17px;
     cursor: pointer;
 }
-
 /* ****** Fim da parte do modal de postagem ***** */
 
-
-
 /* ********** Fim da página Timeline ********* */
+
+
+/* ********** Início da página perfil ********* */
+.pagina_perfil{
+    margin-top: 65px;
+}
+
+/* ********** Fim da página perfil ********* */

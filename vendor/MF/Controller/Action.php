@@ -10,25 +10,26 @@ abstract class Action {
 		$this->view = new \stdClass();
 	}
 
-	protected function render($view, $layout = 'layout') {
-		$this->view->page = $view;
+	protected function render($view, $layout){//receber quala que é a view, para fazer
+        // o preocesso de require
+        $this->view->page = $view;
 
-		if(file_exists("../App/Views/".$layout.".phtml")) {
-			require_once "../App/Views/".$layout.".phtml";
-		} else {
-			$this->content();
-		}
-	}
+        if(file_exists("../App/Views/".$layout.".phtml")){
+            require_once "../App/Views/".$layout.".phtml";
+        }else{
+            $this->content();
+        }
 
-	protected function content() {
-		$classAtual = get_class($this);
+    }
 
-		$classAtual = str_replace('App\\Controllers\\', '', $classAtual);
+	protected function content(){//Logica de renderização o layout
+        $classAtual = get_class($this);//Passa-se uma classe, e retorna o nome dessa classe
+        $classAtual = str_replace('App\\Controllers\\', '', $classAtual);//pega a string e atribui vazio
 
-		$classAtual = strtolower(str_replace('Controller', '', $classAtual));
+        $classAtual = strtolower(str_replace('Controller', '', $classAtual));
 
-		require_once "../App/Views/".$classAtual."/".$this->view->page.".phtml";
-	}
+        require_once "../App/Views/".$classAtual ."/".$this->view->page.".phtml";
+    }
 }
 
 ?>

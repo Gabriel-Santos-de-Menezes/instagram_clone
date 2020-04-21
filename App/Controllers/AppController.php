@@ -33,7 +33,7 @@ class AppController extends Action{
 
 
 
-        $this->render('/timeline');
+        $this->render('/timeline', 'layout');
     }
 
     public function post(){
@@ -95,12 +95,12 @@ class AppController extends Action{
                     $this->view->usuarios = $usuarios;
                     foreach ($this->view->usuarios as $key => $usuario) {
                         echo '<div class="">';
-                            echo '<a href="#" class="row">';
-                                echo '<div class="col-1">';
-                                    echo '<img src="img/perfil.png">';
+                            echo '<a href="#" class="d-flex justify-content-center ">';
+                                echo '<div class="d-inline-block">';
+                                    echo '<img src="img/perfil.png" alt="foto_perfil">';
                                 echo '</div>';
 
-                                echo '<div class="col-4">';
+                                echo '<div class="d-inline-block ml-2">';
                                     echo '<p>' . $usuario['usuario']. '</p>';
                                     echo '<p class="text-secondary">' . $usuario['nome'] . '</p>';
                                 echo '</div>';
@@ -123,7 +123,7 @@ class AppController extends Action{
 
 
 
-        $this->render('/perfil');
+        $this->render('/perfil', 'layout2');
     }
 
 }
