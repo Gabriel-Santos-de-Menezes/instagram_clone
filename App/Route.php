@@ -56,6 +56,13 @@ class Route extends Bootstrap {
 			'controller' => 'AppController',
 			'action' => 'pesquisarUsuario'
 		);
+		
+		//rota para o perfil do usuário
+		$routes['perfil'] = array(
+			'route' => '/perfil',
+			'controller' => 'AppController',
+			'action' => 'perfil'
+		);
 
 		$this->setRoutes($routes);
 	}

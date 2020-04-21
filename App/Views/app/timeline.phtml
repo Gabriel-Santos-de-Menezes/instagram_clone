@@ -27,7 +27,7 @@
                     <a class="nav-link" href="#"><img src="/img/coracao.png" alt="Curtidas"></a>
                 </li>
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"><img class="rounded-circle border" src="img/perfil.png" alt="perfil"></a>
+                    <a class="nav-link dropdown" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"><img class="rounded-circle border" src="img/perfil.png" alt="perfil"></a>
                     <div class="dropdown-menu">
                         <a class="dropdown-item" href="#">Ação</a>
                         <a class="dropdown-item" href="#">Another action</a>
@@ -42,7 +42,7 @@
 </header>
 
 
-<section class="d-flex justify-content-center" aling="center" id="pagina_home">
+<section class="d-flex justify-content-center flex-container" aling="center" id="pagina_home">
     <div class="align-items-center">
         <div class="text-center">
 
@@ -90,17 +90,17 @@
         </div>
         <?php foreach($this->view->posts as $id_post => $post){ ?>
         <div class="mt-2 border post">
-            <div class="row mt-2">
-                <div class="ml-2 col-1 start">
+            <div class="row mt-2 container">
+                <div class=" col-1 ">
                     <a href="#"><img class="rounded-circle border" src="img/perfil.png" alt="perfil"></a>
                 </div>
-                <div class="col-3 start">
+                <div class="col-10 ">
                     <p><?=$post['usuario']?></p>
                 </div>
-                <div class="col-7 mt-2">
+                <div class="col-1 conf_post">
                     <ul class="nav text-right">
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"><img src="img/pontos.png" alt="opções"></a>
+                            <a class="nav-link dropdown" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"><img src="img/pontos.png" alt="opções"></a>
                             <div class="dropdown-menu">
                                 <a class="dropdown-item" href="#">Action</a>
                                 <a class="dropdown-item" href="#">Another action</a>
@@ -113,7 +113,7 @@
             </div>
 
             <div class="">
-                <img src="uploads/<?=$post['imagem']?>" class="postagem" alt="postagem">
+                <img src="uploads/<?=$post['imagem']?>" class="postagem mx-auto d-block" alt="postagem">
                 <div class="ml-2">
                     <div class="row">
                         <div class="col-1">

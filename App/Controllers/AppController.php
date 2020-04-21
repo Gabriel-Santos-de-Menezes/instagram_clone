@@ -94,10 +94,18 @@ class AppController extends Action{
                 if(!empty($usuarios)){
                     $this->view->usuarios = $usuarios;
                     foreach ($this->view->usuarios as $key => $usuario) {
-                        echo '<div class="px-2">';
-                        echo '<p><a>' . $usuario['usuario']. '</a></p>';
-                        echo '<small><a>' . $usuario['nome'] . '</a></small>';
-                        echo '<hr>';
+                        echo '<div class="">';
+                            echo '<a href="#" class="row">';
+                                echo '<div class="col-1">';
+                                    echo '<img src="img/perfil.png">';
+                                echo '</div>';
+
+                                echo '<div class="col-4">';
+                                    echo '<p>' . $usuario['usuario']. '</p>';
+                                    echo '<p class="text-secondary">' . $usuario['nome'] . '</p>';
+                                echo '</div>';
+                            echo '</a>';
+                            echo '<hr>';
                         echo '</div>';
                     }
                 } else {
@@ -106,6 +114,16 @@ class AppController extends Action{
                 }
             }
         }
+    }
+
+
+    public function perfil(){
+        //ver se a autenticação foi realizada
+        $this->validaAutenticacao();//se for falso ira ser redirecionado para a página de login
+
+
+
+        $this->render('/perfil');
     }
 
 }
