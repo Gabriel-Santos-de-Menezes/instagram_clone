@@ -33,7 +33,7 @@ class AppController extends Action{
 
 
 
-        $this->render('/timeline', 'layout');
+        $this->render('/timeline', 'layout2');
     }
 
     public function post(){

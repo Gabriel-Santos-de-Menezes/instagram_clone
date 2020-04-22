@@ -183,7 +183,26 @@ div.upload input {
 
 /* ********** Início da página perfil ********* */
 .pagina_perfil{
-    margin-top: 65px;
+    margin-top: 68px;
+    background-color: rgb(248, 247, 247);
+}
+#foto_perfil{
+    width: 150px;
+    height: 150px;
+}
+.img_config{
+    width: 24px;
+    height: 24px;
+}
+.info_seguir a{
+    
+}
+.info_bio p{
+    margin-bottom: 5px;
+}
+.posts_perfil a img{
+    width: 14px;
+    height: 14px;
 }
 
 /* ********** Fim da página perfil ********* */
