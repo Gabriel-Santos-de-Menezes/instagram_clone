@@ -188,6 +188,7 @@ div.upload input {
 .pagina_perfil{
     margin-top: 68px;
     background-color: rgb(248, 247, 247);
+    
 }
 
 #foto_perfil_perfil{
@@ -207,6 +208,9 @@ div.upload input {
 .posts_perfil a img{
     width: 14px;
     height: 14px;
+}
+.container_posts_perfil{
+    width: 98%;
 }
 
 .posts_galeria{
