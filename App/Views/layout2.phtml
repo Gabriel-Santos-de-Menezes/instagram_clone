@@ -25,42 +25,45 @@
 	</head>
 
 	<body>
-		<header class="fixed-top bg-white border-bottom head">
-		<div class="row mt-3">
-			<div class="col-3">
-				<a href=""><img alt="Instagram" class="img-fluid " id="logo_timiline" src="/img/instagram.png"></a>
-			</div>
-			<div class="col-4">
-				<fomr action="pesquisarUsuario" method="get">
-					<div class="input-group input_pesquisa mx-auto">
-							<input onkeyup="getDados();" type="text" class="form-control pesquisa" id="pesquisar" nome="usuario" placeholder="Search">
-						<div class="input-group-append">
-							<a class="btn-sm btn-secondary" ><img src="img/pesquisar.png" alt="pesquisar"></a>
+		<header class="fixed-top  bg-white border-bottom head">
+			<div class="container">
+				<div class="row mt-3">
+					<div class="col-3">
+						<a href="/timeline"><img alt="Instagram" class="img-fluid " id="logo_timiline" src="/img/instagram.png"></a>
+					</div>
+					<div class="col-4">
+						<fomr action="pesquisarUsuario" method="get">
+							<div class="input-group input_pesquisa mx-auto">
+									<input onkeyup="getDados();" type="text" class="form-control pesquisa" id="pesquisar" nome="usuario" placeholder="Search">
+								<div class="input-group-append">
+									<a class="btn-sm btn-secondary" ><img src="img/pesquisar.png" alt="pesquisar"></a>
+								</div>
+							</div>
+						</form>
+						<div id="Resultado" class="resultado_pesquisa mt-2"></div>
+					</div>
+					<div class="col-5 home_icones ">
+				
+						<ul class="nav">
+							<li class="nav-item">
+								<a class="nav-link" href="#"><img src="/img/home.png" alt="Home"></a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link" href="#"><img src="/img/enviar.png" alt="Enviar"></a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link" href="#"><img src="/img/coracao.png" alt="Curtidas"></a>
+							</li>
+							<li class="nav-item dropdown">
+								<a class="nav-link" href="/perfil" role="button" ><img class="rounded-circle border" src="img/perfil.png" alt="perfil"></a>
+								
+								</li>
+							</ul>
 						</div>
 					</div>
-				</form>
-				<div id="Resultado" class="resultado_pesquisa mt-2"></div>
-			</div>
-			<div class="col-5 home_icones ">
-		
-				<ul class="nav">
-					<li class="nav-item">
-						<a class="nav-link" href="#"><img src="/img/home.png" alt="Home"></a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link" href="#"><img src="/img/enviar.png" alt="Enviar"></a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link" href="#"><img src="/img/coracao.png" alt="Curtidas"></a>
-					</li>
-					<li class="nav-item dropdown">
-						<a class="nav-link" href="/perfil" role="button" ><img class="rounded-circle border" src="img/perfil.png" alt="perfil"></a>
-						
-						</li>
-					</ul>
-				</div>
 			</div>
 		</header>
+		
 
 		<?= $this->content() ?>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>

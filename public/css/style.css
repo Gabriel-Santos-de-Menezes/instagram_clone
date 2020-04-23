@@ -176,6 +176,9 @@ div.upload input {
     padding: 0 17px;
     cursor: pointer;
 }
+#foto_perfil_timeline{
+         
+}
 /* ****** Fim da parte do modal de postagem ***** */
 
 /* ********** Fim da página Timeline ********* */
@@ -186,7 +189,8 @@ div.upload input {
     margin-top: 68px;
     background-color: rgb(248, 247, 247);
 }
-#foto_perfil{
+
+#foto_perfil_perfil{
     width: 150px;
     height: 150px;
 }
@@ -203,6 +207,12 @@ div.upload input {
 .posts_perfil a img{
     width: 14px;
     height: 14px;
+}
+
+.posts_galeria{
+    width: 100%;
+    
+    
 }
 
 /* ********** Fim da página perfil ********* */
