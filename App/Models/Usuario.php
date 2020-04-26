@@ -115,5 +115,23 @@ class Usuario extends Model{
         return $stmt->fetchAll(\PDO::FETCH_ASSOC);//retornar a pesquisa em forma de array
     }
 
+    //recuperar as informações do usuário
+    public function getInfoUsuario(){
+        $query = "select id, nome, usuario from tb_usuarios where id = :id_usuario";
+
+        $stmt = $this->db->prepare($query);
+        $stmt->bindValue(':id_usuario', $this->__get('id'));
+        $stmt->execute();
+
+        return $stmt->fetch(\PDO::FETCH_ASSOC);//recuperar um único array associativo
+    }
+
+    public function seguirUsuario($id_usuario_seguindo){
+        $query = "insert into seguidores(id_usuarios, id_usuario_seguindo)value(:id_usuario, :id_usuario_seguindo)";
+        
+        $stmt = $this->db->prepare($query);
+        $stmt->bindValue();
+    }
+
 }
 ?>

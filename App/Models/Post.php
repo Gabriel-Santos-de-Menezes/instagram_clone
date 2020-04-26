@@ -46,17 +46,16 @@ class Post extends Model{
            
             order by p.data_post desc
         ";
-        /*$query = "
-            select
-                p.id, p.id_usuario, u.nome, p.imagem, p.post, TIMESTAMPDIFF(Second,p.data_post, now()) as data_post
-            from 
-                posts as p
-                left join tb_usuarios as u on (p.id_usuario = u.id)
-            where
-                p.id_usuario = :id_usuario
-            order by p.data_post desc
-        ";*/
+    
+        $stmt = $this->db->prepare($query);
+        $stmt->bindValue(':id_usuario', $this->__get('id_usuario'));
+        $stmt->execute();
 
+        return $stmt->fetchAll(\PDO::FETCH_ASSOC);//retorna um array dos posts
+    }
+    public function getPostUsuario(){
+        $query = "select id, post, imagem from posts where id_usuario = :id_usuario";
+        
         $stmt = $this->db->prepare($query);
         $stmt->bindValue(':id_usuario', $this->__get('id_usuario'));
         $stmt->execute();

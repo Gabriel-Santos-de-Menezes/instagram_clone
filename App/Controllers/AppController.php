@@ -29,11 +29,26 @@ class AppController extends Action{
         $usuario = Container::getModel('Usuario');
         $usuario->__set('id', $_SESSION['id']);
 
-
-
-
-
         $this->render('/timeline', 'layout2');
+    }
+
+    public function perfil(){
+        //ver se a autenticação foi realizada
+        $this->validaAutenticacao();//se for falso ira ser redirecionado para a página de login
+
+        $post = Container::getModel('Post');//retorna a conexão com o banco configurada
+
+        $post->__set('id_usuario', $_SESSION['id']);
+        $posts = $post->getPostUsuario();
+
+        $this->view->posts = $posts;//Manda o array de posts para a timeline
+        
+        $usuario = Container::getModel('Usuario');
+        $usuario->__set('id', $_SESSION['id']);
+
+        $this->view->info_usuario = $usuario->getInfoUsuario();
+
+        $this->render('/perfil', 'layout2');
     }
 
     public function post(){
@@ -117,14 +132,6 @@ class AppController extends Action{
     }
 
 
-    public function perfil(){
-        //ver se a autenticação foi realizada
-        $this->validaAutenticacao();//se for falso ira ser redirecionado para a página de login
-
-
-
-        $this->render('/perfil', 'layout2');
-    }
 
 }
 ?>
