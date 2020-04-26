@@ -63,6 +63,13 @@ class Route extends Bootstrap {
 			'controller' => 'AppController',
 			'action' => 'perfil'
 		);
+		
+		//rota para o perfil de outro usuário
+		$routes['user'] = array(
+			'route' => '/user',
+			'controller' => 'AppController',
+			'action' => 'user'
+		);
 
 		$this->setRoutes($routes);
 	}

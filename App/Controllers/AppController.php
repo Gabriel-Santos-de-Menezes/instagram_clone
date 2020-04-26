@@ -32,6 +32,7 @@ class AppController extends Action{
         $this->render('/timeline', 'layout2');
     }
 
+    //renderiza página do usuário que está logado
     public function perfil(){
         //ver se a autenticação foi realizada
         $this->validaAutenticacao();//se for falso ira ser redirecionado para a página de login
@@ -51,6 +52,19 @@ class AppController extends Action{
         $this->render('/perfil', 'layout2');
     }
 
+    //renderiza pagina do usuario que não está logado
+    public function user(){
+
+        $this->validaAutenticacao();//se for falso ira ser redirecionado para a página de login
+
+        $usuario = Container::getModel('Usuario');
+        $usuario->__set('id', $_SESSION['id']);
+
+        $this->render('/user', 'layout2');
+    }
+
+
+    //lógica para adicionar os posts no banco
     public function post(){
         $this->validaAutenticacao();//se for falso ira ser redirecionado para a página de login
         $post = Container::getModel('Post');//retorna a conexão com o banco configurada
@@ -109,8 +123,8 @@ class AppController extends Action{
                 if(!empty($usuarios)){
                     $this->view->usuarios = $usuarios;
                     foreach ($this->view->usuarios as $key => $usuario) {
-                        echo '<div class="">';
-                            echo '<a href="#" class="d-flex justify-content-center ">';
+                        echo '<div class="pt-2">';
+                            echo '<a href="/user?usuario=' .$usuario['usuario'] . '" class="d-flex justify-content-center ">';
                                 echo '<div class="d-inline-block">';
                                     echo '<img src="img/perfil.png" alt="foto_perfil">';
                                 echo '</div>';
@@ -120,7 +134,7 @@ class AppController extends Action{
                                     echo '<p class="text-secondary">' . $usuario['nome'] . '</p>';
                                 echo '</div>';
                             echo '</a>';
-                            echo '<hr>';
+                            echo '<hr class="mb-0">';
                         echo '</div>';
                     }
                 } else {
