@@ -58,7 +58,16 @@ class AppController extends Action{
         $this->validaAutenticacao();//se for falso ira ser redirecionado para a página de login
 
         $usuario = Container::getModel('Usuario');
-        $usuario->__set('id', $_SESSION['id']);
+        $usuario->__set('id', $_GET['id']);
+
+        //Envia os dados do usuário para a página user
+        $this->view->info_usuario = $usuario->getInfoUsuario();
+
+        //retorna a conexão com o banco configurada
+        $post = Container::getModel('Post');
+        $post->__set('id_usuario', $_GET['id']);
+
+        $this->view->posts = $post->getPostUsuario();
 
         $this->render('/user', 'layout2');
     }
@@ -124,7 +133,7 @@ class AppController extends Action{
                     $this->view->usuarios = $usuarios;
                     foreach ($this->view->usuarios as $key => $usuario) {
                         echo '<div class="pt-2">';
-                            echo '<a href="/user?usuario=' .$usuario['usuario'] . '" class="d-flex justify-content-center ">';
+                            echo '<a href="/user?id=' .$usuario['id'] . '" class="d-flex justify-content-center ">';
                                 echo '<div class="d-inline-block">';
                                     echo '<img src="img/perfil.png" alt="foto_perfil">';
                                 echo '</div>';
