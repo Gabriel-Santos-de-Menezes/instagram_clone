@@ -262,4 +262,9 @@ div.upload input {
     width: 20px;
 }
 
+.modal_edit_foto_perfil{
+    border-bottom: 1px;
+    border-radius: 8px;
+}
+
 /* ********** Fim da página user ********* */
