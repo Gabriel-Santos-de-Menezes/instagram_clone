@@ -13,11 +13,11 @@
                     <div class="">
                         <h4 class="d-inline text-secondary"><?= $this->view->info_usuario['usuario']?></h4>
                         <!-- Apresentar o botão seguir ou deixar de seguir caso ele siga ou não o usuário -->
-                        <?php //if(){ ?>
-                            <?php echo $this->view->esta_seguindo['count(*)'] ?>
+                        <?php if($this->view->esta_seguindo['result'] == 1){ ?>
                             <a href="/acao?acao=deixar_de_seguir&id_usuario=<?= $this->view->info_usuario['id']?>" class="btn botao_usuario_ok btn-light border d-inline ml-3 "><img src="img/usuario_ok.png"></a>
+                        <?php }else if($this->view->esta_seguindo['result'] == 0){ ?>
                             <a href="/acao?acao=seguir&id_usuario=<?= $this->view->info_usuario['id']?>" class="btn botao_usuario_ok btn-primary border d-inline ml-3 text-white">Seguir</a>
-                        <?php //} ?>
+                        <?php } ?>
                             <a class="nav-link dropdown d-inline" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"><img class="img_config ml-3" src="img/config.png"></a>
                         <ul class="text-right">
                             <div class="dropdown-menu config_perfil">
@@ -30,7 +30,7 @@
                     </div>
                     <div class="mt-2 info_seguir">
                         <a class="d-inline">0 publicações</a>
-                        <a class="d-inline ml-2">0 seguidores</a>
+                        <a class="d-inline ml-2"><?= $this->view->info_total_seguidores['total_seguidores'] ?> seguidores</a>
                         <a class="d-inline ml-2">0 seguindo</a>
                     </div>
                     <div class="mt-4 info_bio">

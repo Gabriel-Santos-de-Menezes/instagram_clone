@@ -59,15 +59,16 @@ class AppController extends Action{
         $this->validaAutenticacao();//se for falso ira ser redirecionado para a página de login
 
         $usuario = Container::getModel('Usuario');
-        $usuario->__set('id', $_GET['id']);
+        //setando o id da url para o atributo id
+        $usuario->__set('id', $_SESSION['id']);
 
         //if ternário para ver se o parametro get id_usuario está setado
         $id_usuario_seguindo = isset($_GET['id']) ? $_GET['id'] : '';
 
         //Envia os dados do usuário para a página user
         $this->view->esta_seguindo = $usuario->esta_seguindo($id_usuario_seguindo);
-        echo $this->view->esta_seguindo['count(*)'];
-        $this->view->info_usuario = $usuario->getInfoUsuario();
+        $this->view->info_usuario = $usuario->getInfoUsuarioNaoLogado($id_usuario_seguindo);
+        $this->view->info_total_seguidores = $usuario->getTotalSeguidoresNaoLogado($id_usuario_seguindo);
 
         //retorna a conexão com o banco configurada
         $post = Container::getModel('Post');
