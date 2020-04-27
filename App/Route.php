@@ -70,6 +70,13 @@ class Route extends Bootstrap {
 			'controller' => 'AppController',
 			'action' => 'user'
 		);
+		
+		//rota para seguir ou deixar de seguir o usuário
+		$routes['acao'] = array(
+			'route' => '/acao',
+			'controller' => 'AppController',
+			'action' => 'acao'
+		);
 
 		$this->setRoutes($routes);
 	}

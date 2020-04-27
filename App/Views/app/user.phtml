@@ -14,8 +14,9 @@
                         <h4 class="d-inline text-secondary"><?= $this->view->info_usuario['usuario']?></h4>
                         <!-- Apresentar o botão seguir ou deixar de seguir caso ele siga ou não o usuário -->
                         <?php //if(){ ?>
-                            <button class="btn botao_usuario_ok btn-light border d-inline ml-3"><img src="img/usuario_ok.png"></button>
-                            <button class="btn botao_usuario_ok btn-primary border d-inline ml-3">Seguir</button>
+                            <?php echo $this->view->esta_seguindo['count(*)'] ?>
+                            <a href="/acao?acao=deixar_de_seguir&id_usuario=<?= $this->view->info_usuario['id']?>" class="btn botao_usuario_ok btn-light border d-inline ml-3 "><img src="img/usuario_ok.png"></a>
+                            <a href="/acao?acao=seguir&id_usuario=<?= $this->view->info_usuario['id']?>" class="btn botao_usuario_ok btn-primary border d-inline ml-3 text-white">Seguir</a>
                         <?php //} ?>
                             <a class="nav-link dropdown d-inline" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"><img class="img_config ml-3" src="img/config.png"></a>
                         <ul class="text-right">

@@ -47,6 +47,7 @@ class AppController extends Action{
         $usuario = Container::getModel('Usuario');
         $usuario->__set('id', $_SESSION['id']);
 
+        
         $this->view->info_usuario = $usuario->getInfoUsuario();
 
         $this->render('/perfil', 'layout2');
@@ -60,13 +61,19 @@ class AppController extends Action{
         $usuario = Container::getModel('Usuario');
         $usuario->__set('id', $_GET['id']);
 
+        //if ternário para ver se o parametro get id_usuario está setado
+        $id_usuario_seguindo = isset($_GET['id']) ? $_GET['id'] : '';
+
         //Envia os dados do usuário para a página user
+        $this->view->esta_seguindo = $usuario->esta_seguindo($id_usuario_seguindo);
+        echo $this->view->esta_seguindo['count(*)'];
         $this->view->info_usuario = $usuario->getInfoUsuario();
 
         //retorna a conexão com o banco configurada
         $post = Container::getModel('Post');
         $post->__set('id_usuario', $_GET['id']);
 
+        
         $this->view->posts = $post->getPostUsuario();
 
         $this->render('/user', 'layout2');
@@ -152,6 +159,29 @@ class AppController extends Action{
                 }
             }
         }
+    }
+
+    //Lógic para seguir ou deixar de seguir o usuário
+    public function acao(){
+
+        //ver se a autenticação foi realizada
+        $this->validaAutenticacao();//se for falso ira ser redirecionado para a página de login
+
+        //if ternário, caso o valor não seja vazio, a variavel acao recebe o parametro passado polo get, caso esteja vazia, recebe vazio
+        $acao = isset($_GET['acao']) ? $_GET['acao'] : '';
+        $id_usuario_seguindo = isset($_GET['id_usuario']) ? $_GET['id_usuario'] : '';
+
+        $usuario = Container::getModel('Usuario');//Instancia do modelo Usuario
+        $usuario->__set('id', $_SESSION['id']);//setando id so usuário ao atributo id
+
+        if($acao == 'seguir'){
+            $usuario->seguirUsuario($id_usuario_seguindo);
+        }
+        else if($acao == 'deixar_de_seguir'){
+            $usuario->deixarSeguir($id_usuario_seguindo);
+        }
+
+        header('Location: /user?id=' .$id_usuario_seguindo . '');
     }
 
 

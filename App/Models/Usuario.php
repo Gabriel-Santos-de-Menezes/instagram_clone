@@ -126,11 +126,40 @@ class Usuario extends Model{
         return $stmt->fetch(\PDO::FETCH_ASSOC);//recuperar um único array associativo
     }
 
+    //seguir usuário
     public function seguirUsuario($id_usuario_seguindo){
-        $query = "insert into seguidores(id_usuarios, id_usuario_seguindo)value(:id_usuario, :id_usuario_seguindo)";
+        $query = "insert into seguidores(id_usuario, id_usuario_seguindo)value(:id_usuario, :id_usuario_seguindo)";
         
         $stmt = $this->db->prepare($query);
-        $stmt->bindValue();
+        $stmt->bindValue(':id_usuario', $this->__get('id'));
+        $stmt->bindValue(':id_usuario_seguindo', $id_usuario_seguindo);
+        $stmt->execute();
+
+        return true;//verdadeiro para a inserção
+    }
+
+    //deixar de seguir usuário
+    public function deixarSeguir($id_usuario_seguindo){
+        $query = "delete from seguidores where id_usuario = :id_usuario and  id_usuario_seguindo = :id_usuario_seguindo";
+        
+        $stmt = $this->db->prepare($query);
+        $stmt->bindValue(':id_usuario', $this->__get('id'));
+        $stmt->bindValue(':id_usuario_seguindo', $id_usuario_seguindo);
+        $stmt->execute();
+
+        return true;//verdadeiro para a inserção
+    }
+
+    //ver se o usuário está seguindo
+    public function esta_seguindo($id_usuario_seguindo){
+        $query = "select count(*) from seguidores where id_usuario = :id_usuario and id_usuario_seguindo = :id_usuario_seguindo as esta_seguindo";
+        
+        $stmt = $this->db->prepare($query);
+        $stmt->bindValue(':id_usuario', $_SESSION['id']);
+        $stmt->bindValue(':id_usuario_seguindo', $id_usuario_seguindo);
+        $stmt->execute();
+
+        return $stmt->fetchAll(\PDO::FETCH_ASSOC);
     }
 
 }
