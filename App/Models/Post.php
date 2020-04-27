@@ -62,6 +62,17 @@ class Post extends Model{
 
         return $stmt->fetchAll(\PDO::FETCH_ASSOC);//retorna um array dos posts
     }
+
+    //total de posts por usuario
+    public function getTotalPostUsuario(){
+        $query = "select count(*)  as total_posts from posts where id_usuario = :id_usuario";
+
+        $stmt = $this->db->prepare($query);
+        $stmt->bindValue(':id_usuario', $this->__get('id_usuario'));
+        $stmt->execute();
+
+        return $stmt->fetch(\PDO::FETCH_ASSOC);//total de posts
+    }
 }
 
 

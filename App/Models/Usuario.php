@@ -186,10 +186,14 @@ class Usuario extends Model{
     }
 
     //Tottal que está seguindo
-    public function getTotalSeguindoNaoLogado(){
+    public function getTotalSeguindoNaoLogado($id_usuario_seguindo){
         $query = "select count(*) as total_seguindo from seguidores where id_usuario = :id_usuario";
 
-        $stmt
+        $stmt = $this->db->prepare($query);
+        $stmt->bindValue(':id_usuario', $id_usuario_seguindo);
+        $stmt->execute();
+
+        return $stmt->fetch(\PDO::FETCH_ASSOC);//recuperar um único array associativo        
     }
 
 }
