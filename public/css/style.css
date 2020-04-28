@@ -254,19 +254,25 @@ div.upload input {
 
 /* Carregar foto de perfil com o input*/
 
-div.upload_foto_perfil {
+/*div.upload_foto_perfil {
     width: 100%;
     overflow: hidden;
+}*/
+
+.upload_foto_perfil input[type='file'] {
+    display: none;
 }
 
-.upload_foto_perfil input {
-}
-.upload_foto_perfil user agent stylesheetdiv input[type="button"], .upload input[type="submit"], .upload input[type="reset"], .upload input[type="file"]::-webkit-file-upload-button, .upload button {
+/*.upload_foto_perfil user agent stylesheetdiv input[type="button"], .upload input[type="submit"], .upload input[type="reset"], .upload input[type="file"]::-webkit-file-upload-button, .upload button {
     cursor: text !important;
     /* Correção para Botáo Fantasma - forçar cursor:text */
-}
+/*}*/
 
 .inputFileOverlay_foto_perfil {
+    padding: 10px;
+    line-height: 50px;
+    text-align: center;
+    background-color: gray;
     width: 100%;
     font-family: sans-serif;
     font-weight: bold;
