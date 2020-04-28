@@ -13,10 +13,15 @@
                             <div class="modal-content ml-auto text-center pt-2 border modal_edit_foto_perfil">
                                 <h5>Alterar foto de perfil</h5>
                                 <div class="border pt-2">
-                                    <a href="#" class="text-primary"><p>Carregar foto</p></a>
+                                    <form action="/carrega_img" method="post" enctype="multipart/form-data">
+                                        <div class="upload_foto_perfil border">
+                                            <label class="inputFileOverlay_foto_perfil">Carregar foto</label>
+                                            <input required type="file" class="border"  id="img_post" name="img_post" accept="image/png, image/jpeg"  />
+                                        </div>
+                                    </form>
                                 </div>
                                 <div class="border pt-2">
-                                    <a href="#" class="text-danger"><p>Remover foto atual</p></a>
+                                <a href="#" class="text-danger"><p>Remover foto atual</p></a>
                                 </div>
                                 <div class="border pt-2">
                                     <a href="#" class="text-secondary"><p>Cancelar</p></a>

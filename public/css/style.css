@@ -192,9 +192,7 @@ div.upload input {
     padding: 0 17px;
     cursor: pointer;
 }
-#foto_perfil_timeline{
-         
-}
+
 /* ****** Fim da parte do modal de postagem ***** */
 
 /* ********** Fim da página Timeline ********* */
@@ -249,6 +247,34 @@ div.upload input {
     width: 100%;   
 }
 
+.modal_edit_foto_perfil{
+    border-bottom: 1px;
+    border-radius: 8px;
+}
+
+/* Carregar foto de perfil com o input*/
+
+div.upload_foto_perfil {
+    width: 100%;
+    overflow: hidden;
+}
+
+.upload_foto_perfil input {
+}
+.upload_foto_perfil user agent stylesheetdiv input[type="button"], .upload input[type="submit"], .upload input[type="reset"], .upload input[type="file"]::-webkit-file-upload-button, .upload button {
+    cursor: text !important;
+    /* Correção para Botáo Fantasma - forçar cursor:text */
+}
+
+.inputFileOverlay_foto_perfil {
+    width: 100%;
+    font-family: sans-serif;
+    font-weight: bold;
+    text-align: center;
+}
+
+
+
 /* ********** Fim da página perfil ********* */
 
 
@@ -262,9 +288,5 @@ div.upload input {
     width: 20px;
 }
 
-.modal_edit_foto_perfil{
-    border-bottom: 1px;
-    border-radius: 8px;
-}
 
 /* ********** Fim da página user ********* */
