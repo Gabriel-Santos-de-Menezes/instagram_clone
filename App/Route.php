@@ -64,6 +64,13 @@ class Route extends Bootstrap {
 			'action' => 'perfil'
 		);
 		
+		//rota para editar o perfil do usuário
+		$routes['editar_perfil'] = array(
+			'route' => '/editar_perfil',
+			'controller' => 'AppController',
+			'action' => 'editar_perfil'
+		);
+		
 		//rota para o perfil de outro usuário
 		$routes['user'] = array(
 			'route' => '/user',
@@ -77,6 +84,14 @@ class Route extends Bootstrap {
 			'controller' => 'AppController',
 			'action' => 'acao'
 		);
+		
+		//rota para seguir ou deixar de seguir o usuário
+		$routes['mostrar_curtidas_galeria_perfil'] = array(
+			'route' => '/mostrar_curtidas_galeria_perfil',
+			'controller' => 'AppController',
+			'action' => 'mostrar_curtidas_galeria_perfil'
+		);
+		
 
 		$this->setRoutes($routes);
 	}

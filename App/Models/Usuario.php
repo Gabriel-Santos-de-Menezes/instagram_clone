@@ -10,6 +10,8 @@ class Usuario extends Model{
     private $email;
     private $usuario;
     private $senha;
+    private $biografia;
+    private $img_perfil;
 
     public function __get($atributo){
         return $this->$atributo;
@@ -22,7 +24,7 @@ class Usuario extends Model{
     //Salvar
     public function salvar(){
 
-        $query = "insert into tb_usuarios(nome, usuario, email, senha)values(:nome, :usuario, :email, :senha)";
+        $query = "insert into tb_usuarios(nome, usuario, email, senha)values(:nome, :usuario, :email, :img_perfil, :biografia :senha)";
 
         $stmt = $this->db->prepare($query);
         //pegar o atributoe atribuir como indice dinâmico da query
@@ -34,6 +36,17 @@ class Usuario extends Model{
 
         return $this;
         
+    }
+
+    //editar
+    public function editar(){
+        $query = "update tb_usuarios set img_perfil = :img_perfil";
+
+        $stmt = $this->db->prepare($query);
+        $stmt->bindValue(':img_perfil', $this->__get('img_perfil'));
+        $stmt->execute();
+
+        return $this;
     }
 
     //validar se um cadastro pode ser feito
@@ -117,7 +130,8 @@ class Usuario extends Model{
 
     //recuperar as informações do usuário
     public function getInfoUsuario(){
-        $query = "select id, nome, usuario from tb_usuarios where id = :id_usuario";
+        $query = "
+        select id, nome, usuario, biografia from tb_usuarios where id = :id_usuario";
 
         $stmt = $this->db->prepare($query);
         $stmt->bindValue(':id_usuario', $this->__get('id'));
@@ -149,6 +163,7 @@ class Usuario extends Model{
         return $stmt->fetch(\PDO::FETCH_ASSOC);//recuperar um único array associativo
     }
 
+
     //seguir usuário
     public function seguirUsuario($id_usuario_seguindo){
         $query = "insert into seguidores(id_usuario, id_usuario_seguindo)value(:id_usuario, :id_usuario_seguindo)";
@@ -174,7 +189,7 @@ class Usuario extends Model{
     }
 
 
-    //Total de seguidores
+    //Total de seguidores usuário não logado
     public function getTotalSeguidoresNaoLogado($id_usuario_seguindo){
         $query = "select count(*) as total_seguidores from seguidores where id_usuario_seguindo = :id_usuario_seguindo ";
         
@@ -184,13 +199,35 @@ class Usuario extends Model{
 
         return $stmt->fetch(\PDO::FETCH_ASSOC);//recuperar um único array associativo        
     }
+    
+    //Total de seguidores usuário logado
+    public function getTotalSeguidoresLogado(){
+        $query = "select count(*) as total_seguidores from seguidores where id_usuario_seguindo = :id_usuario_seguindo ";
+        
+        $stmt = $this->db->prepare($query);
+        $stmt->bindValue(':id_usuario_seguindo', $this->__get('id'));
+        $stmt->execute();
 
-    //Tottal que está seguindo
+        return $stmt->fetch(\PDO::FETCH_ASSOC);//recuperar um único array associativo        
+    }
+
+    //Tottal que está seguindo usuário não logado
     public function getTotalSeguindoNaoLogado($id_usuario_seguindo){
         $query = "select count(*) as total_seguindo from seguidores where id_usuario = :id_usuario";
 
         $stmt = $this->db->prepare($query);
         $stmt->bindValue(':id_usuario', $id_usuario_seguindo);
+        $stmt->execute();
+
+        return $stmt->fetch(\PDO::FETCH_ASSOC);//recuperar um único array associativo        
+    }
+    
+    //Tottal que está seguindo usuário logado
+    public function getTotalSeguindoLogado(){
+        $query = "select count(*) as total_seguindo from seguidores where id_usuario = :id_usuario";
+
+        $stmt = $this->db->prepare($query);
+        $stmt->bindValue(':id_usuario', $this->__get('id'));
         $stmt->execute();
 
         return $stmt->fetch(\PDO::FETCH_ASSOC);//recuperar um único array associativo        

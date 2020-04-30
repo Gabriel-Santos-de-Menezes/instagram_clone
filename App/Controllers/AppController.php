@@ -38,26 +38,30 @@ class AppController extends Action{
         $this->validaAutenticacao();//se for falso ira ser redirecionado para a página de login
 
         $post = Container::getModel('Post');//retorna a conexão com o banco configurada
-
         $post->__set('id_usuario', $_SESSION['id']);
-        $posts = $post->getPostUsuario();
 
-        $this->view->posts = $posts;//Manda o array de posts para a timeline
+        $posts = $post->getPostUsuario();
+        $this->view->info_total_posts = $post->getTotalPostUsuario();
+
+        $this->view->posts = $posts;//Manda o array de posts para o perfil
         
         $usuario = Container::getModel('Usuario');
         $usuario->__set('id', $_SESSION['id']);
 
+        //Envia os dados do usuário para a página perfil
+        $this->view->info_total_seguidores = $usuario->getTotalSeguidoresLogado();
+        $this->view->info_total_seguindo = $usuario->getTotalSeguindoLogado();
         
         $this->view->info_usuario = $usuario->getInfoUsuario();
 
         $this->render('/perfil', 'layout2');
     }
-
+    
     //renderiza pagina do usuario que não está logado
     public function user(){
-
+        
         $this->validaAutenticacao();//se for falso ira ser redirecionado para a página de login
-
+        
         $usuario = Container::getModel('Usuario');
         //setando o id da url para o atributo id
         $usuario->__set('id', $_SESSION['id']);
@@ -76,11 +80,11 @@ class AppController extends Action{
         
         $this->view->posts = $post->getPostUsuario();
         $this->view->info_total_posts = $post->getTotalPostUsuario();
-
+        
         $this->render('/user', 'layout2');
     }
-
-
+    
+    
     //lógica para adicionar os posts no banco
     public function post(){
         $this->validaAutenticacao();//se for falso ira ser redirecionado para a página de login
@@ -90,7 +94,7 @@ class AppController extends Action{
             //Se o arquivo existir, poderá ser salvo no bd
             $post->__set('post', $_POST['post']);
             $post->__set('id_usuario', $_SESSION['id']);
-    
+            
             
             //Pegar a extensão
             $extensao = strtolower(substr($_FILES['img_post']['name'], -4));
@@ -103,13 +107,36 @@ class AppController extends Action{
             $post->__set('imagem',$novo_nome);
             
             $post->salvar();//metodo que salva os dados setados, no banco
-
+            
             header('Location: /timeline');
         }
-
-
+        
+        
     }
+            
+    public function editar_perfil(){
+        $this->validaAutenticacao();//se for falso ira ser redirecionado para a página de login
+        $usuario = Container::getModel('Usuario');//Instancia do modelo Usuario
+        
+        if(isset($_FILES['img_perfil'])){
+            //Se o arquivo existir, poderá ser salvo no bd
+            $usuario->__set('id', $_SESSION['id']);//setando id so usuário ao atributo id
+            
+            //Pegar a extensão
+            $extensao  = strlower(substr($_FILES['img_perfil']['name'], -4));
+            $novo_nome = md5(time()). $extensao;
+            $diretorio = "img_perfil/";
 
+            //Efetua o upload
+            move_uploaded_file($_FILES['img_perfil']['tmp_name'], $diretorio.$novo_nome);
+            $usuario->__set('img_perfil', $novo_nome);
+
+            $usuario->editar();//metodo que salva os dados setados, no banco
+
+            header('Location: /perfil');
+        }
+    }
+    
     public function validaAutenticacao(){
         session_start();
 
@@ -183,6 +210,10 @@ class AppController extends Action{
         }
 
         header('Location: /user?id=' .$id_usuario_seguindo . '');
+    }
+
+    public function mostrar_curtidas_galeria_perfil(){
+        
     }
 
 
