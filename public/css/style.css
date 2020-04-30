@@ -218,12 +218,12 @@ div.upload input {
     max-width: 935px;
 }
 
-#foto_perfil_perfil{
+#foto_perfil{
     width: 150px;
     height: 150px;
 }
 @media only screen and (max-width: 600px) {
-    #foto_perfil_perfil{
+    #foto_perfil{
         width: 77px;
         height: 77px;
     }
@@ -256,6 +256,11 @@ div.upload input {
     max-height: 100%;
     
 }
+
+#img_perfil_edit{
+    display: none;
+ }
+ 
 
 .mostar_curtidas{
     

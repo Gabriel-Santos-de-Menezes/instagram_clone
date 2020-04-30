@@ -42,10 +42,11 @@ class Usuario extends Model{
 
     //editar
     public function editar(){
-        $query = "update tb_usuarios set foto_perfil = :foto_perfil";
+        $query = "update tb_usuarios set foto_perfil = :foto_perfil where id = :id_usuario";
 
         $stmt = $this->db->prepare($query);
         $stmt->bindValue(':foto_perfil', $this->__get('foto_perfil'));
+        $stmt->bindValue(':id_usuario', $this->__get('id'));
         $stmt->execute();
 
         return $this;
@@ -156,7 +157,7 @@ class Usuario extends Model{
 
     //recuoerar informações do usuário não logado
     public function getInfoUsuarioNaoLogado($id_usuario_seguindo){
-        $query = "select id, nome, usuario, foto_perfil from tb_usuarios where id = :id_usuario";
+        $query = "select id, nome, usuario, biografia, foto_perfil from tb_usuarios where id = :id_usuario";
 
         $stmt = $this->db->prepare($query);
         $stmt->bindValue(':id_usuario', $id_usuario_seguindo);

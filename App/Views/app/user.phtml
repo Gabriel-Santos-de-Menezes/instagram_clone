@@ -6,17 +6,17 @@
         <div class="container" aling="center">
             <div class="row pt-4 align-items-center">
                 <div class="col-4">
-                    <a href="#"><div class="pb-5"><img class="rounded-circle" id="foto_perfil_perfil" src="<?= $this->view->info_usuario['foto_perfil']?>" alt="perfil"></div></a>
+                    <a href="#"><div class="pb-5"><img class="rounded-circle" id="foto_perfil_perfil" src="<?= $this->view->info_usuarioNaoLogado['foto_perfil']?>" alt="perfil"></div></a>
                 </div>
     
                 <div class="col-8">
                     <div class="">
-                        <h4 class="d-inline text-secondary"><?= $this->view->info_usuario['usuario']?></h4>
+                        <h4 class="d-inline text-secondary"><?= $this->view->info_usuarioNaoLogado['usuario']?></h4>
                         <!-- Apresentar o botão seguir ou deixar de seguir caso ele siga ou não o usuário -->
                         <?php if($this->view->esta_seguindo['result'] == 1){ ?>
-                            <a href="/acao?acao=deixar_de_seguir&id_usuario=<?= $this->view->info_usuario['id']?>" class="btn botao_usuario_ok btn-light border d-inline ml-3 "><img src="img/usuario_ok.png"></a>
+                            <a href="/acao?acao=deixar_de_seguir&id_usuario=<?= $this->view->info_usuarioNaoLogado['id']?>" class="btn botao_usuario_ok btn-light border d-inline ml-3 "><img src="img/usuario_ok.png"></a>
                         <?php }else if($this->view->esta_seguindo['result'] == 0){ ?>
-                            <a href="/acao?acao=seguir&id_usuario=<?= $this->view->info_usuario['id']?>" class="btn botao_usuario_ok btn-primary border d-inline ml-3 text-white">Seguir</a>
+                            <a href="/acao?acao=seguir&id_usuario=<?= $this->view->info_usuarioNaoLogado['id']?>" class="btn botao_usuario_ok btn-primary border d-inline ml-3 text-white">Seguir</a>
                         <?php } ?>
                             <a class="nav-link dropdown d-inline" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"><img class="img_config ml-3" src="img/config.png"></a>
                         <ul class="text-right">
@@ -34,8 +34,8 @@
                         <a class="d-inline ml-2"><?= $this->view->info_total_seguindo['total_seguindo'] ?> seguindo</a>
                     </div>
                     <div class="mt-4 info_bio">
-                        <p><?= $this->view->info_usuario['nome']?></p>
-                        <p>Não precisa inovar muito para atrair mais atenção de seus seguidores. Muitas vezes </p>
+                        <p><?= $this->view->info_usuarioNaoLogado['nome']?></p>
+                        <p><?= $this->view->info_usuarioNaoLogado['biografia']?></p>
                         <a href="#" class="text-primary">LinkBio</a>
                     </div>
                 </div>

@@ -73,8 +73,8 @@ class AppController extends Action{
 
         //Envia os dados do usuário para a página user
         $this->view->esta_seguindo = $usuario->esta_seguindo($id_usuario_seguindo);
-        $this->view->info_usuario = $usuario->getInfoUsuarioNaoLogado($id_usuario_seguindo);
-        $this->view->info_total_seguidores = $usuario->getTotalSeguidoresNaoLogado($id_usuario_seguindo);
+        $this->view->info_usuarioNaoLogado = $usuario->getInfoUsuarioNaoLogado($id_usuario_seguindo);
+        $this->view->info_usuario = $usuario->getInfoUsuario();        $this->view->info_total_seguidores = $usuario->getTotalSeguidoresNaoLogado($id_usuario_seguindo);
         $this->view->info_total_seguindo = $usuario->getTotalSeguindoNaoLogado($id_usuario_seguindo);
         //retorna a conexão com o banco configurada
         $post = Container::getModel('Post');
@@ -82,7 +82,7 @@ class AppController extends Action{
         
         $this->view->posts = $post->getPostUsuario();
         $this->view->info_total_posts = $post->getTotalPostUsuario();
-        $this->view->info_usuario = $usuario->getInfoUsuario();
+        
         
         $this->render('/user', 'layout2');
     }

@@ -13,12 +13,13 @@
                             <div class="modal-content ml-auto text-center pt-2 border modal_edit_foto_perfil">
                                 <h5>Alterar foto de perfil</h5>
                                 <div class="">
-                                    <form action="/editar_perfil" method="post" enctype="multipart/form-data">
-                                        <div class="upload_foto_perfil border editar_img_perfil">
-                                            <label class="inputFileOverlay_foto_perfil">Carregar foto</label>
-                                            <div class="botaoArquivo">Selecionar arquivo...</div>
-                                            <input required type="file" class=""  id="img_perfil_edit" name="img_perfil_edit" accept="image/png, image/jpeg"  />
-                                        </div>
+                                    <form action="/editar_perfil" name="form" id="form" method="post" enctype="multipart/form-data">
+                                        <div class="upload_foto_perfil editar_img_perfil" >
+                                            <label for="img_perfil_edit" id="edit_img" class="inputFileOverlay_foto_perfil text-primary">
+                                                Carregar imagem
+                                                <input required type="file" class=""  id="img_perfil_edit" name="img_perfil_edit" accept="image/png, image/jpeg"  />                                            </label>
+                                                <button style="display:none;" type="submit"></button>
+                                            </div>
                                     </form>
                                 </div>
                                 <div class="border pt-2">

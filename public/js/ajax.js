@@ -90,20 +90,13 @@
      xmlreq.send(null);
  }
 
-
+/*
  function editar_img_perfil(){
      // Declaração de Variáveis
-     var div = document.getElementsByClassName("editar_img_perfil")[0];
-     var input = document.getElementById("img_perfil");
+    var div = document.getElementsByClassName("editar_img_perfil");
+    var input = document.getElementById("edit_img");
+     
 
-    div.addEventListener("click", function(){
-        input.click();
-    });
-    input.addEventListener("change", function(){
-        var nome = "Não há arquivo selecionado. Selecionar arquivo...";
-        if(input.files.length > 0) nome = input.files[0].name;
-        div.innerHTML = nome;
-    });
      var xmlreq = CriaRequest();
       
      // Exibi a imagem de progresso
@@ -121,7 +114,7 @@
               
              // Verifica se o arquivo foi encontrado com sucesso
              if (xmlreq.status == 200) {
-                 //result.innerHTML = xmlreq.responseText;
+                 console.log(xmlreq);
                  
              }else{
                  result.innerHTML = "Erro: " + xmlreq.statusText;
@@ -129,4 +122,4 @@
          }
      };
      xmlreq.send(null);
- }
+ }*/
