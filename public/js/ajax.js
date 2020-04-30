@@ -90,36 +90,36 @@
      xmlreq.send(null);
  }
 
-/*
- function editar_img_perfil(){
-     // Declaração de Variáveis
-    var div = document.getElementsByClassName("editar_img_perfil");
-    var input = document.getElementById("edit_img");
-     
 
-     var xmlreq = CriaRequest();
-      
-     // Exibi a imagem de progresso
-     //result.innerHTML = '<img src="https://media.giphy.com/media/N256GFy1u6M6Y/giphy.gif">';
-      
-     // Iniciar uma requisição
-     xmlreq.open("GET", "/editar_perfil", true);
+
+    $(function(){
+        $('#img_perfil_edit').change(function(){
+           console.log = ($(this)[0].files[0]['name'])
+           var xmlreq = CriaRequest();
+            
+           // Exibi a imagem de progresso
+           //result.innerHTML = '<img src="https://media.giphy.com/media/N256GFy1u6M6Y/giphy.gif">';
+            
+           // Iniciar uma requisição
+           xmlreq.open("POST", "/editar_perfil", true);
+           
+            
+           // Atribui uma função para ser executada sempre que houver uma mudança de ado
+           xmlreq.onreadystatechange = function(){
+                
+               // Verifica se foi concluído com sucesso e a conexão fechada (readyState=4)
+               if (xmlreq.readyState == 4) {
+                    
+                   // Verifica se o arquivo foi encontrado com sucesso
+                   if (xmlreq.status == 200) {
+                       console.log(xmlreq);
+                       
+                   }else{
+                       result.innerHTML = "Erro: " + xmlreq.statusText;
+                   }
+               }
+           };
+           xmlreq.send(null);
+        })
+    })
      
-      
-     // Atribui uma função para ser executada sempre que houver uma mudança de ado
-     xmlreq.onreadystatechange = function(){
-          
-         // Verifica se foi concluído com sucesso e a conexão fechada (readyState=4)
-         if (xmlreq.readyState == 4) {
-              
-             // Verifica se o arquivo foi encontrado com sucesso
-             if (xmlreq.status == 200) {
-                 console.log(xmlreq);
-                 
-             }else{
-                 result.innerHTML = "Erro: " + xmlreq.statusText;
-             }
-         }
-     };
-     xmlreq.send(null);
- }*/

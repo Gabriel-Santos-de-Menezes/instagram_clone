@@ -32,19 +32,34 @@ function curtir(img){
                     console.log(nome);
                 });*/
 
+/*
+$(function(){
+    $('#img_perfil_edit').change(function(){
+        var img_perfil_edit = ($(this)[0].files[0]['name'])
+        $.ajax({
+            url     :   "/editar_perfil"
+        ,   method  :   "post"
+        ,   data    :   { img_perfil_edit }
+    });
+    })
+})
 
-                $("#form").submit(function() {
-                    event.preventDefault();
-                  
-                    var url = $(this).attr("action");
-                    /*serializeArray vai pegar todos os campos do array*/
-                    var formData = $(form).serializeArray();
-                    console.log(formData);
-                    $.post(url, formData).done(function(data) {
-                      console.log(data); //resultado do envio para o servidor
-                    });
-                  
-                  });
+$(function() {
+    $("form").submit(function(event) {
+        event.preventDefault(); // prevent sending the form before we processed the form
+    
+        var active_input        =   $(".active")[0];        
+        var active_input_value  =   active_input.val();
+    
+        $.ajax({
+                url     :   "/editar_perfil"
+            ,   method  :   "post"
+            ,   data    :   { something : active_input_value }
+        });
+    });
+
+
+       */         
 
                 
 
