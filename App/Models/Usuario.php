@@ -11,7 +11,7 @@ class Usuario extends Model{
     private $usuario;
     private $senha;
     private $biografia;
-    private $img_perfil;
+    private $foto_perfil;
 
     public function __get($atributo){
         return $this->$atributo;
@@ -24,7 +24,7 @@ class Usuario extends Model{
     //Salvar
     public function salvar(){
 
-        $query = "insert into tb_usuarios(nome, usuario, email, senha)values(:nome, :usuario, :email, :img_perfil, :biografia :senha)";
+        $query = "insert into tb_usuarios(nome, usuario, email, foto_perfil, senha)values(:nome, :usuario, :email, :foto_perfil, :senha)";
 
         $stmt = $this->db->prepare($query);
         //pegar o atributoe atribuir como indice dinâmico da query
@@ -32,6 +32,8 @@ class Usuario extends Model{
         $stmt->bindValue(':email', $this->__get('email'));
         $stmt->bindValue(':usuario', $this->__get('usuario'));
         $stmt->bindValue(':senha', $this->__get('senha'));
+        $stmt->bindValue(':foto_perfil', $this->__get('foto_perfil'));
+
         $stmt->execute();
 
         return $this;
@@ -40,10 +42,10 @@ class Usuario extends Model{
 
     //editar
     public function editar(){
-        $query = "update tb_usuarios set img_perfil = :img_perfil";
+        $query = "update tb_usuarios set foto_perfil = :foto_perfil";
 
         $stmt = $this->db->prepare($query);
-        $stmt->bindValue(':img_perfil', $this->__get('img_perfil'));
+        $stmt->bindValue(':foto_perfil', $this->__get('foto_perfil'));
         $stmt->execute();
 
         return $this;
@@ -131,7 +133,7 @@ class Usuario extends Model{
     //recuperar as informações do usuário
     public function getInfoUsuario(){
         $query = "
-        select id, nome, usuario, biografia from tb_usuarios where id = :id_usuario";
+        select id, nome, usuario, foto_perfil, biografia from tb_usuarios where id = :id_usuario";
 
         $stmt = $this->db->prepare($query);
         $stmt->bindValue(':id_usuario', $this->__get('id'));
@@ -154,7 +156,7 @@ class Usuario extends Model{
 
     //recuoerar informações do usuário não logado
     public function getInfoUsuarioNaoLogado($id_usuario_seguindo){
-        $query = "select id, nome, usuario from tb_usuarios where id = :id_usuario";
+        $query = "select id, nome, usuario, foto_perfil from tb_usuarios where id = :id_usuario";
 
         $stmt = $this->db->prepare($query);
         $stmt->bindValue(':id_usuario', $id_usuario_seguindo);

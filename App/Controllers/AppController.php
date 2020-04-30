@@ -29,6 +29,8 @@ class AppController extends Action{
         $usuario = Container::getModel('Usuario');
         $usuario->__set('id', $_SESSION['id']);
 
+        $this->view->info_usuario = $usuario->getInfoUsuario();
+
         $this->render('/timeline', 'layout2');
     }
 
@@ -80,6 +82,7 @@ class AppController extends Action{
         
         $this->view->posts = $post->getPostUsuario();
         $this->view->info_total_posts = $post->getTotalPostUsuario();
+        $this->view->info_usuario = $usuario->getInfoUsuario();
         
         $this->render('/user', 'layout2');
     }
@@ -118,18 +121,18 @@ class AppController extends Action{
         $this->validaAutenticacao();//se for falso ira ser redirecionado para a página de login
         $usuario = Container::getModel('Usuario');//Instancia do modelo Usuario
         
-        if(isset($_FILES['img_perfil'])){
+        if(isset($_FILES['img_perfil_edit'])){
             //Se o arquivo existir, poderá ser salvo no bd
             $usuario->__set('id', $_SESSION['id']);//setando id so usuário ao atributo id
             
             //Pegar a extensão
-            $extensao  = strlower(substr($_FILES['img_perfil']['name'], -4));
+            $extensao  = strlower(substr($_FILES['img_perfil_edit']['name'], -4));
             $novo_nome = md5(time()). $extensao;
             $diretorio = "img_perfil/";
 
             //Efetua o upload
             move_uploaded_file($_FILES['img_perfil']['tmp_name'], $diretorio.$novo_nome);
-            $usuario->__set('img_perfil', $novo_nome);
+            $usuario->__set('foto_perfil', $novo_nome);
 
             $usuario->editar();//metodo que salva os dados setados, no banco
 

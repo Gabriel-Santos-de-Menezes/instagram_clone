@@ -7,7 +7,7 @@
             <div class="row pt-4 align-items-center">
                 <div class="col-4">
                     <!-- Small modal -->
-                    <a href="" data-toggle="modal" data-target=".bd-example-modal-md"><div class="pb-5"><img class="rounded-circle" id="foto_perfil_perfil" src="img/perfil.jpg" alt="perfil"></div></a>
+                    <a href="" data-toggle="modal" data-target=".bd-example-modal-md"><div class="pb-5"><img class="rounded-circle" id="foto_perfil" src="<?= $this->view->info_usuario['foto_perfil']?>" alt="perfil"></div></a>
                     <div class="modal fade bd-example-modal-md" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
                         <div class="modal-dialog modal-dialog-centered ">
                             <div class="modal-content ml-auto text-center pt-2 border modal_edit_foto_perfil">
@@ -16,7 +16,8 @@
                                     <form action="/editar_perfil" method="post" enctype="multipart/form-data">
                                         <div class="upload_foto_perfil border editar_img_perfil">
                                             <label class="inputFileOverlay_foto_perfil">Carregar foto</label>
-                                            <input required type="file" class=""  id="img_post" name="img_perfil" accept="image/png, image/jpeg"  />
+                                            <div class="botaoArquivo">Selecionar arquivo...</div>
+                                            <input required type="file" class=""  id="img_perfil_edit" name="img_perfil_edit" accept="image/png, image/jpeg"  />
                                         </div>
                                     </form>
                                 </div>
