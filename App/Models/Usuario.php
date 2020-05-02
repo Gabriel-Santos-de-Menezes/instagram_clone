@@ -113,11 +113,11 @@ class Usuario extends Model{
     public function getAll(){
         $query = "
             select 
-                id, usuario, nome
+                id, usuario, nome, foto_perfil
             from 
                 tb_usuarios
             where
-                usuario like :usuario and id != :id_usuario limit 5
+                usuario like :usuario and id != :id_usuario
         ";
 
         $stmt = $this->db->prepare($query);

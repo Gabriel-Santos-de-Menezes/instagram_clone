@@ -98,16 +98,29 @@ class Post extends Model{
     }
 
     //Inserir a curtida do post no banco
-    public function curtirPost($id_usuario_curtindo){
+    public function curtirPost($id_post){
         $query = "insert into curtidas(id_usuario, id_post)values(:id_usuario, :id_post)";
 
         $stmt = $this->db->prepare($query);
         $stmt->bindValue(':id_usuario', $this->__get('id_usuario'));
-        $stmt->bindValue(':id_post', $id_usuario_curtindo);
+        $stmt->bindValue(':id_post', $id_post);
         $stmt->execute();
 
         return true;//verdadeiro para a inserção
     }
+    
+    //Deletar curtida do usuário
+    public function descurtirPost($id_post){
+        $query = "delete from curtidas where id_usuario = :id_usuario and id_post = :id_post";
+
+        $stmt = $this->db->prepare($query);
+        $stmt->bindValue(':id_usuario', $this->__get('id_usuario'));
+        $stmt->bindValue(':id_post', $id_post);
+        $stmt->execute();
+
+        return true;//verdadeiro para a inserção
+    }
+
 
 }
 

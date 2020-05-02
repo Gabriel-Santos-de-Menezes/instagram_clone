@@ -6,7 +6,7 @@
         <div class="container" aling="center">
             <div class="row pt-4 align-items-center">
                 <div class="col-4">
-                    <a href="#"><div class="pb-5"><img class="rounded-circle" id="foto_perfil_perfil" src="<?= $this->view->info_usuarioNaoLogado['foto_perfil']?>" alt="perfil"></div></a>
+                    <a href="#"><div class="pb-5"><img class="rounded-circle" id="foto_perfil" src="<?= $this->view->info_usuarioNaoLogado['foto_perfil']?>" alt="perfil"></div></a>
                 </div>
     
                 <div class="col-8">
@@ -18,11 +18,11 @@
                         <?php }else if($this->view->esta_seguindo['result'] == 0){ ?>
                             <a href="/acao?acao=seguir&id_usuario=<?= $this->view->info_usuarioNaoLogado['id']?>" class="btn botao_usuario_ok btn-primary border d-inline ml-3 text-white">Seguir</a>
                         <?php } ?>
-                            <a class="nav-link dropdown d-inline" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"><img class="img_config ml-3" src="img/config.png"></a>
+                            <a class="nav-link dropdown d-inline" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"><img class="img_config ml-3" src="img/pontos.png"></a>
                         <ul class="text-right">
                             <div class="dropdown-menu config_perfil">
-                                <a class="dropdown-item" href="#">Alterar senha</a>
-                                <a class="dropdown-item" href="/sair">Sair</a>
+                                <a class="dropdown-item" href="#">Bloquear usuário</a>
+                                <a class="dropdown-item" href="#">Denunciar usuário</a>
                                 <a class="dropdown-item" href="#">Cancelar</a>
                             </div>
                         </ul>

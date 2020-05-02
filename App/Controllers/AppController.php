@@ -24,6 +24,7 @@ class AppController extends Action{
 
         $this->view->posts = $posts;//Manda o array de posts para a timeline
 
+
         $usuario = Container::getModel('Usuario');
         $usuario->__set('id', $_SESSION['id']);
 
@@ -119,25 +120,29 @@ class AppController extends Action{
         $this->validaAutenticacao();//se for falso ira ser redirecionado para a página de login
         $usuario = Container::getModel('Usuario');//Instancia do modelo Usuario
         
-        echo "Cheguei aqui";
 
-        if(isset($_FILES['img_perfil_edit'])){
+        /*if(isset($_GET['img_perfil'])){
             //Se o arquivo existir, poderá ser salvo no bd
             $usuario->__set('id', $_SESSION['id']);//setando id so usuário ao atributo id
             
+            //Pegar nome da imagem
+            
+            $imagem = strlower(substr($_GET['img_perfil'], 11));
+
+            
             //Pegar a extensão
-            $extensao  = strlower(substr($_FILES['img_perfil_edit']['name'], -4));
+            $extensao  = strlower(substr($imagem, -4));
             $novo_nome = md5(time()). $extensao;
             $diretorio = "img_perfil/";
 
             //Efetua o upload
-            move_uploaded_file($_FILES['img_perfil']['tmp_name'], $diretorio.$novo_nome);
+            move_uploaded_file($_GET['img_perfil']['tmp_name'], $diretorio.$novo_nome);
             $usuario->__set('foto_perfil', $novo_nome);
 
             $usuario->editar();//metodo que salva os dados setados, no banco
 
-            header('Location: /perfil');
-        }
+        }*/
+        header('Location: /perfil');
     }
     
     public function validaAutenticacao(){
@@ -157,7 +162,6 @@ class AppController extends Action{
         $this->validaAutenticacao();//se for falso ira ser redirecionado para a página de login
 
         //Verifica se existe a variável usuario
-        print_r($_GET['usuario']);
         if(isset($_GET['usuario']) && $_GET['usuario'] != ''){
             //retorna um obj com a conexão com banco de dados
             $usuario = Container::getModel('Usuario');
@@ -172,14 +176,14 @@ class AppController extends Action{
                     $this->view->usuarios = $usuarios;
                     foreach ($this->view->usuarios as $key => $usuario) {
                         echo '<div class="pt-2">';
-                            echo '<a href="/user?id=' .$usuario['id'] . '" class="d-flex justify-content-center ">';
-                                echo '<div class="d-inline-block">';
-                                    echo '<img src="img/perfil.png" alt="foto_perfil">';
+                            echo '<a href="/user?id=' .$usuario['id'] . '" class="d-flex  ml-3">';
+                                echo '<div class="d-inline-block ">';
+                                    echo '<img src="' . $usuario['foto_perfil'] .'" class="foto_perfil_pesquisa_usuario rounded-circle border" alt="foto_perfil">';
                                 echo '</div>';
 
                                 echo '<div class="d-inline-block ml-2">';
                                     echo '<p>' . $usuario['usuario']. '</p>';
-                                    echo '<p class="text-secondary">' . $usuario['nome'] . '</p>';
+                                    echo '<p class="text-secondary p-0">' . $usuario['nome'] . '</p>';
                                 echo '</div>';
                             echo '</a>';
                             echo '<hr class="mb-0">';
@@ -223,16 +227,28 @@ class AppController extends Action{
     public function curtidas(){
          //ver se a autenticação foi realizada
          $this->validaAutenticacao();//se for falso ira ser redirecionado para a página de login
-
-         if(isset($_GET['id_post']) && $_GET['id_post'] != ''){
+        //verificar se os parametros foram passados pelo método do ajax curtir
+         if(isset($_GET['acao']) && $_GET['acao'] != '' &&isset($_GET['id_post']) && $_GET['id_post'] != ''){
              
             $post = Container::getModel('Post');//retorna a conexão com o banco configurada
-            $post->__set('id_usuario', $_SESSION['id']);
+             $post->__set('id_usuario', $_SESSION['id']);
+             $id_post = $_GET['id_post'];
 
-            $id_post = $_GET['id_post'];
+             if($_GET['acao'] == "curtir"){
+                    $post->curtirPost($id_post);
 
-            $post->curtirPost($id_post);
+                    $posts = $post->getAll();//retorna um array de todos os posts
+                    $this->view->posts = $posts;//Manda o array de posts para a timeline
+                }
+                else if($_GET['acao'] == "descurtir"){
+                    $post->descurtirPost($id_post); 
+                    
+                    $posts = $post->getAll();//retorna um array de todos os posts
+                    $this->view->posts = $posts;//Manda o array de posts para a timeline
+             }
+ 
          }
+         return true;
 
 
     }

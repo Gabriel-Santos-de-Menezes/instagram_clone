@@ -59,19 +59,22 @@
      
  }
 
- function curtir(id_post) {
+ function curtir(id_post, acao, src) {
       
     // Declaração de Variáveis
     var coracao   = document.getElementById("curtir") ;
+    console.log(src);
     var result = document.getElementById("resultado_test");
     var id_post = id_post;
+    var acao = acao;
+    console.log(acao);
     var xmlreq = CriaRequest();
      
     // Exibi a imagem de progresso
     //result.innerHTML = '<img src="https://media.giphy.com/media/N256GFy1u6M6Y/giphy.gif">';
      
     // Iniciar uma requisição
-    xmlreq.open("GET", "/curtidas?id_post=" + id_post, true);
+    xmlreq.open("GET", "/curtidas?id_post=" + id_post + "&acao=" + acao, true);
     
      
     // Atribui uma função para ser executada sempre que houver uma mudança de ado
@@ -83,9 +86,14 @@
             // Verifica se o arquivo foi encontrado com sucesso
             if (xmlreq.status == 200) {
                 result.innerHTML = xmlreq.responseText;
-                //coracao.src = "img/coracao_vermelho.png";
                 console.log(xmlreq);
-                console.log("Concluido");
+                if(src == "img/coracao.png" && acao == "curtir"){
+                    coracao.src = "img/coracao_vermelho.png";
+                }
+                else if(src = "img/coracao_vermelho.png" && acao == "descurtir"){
+                    coracao.src = "img/coracao.png";
+                }
+
             }else{
                 result.innerHTML = "Erro: " + xmlreq.statusText;
                 console.log("Erro ao enviar");
@@ -96,18 +104,15 @@
     
 }
 
- function mosta_curtidas(){
+ function carregar_img_perfil(){
      // Declaração de Variáveis
-    var classe = document.getElementById('post_img_perfil').className;
-    classe = "mostar_curtidas";
-    console.log (classe);
+     var img_perfil = document.getElementById('img_perfil_edit').value;
+     console.log(img_perfil);
+
      var xmlreq = CriaRequest();
       
-     // Exibi a imagem de progresso
-     //result.innerHTML = '<img src="https://media.giphy.com/media/N256GFy1u6M6Y/giphy.gif">';
-      
      // Iniciar uma requisição
-     xmlreq.open("GET", "/mostrar_curtidas_galeria_perfil", true);
+     xmlreq.open("GET", "/editar_perfil?img_perfil=" + img_perfil, true);
      
       
      // Atribui uma função para ser executada sempre que houver uma mudança de ado
@@ -119,7 +124,7 @@
              // Verifica se o arquivo foi encontrado com sucesso
              if (xmlreq.status == 200) {
                  //result.innerHTML = xmlreq.responseText;
-                 console.log("Concluido");
+                 console.log(xmlreq);
              }else{
                  //result.innerHTML = "Erro: " + xmlreq.statusText;
                  console.log("Erro ao enviar");
@@ -131,34 +136,5 @@
 
 
 
-    $(function(){
-        $('#img_perfil_edit').change(function(){
-           console.log = ($(this)[0].files[0]['name'])
-           var xmlreq = CriaRequest();
-            
-           // Exibi a imagem de progresso
-           //result.innerHTML = '<img src="https://media.giphy.com/media/N256GFy1u6M6Y/giphy.gif">';
-            
-           // Iniciar uma requisição
-           xmlreq.open("POST", "/editar_perfil", true);
-           
-            
-           // Atribui uma função para ser executada sempre que houver uma mudança de ado
-           xmlreq.onreadystatechange = function(){
-                
-               // Verifica se foi concluído com sucesso e a conexão fechada (readyState=4)
-               if (xmlreq.readyState == 4) {
-                    
-                   // Verifica se o arquivo foi encontrado com sucesso
-                   if (xmlreq.status == 200) {
-                       console.log(xmlreq);
-                       
-                   }else{
-                       result.innerHTML = "Erro: " + xmlreq.statusText;
-                   }
-               }
-           };
-           xmlreq.send(null);
-        })
-    })
+   
      

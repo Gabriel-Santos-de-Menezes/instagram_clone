@@ -74,7 +74,14 @@
                 <div class="ml-2">
                     <div class="row">
                         <div class="col-1">
-                            <a  ><img id="curtir"  onclick="curtir(<?=$post['id']?>)" src="img/coracao.png"></a>
+                        <!-- Se o usuário não curtiu o post mostrar o caração branco se curtiu mostrar o vermelho -->
+                        <?php if($post['curtida'] == 0){ ?>
+                            <a  ><img id="curtir"  onclick="curtir(<?=$post['id']?>, 'curtir', this.getAttribute('src'))" src="img/coracao.png"></a>
+                        <?php } else if($post['curtida'] == 1){ ?>
+                            <a  ><img id="curtir"  onclick="curtir(<?=$post['id']?>, 'descurtir', this.getAttribute('src'))" src="img/coracao_vermelho.png"></a>
+                        <?php } ?>
+
+                            <div id="resultado_test"></div>
                         </div>
                         <div class="col-1">
                             <a href=""><img src="img/comentario.png"></a>
@@ -82,7 +89,6 @@
                         </div>
                     </div>
                     <p class="">Curtido por <?= $post['curtidas']?> pessoas</p>
-                    <?= $post['curtida']?>
 
                     <div class="descricao">
                         <p><strong><?=$post['usuario']?></strong> <?=$post['post']?></p>
