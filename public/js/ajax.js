@@ -31,7 +31,7 @@
       
      // Declaração de Variáveis
      var usuario   = document.getElementById("pesquisar").value;
-     var result = document.getElementById("Resultado");
+     var result = document.getElementById("resultado");
      var xmlreq = CriaRequest();
       
      // Exibi a imagem de progresso
@@ -59,6 +59,43 @@
      
  }
 
+ function curtir(usuario) {
+      
+    // Declaração de Variáveis
+    var coracao   = document.getElementById("curtir") ;
+    var result = document.getElementById("resultado_test");
+    var usuario = usuario;
+    var xmlreq = CriaRequest();
+     
+    // Exibi a imagem de progresso
+    //result.innerHTML = '<img src="https://media.giphy.com/media/N256GFy1u6M6Y/giphy.gif">';
+     
+    // Iniciar uma requisição
+    xmlreq.open("GET", "/curtidas?id_usuario_post=" + usuario, true);
+    
+     
+    // Atribui uma função para ser executada sempre que houver uma mudança de ado
+    xmlreq.onreadystatechange = function(){
+         
+        // Verifica se foi concluído com sucesso e a conexão fechada (readyState=4)
+        if (xmlreq.readyState == 4) {
+             
+            // Verifica se o arquivo foi encontrado com sucesso
+            if (xmlreq.status == 200) {
+                result.innerHTML = xmlreq.responseText;
+                coracao.src = "img/coracao_vermelho.png";
+                console.log(xmlreq);
+                console.log("Concluido");
+            }else{
+                result.innerHTML = "Erro: " + xmlreq.statusText;
+                console.log("Erro ao enviar");
+            }
+        }
+    };
+    xmlreq.send(null);
+    
+}
+
  function mosta_curtidas(){
      // Declaração de Variáveis
     var classe = document.getElementById('post_img_perfil').className;
@@ -81,9 +118,11 @@
               
              // Verifica se o arquivo foi encontrado com sucesso
              if (xmlreq.status == 200) {
-                 result.innerHTML = xmlreq.responseText;
+                 //result.innerHTML = xmlreq.responseText;
+                 console.log("Concluido");
              }else{
-                 result.innerHTML = "Erro: " + xmlreq.statusText;
+                 //result.innerHTML = "Erro: " + xmlreq.statusText;
+                 console.log("Erro ao enviar");
              }
          }
      };

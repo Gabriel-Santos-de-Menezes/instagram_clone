@@ -159,6 +159,7 @@ class AppController extends Action{
         $this->validaAutenticacao();//se for falso ira ser redirecionado para a página de login
 
         //Verifica se existe a variável usuario
+        print_r($_GET['usuario']);
         if(isset($_GET['usuario']) && $_GET['usuario'] != ''){
             //retorna um obj com a conexão com banco de dados
             $usuario = Container::getModel('Usuario');
@@ -219,6 +220,23 @@ class AppController extends Action{
 
     public function mostrar_curtidas_galeria_perfil(){
         
+    }
+
+    public function curtidas(){
+         //ver se a autenticação foi realizada
+         $this->validaAutenticacao();//se for falso ira ser redirecionado para a página de login
+
+         if(isset($_GET['id_usuario_post']) && $_GET['id_usuario_post'] != ''){
+             
+            $post = Container::getModel('Post');//retorna a conexão com o banco configurada
+            $post->__set('id_usuario', $_SESSION['id']);
+
+            $id_usuario_curtindo = $_GET['id_usuario_post'];
+
+            $post->curtirPost($id_usuario_curtindo);
+         }
+
+
     }
 
 

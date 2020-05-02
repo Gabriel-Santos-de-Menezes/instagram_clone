@@ -85,6 +85,13 @@ class Route extends Bootstrap {
 			'action' => 'acao'
 		);
 		
+		//rota para curtir ou descurtir o post do usuário
+		$routes['curtidas'] = array(
+			'route' => '/curtidas',
+			'controller' => 'AppController',
+			'action' => 'curtidas'
+		);
+
 		//rota para seguir ou deixar de seguir o usuário
 		$routes['mostrar_curtidas_galeria_perfil'] = array(
 			'route' => '/mostrar_curtidas_galeria_perfil',

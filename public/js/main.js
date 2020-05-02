@@ -1,4 +1,4 @@
-function curtir(img){
+function curtida(img){
     
     var coracao = document.getElementById('curtir').src;
     var imagem = document.getElementById('curtir');

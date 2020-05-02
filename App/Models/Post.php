@@ -73,6 +73,17 @@ class Post extends Model{
 
         return $stmt->fetch(\PDO::FETCH_ASSOC);//total de posts
     }
+
+    public function curtirPost($id_usuario_curtindo){
+        $query = "insert into curtidas(id_usuario, id_usuario_curtindo)values(:id_usuario, :id_usuario_curtindo)";
+
+        $stmt = $this->db->prepare($query);
+        $stmt->bindValue(':id_usuario', $this->__get('id_usuario'));
+        $stmt->bindValue(':id_usuario_curtindo', $id_usuario_curtindo);
+        $stmt->execute();
+
+        return true;//verdadeiro para a inserção
+    }
 }
 
 
