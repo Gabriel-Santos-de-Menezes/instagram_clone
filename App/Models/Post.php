@@ -36,10 +36,31 @@ class Post extends Model{
 
     //pegar todos os posts do usuario
     public function getAll(){
-
+        //recupera as informações do post, bem como se o usuário logado está curtindo e também a quantidades de curtidas do post
         $query = "
             select
-                p.id, p.id_usuario, u.usuario, u.foto_perfil, p.imagem, p.post, TIMESTAMPDIFF(Second,p.data_post, now()) as data_post
+                p.id, 
+                p.id_usuario,  
+                u.usuario, 
+                u.foto_perfil, 
+                p.imagem, p.post, 
+                TIMESTAMPDIFF(Second,p.data_post, now()) as data_post,
+                (
+                    select
+                        count(*)
+                    from
+                        curtidas as c
+                    where
+                        c.id_post = p.id and c.id_usuario = :id_usuario
+                ) as curtida,
+                (
+                    select
+                        count(*)
+                    from
+                        curtidas as c
+                    where
+                        c.id_post = p.id
+                ) as curtidas
             from 
                 posts as p
                 left join tb_usuarios as u on (p.id_usuario = u.id)
@@ -53,6 +74,8 @@ class Post extends Model{
 
         return $stmt->fetchAll(\PDO::FETCH_ASSOC);//retorna um array dos posts
     }
+
+
     public function getPostUsuario(){
         $query = "select id, post, imagem from posts where id_usuario = :id_usuario";
         
@@ -74,16 +97,18 @@ class Post extends Model{
         return $stmt->fetch(\PDO::FETCH_ASSOC);//total de posts
     }
 
+    //Inserir a curtida do post no banco
     public function curtirPost($id_usuario_curtindo){
-        $query = "insert into curtidas(id_usuario, id_usuario_curtindo)values(:id_usuario, :id_usuario_curtindo)";
+        $query = "insert into curtidas(id_usuario, id_post)values(:id_usuario, :id_post)";
 
         $stmt = $this->db->prepare($query);
         $stmt->bindValue(':id_usuario', $this->__get('id_usuario'));
-        $stmt->bindValue(':id_usuario_curtindo', $id_usuario_curtindo);
+        $stmt->bindValue(':id_post', $id_usuario_curtindo);
         $stmt->execute();
 
         return true;//verdadeiro para a inserção
     }
+
 }
 
 

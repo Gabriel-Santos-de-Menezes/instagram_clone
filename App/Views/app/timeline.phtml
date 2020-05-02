@@ -74,14 +74,15 @@
                 <div class="ml-2">
                     <div class="row">
                         <div class="col-1">
-                            <a  ><img id="curtir"  onclick="curtir(<?=$post['id_usuario']?>)" src="img/coracao.png"></a>
+                            <a  ><img id="curtir"  onclick="curtir(<?=$post['id']?>)" src="img/coracao.png"></a>
                         </div>
                         <div class="col-1">
                             <a href=""><img src="img/comentario.png"></a>
                             <div id="resultado_test"></div>
                         </div>
                     </div>
-                    <p class="">Curtido por 1658 pessoas</p>
+                    <p class="">Curtido por <?= $post['curtidas']?> pessoas</p>
+                    <?= $post['curtida']?>
 
                     <div class="descricao">
                         <p><strong><?=$post['usuario']?></strong> <?=$post['post']?></p>

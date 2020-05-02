@@ -59,19 +59,19 @@
      
  }
 
- function curtir(usuario) {
+ function curtir(id_post) {
       
     // Declaração de Variáveis
     var coracao   = document.getElementById("curtir") ;
     var result = document.getElementById("resultado_test");
-    var usuario = usuario;
+    var id_post = id_post;
     var xmlreq = CriaRequest();
      
     // Exibi a imagem de progresso
     //result.innerHTML = '<img src="https://media.giphy.com/media/N256GFy1u6M6Y/giphy.gif">';
      
     // Iniciar uma requisição
-    xmlreq.open("GET", "/curtidas?id_usuario_post=" + usuario, true);
+    xmlreq.open("GET", "/curtidas?id_post=" + id_post, true);
     
      
     // Atribui uma função para ser executada sempre que houver uma mudança de ado
@@ -83,7 +83,7 @@
             // Verifica se o arquivo foi encontrado com sucesso
             if (xmlreq.status == 200) {
                 result.innerHTML = xmlreq.responseText;
-                coracao.src = "img/coracao_vermelho.png";
+                //coracao.src = "img/coracao_vermelho.png";
                 console.log(xmlreq);
                 console.log("Concluido");
             }else{

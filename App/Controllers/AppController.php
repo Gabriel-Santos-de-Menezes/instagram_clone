@@ -17,10 +17,8 @@ class AppController extends Action{
 
         //recuperar os posts
         $post = Container::getModel('Post');//retorna a conexão com o banco configurada
-        //$postImg = Container::getModel('Imagens_post');//retorna a conexão com o banco configurada
         
         $post->__set('id_usuario', $_SESSION['id']);
-        //$postImg->__set('id_usuario', $_SESSION['id']);
 
         $posts = $post->getAll();//retorna um array de todos os posts
 
@@ -226,14 +224,14 @@ class AppController extends Action{
          //ver se a autenticação foi realizada
          $this->validaAutenticacao();//se for falso ira ser redirecionado para a página de login
 
-         if(isset($_GET['id_usuario_post']) && $_GET['id_usuario_post'] != ''){
+         if(isset($_GET['id_post']) && $_GET['id_post'] != ''){
              
             $post = Container::getModel('Post');//retorna a conexão com o banco configurada
             $post->__set('id_usuario', $_SESSION['id']);
 
-            $id_usuario_curtindo = $_GET['id_usuario_post'];
+            $id_post = $_GET['id_post'];
 
-            $post->curtirPost($id_usuario_curtindo);
+            $post->curtirPost($id_post);
          }
 
 
