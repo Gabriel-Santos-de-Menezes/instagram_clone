@@ -131,9 +131,9 @@
 
                     <div class="addComentario">
                         <div class="input-group mb-3">
-                            <input type="text" class="form-control" placeholder="Adicione um comentário..." aria-label="Recipient's username" aria-describedby="basic-addon2">
+                            <input type="text" id="comentar" class="form-control" placeholder="Adicione um comentário..." aria-label="Recipient's username" aria-describedby="basic-addon2">
                             <div class="input-group-append">
-                                <button class="btn btn-outline-primary" type="button">Publicar</button>
+                                <button class="btn btn-outline-primary" onclick="comentar(<?= $post['id'] ?>)" type="button">Publicar</button>
                             </div>
                         </div>
                     </div>

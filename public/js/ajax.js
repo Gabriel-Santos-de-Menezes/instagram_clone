@@ -104,6 +104,44 @@
     
 }
 
+
+ function comentar(id_post) {
+      
+    // Declaração de Variáveis
+    var comentario   = document.getElementById("comentar").value ;
+    console.log(comentario);
+    console.log(id_post);
+    var xmlreq = CriaRequest();
+     
+    // Exibi a imagem de progresso
+    //result.innerHTML = '<img src="https://media.giphy.com/media/N256GFy1u6M6Y/giphy.gif">';
+     
+    // Iniciar uma requisição
+    xmlreq.open("GET", "/comentar?id_post=" + id_post, true);
+    
+     
+    // Atribui uma função para ser executada sempre que houver uma mudança de ado
+    xmlreq.onreadystatechange = function(){
+         
+        // Verifica se foi concluído com sucesso e a conexão fechada (readyState=4)
+        if (xmlreq.readyState == 4) {
+             
+            // Verifica se o arquivo foi encontrado com sucesso
+            if (xmlreq.status == 200) {
+                //result.innerHTML = xmlreq.responseText;
+                console.log(xmlreq);
+                
+
+            }else{
+                result.innerHTML = "Erro: " + xmlreq.statusText;
+                console.log("Erro ao enviar");
+            }
+        }
+    };
+    xmlreq.send(null);
+    
+}
+
  function carregar_img_perfil(){
      // Declaração de Variáveis
      var img_perfil = document.getElementById('img_perfil_edit').value;

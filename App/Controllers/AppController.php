@@ -249,7 +249,16 @@ class AppController extends Action{
  
          }
          return true;
+    }
 
+    public function comentar(){
+
+         //ver se a autenticação foi realizada
+         $this->validaAutenticacao();//se for falso ira ser redirecionado para a página de login
+
+        print_r($_GET);
+
+        return true;
 
     }
 
