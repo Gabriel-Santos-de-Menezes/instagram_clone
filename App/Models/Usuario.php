@@ -39,7 +39,7 @@ class Usuario extends Model{
         return $this;
         
     }
-
+    
     //editar
     public function editar(){
         $query = "update tb_usuarios set foto_perfil = :foto_perfil where id = :id_usuario";

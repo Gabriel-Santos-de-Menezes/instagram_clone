@@ -122,8 +122,16 @@ class Post extends Model{
     }
 
     //Add Comentario no post
-    public function salvarComentario(){
-        $query = "insert into comentarios (id_usuario, id_post, comentario)";
+    public function salvarComentario($id_post, $comentario){
+        $query = "insert into comentarios (id_usuario, id_post, comentario)values(:id_usuario, :id_post, :comentario)";
+
+        $stmt = $this->db->prepare($query);
+        $stmt->bindValue(':id_usuario', $this->__get('id_usuario'));
+        $stmt->bindValue(':id_post', $id_post);
+        $stmt->bindValue(':comentario', $comentario);
+        $stmt->execute();
+
+        return true;
     }
 
 

@@ -162,7 +162,7 @@
              // Verifica se o arquivo foi encontrado com sucesso
              if (xmlreq.status == 200) {
                  //result.innerHTML = xmlreq.responseText;
-                 console.log(xmlreq);
+                 console.log(xmlreq.responseText);
              }else{
                  //result.innerHTML = "Erro: " + xmlreq.statusText;
                  console.log("Erro ao enviar");

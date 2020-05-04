@@ -120,29 +120,31 @@ class AppController extends Action{
         $this->validaAutenticacao();//se for falso ira ser redirecionado para a página de login
         $usuario = Container::getModel('Usuario');//Instancia do modelo Usuario
         
-
-        /*if(isset($_GET['img_perfil'])){
+        
+        if(isset($_GET['img_perfil'])){
             //Se o arquivo existir, poderá ser salvo no bd
             $usuario->__set('id', $_SESSION['id']);//setando id so usuário ao atributo id
             
             //Pegar nome da imagem
             
-            $imagem = strlower(substr($_GET['img_perfil'], 11));
-
+            $imagem = strtolower(substr($_GET['img_perfil'], 12));
             
             //Pegar a extensão
-            $extensao  = strlower(substr($imagem, -4));
+            $extensao  = strtolower(substr($imagem, -4));
             $novo_nome = md5(time()). $extensao;
             $diretorio = "img_perfil/";
 
+            echo "Estou aqui";
+            print_r($_FILES['']);
+            /*
             //Efetua o upload
-            move_uploaded_file($_GET['img_perfil']['tmp_name'], $diretorio.$novo_nome);
+            move_uploaded_file($_GET['img_perfil'], $diretorio.$novo_nome);
             $usuario->__set('foto_perfil', $novo_nome);
 
             $usuario->editar();//metodo que salva os dados setados, no banco
-
-        }*/
-        header('Location: /perfil');
+            */
+            //header('Location: /perfil');
+        }
     }
     
     public function validaAutenticacao(){
@@ -259,11 +261,13 @@ class AppController extends Action{
          if(isset($_GET['id_post']) && $_GET['id_post'] != '' &&isset($_GET['comentario']) && $_GET['comentario'] != ''){
 
             //Intância do model 
-            $post = Container::getMode('Post');
+            $post = Container::getModel('Post');
 
             $post->__set('id_usuario', $_SESSION['id']);
 
-            $post->salvarComentario($_GET['id_post']);
+            $post->salvarComentario($_GET['id_post'], $_GET['comentario']);
+
+            header('Location: /timeline');
          }
             //return true;
 
