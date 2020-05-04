@@ -92,6 +92,13 @@ class Route extends Bootstrap {
 			'action' => 'curtidas'
 		);
 
+		//rota para add o comentar no post do usuário
+		$routes['comentar'] = array(
+			'route' => '/comentar',
+			'controller' => 'AppController',
+			'action' => 'comentar'
+		);
+
 		//rota para seguir ou deixar de seguir o usuário
 		$routes['mostrar_curtidas_galeria_perfil'] = array(
 			'route' => '/mostrar_curtidas_galeria_perfil',
@@ -99,6 +106,13 @@ class Route extends Bootstrap {
 			'action' => 'mostrar_curtidas_galeria_perfil'
 		);
 		
+		//rota para editar o perfil do usuário
+		$routes['editar_perfil'] = array(
+			'route' => '/editar_perfil',
+			'controller' => 'AppController',
+			'action' => 'editar_perfil'
+		);
+
 
 		$this->setRoutes($routes);
 	}

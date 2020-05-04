@@ -121,6 +121,11 @@ class Post extends Model{
         return true;//verdadeiro para a inserção
     }
 
+    //Add Comentario no post
+    public function salvarComentario(){
+        $query = "insert into comentarios (id_usuario, id_post, comentario)";
+    }
+
 
 }
 

@@ -256,9 +256,16 @@ class AppController extends Action{
          //ver se a autenticação foi realizada
          $this->validaAutenticacao();//se for falso ira ser redirecionado para a página de login
 
-        print_r($_GET);
+         if(isset($_GET['id_post']) && $_GET['id_post'] != '' &&isset($_GET['comentario']) && $_GET['comentario'] != ''){
 
-        return true;
+            //Intância do model 
+            $post = Container::getMode('Post');
+
+            $post->__set('id_usuario', $_SESSION['id']);
+
+            $post->salvarComentario($_GET['id_post']);
+         }
+            //return true;
 
     }
 

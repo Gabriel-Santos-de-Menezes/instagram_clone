@@ -108,7 +108,7 @@
  function comentar(id_post) {
       
     // Declaração de Variáveis
-    var comentario   = document.getElementById("comentar").value ;
+    var comentario = document.getElementById("comentar").value ;
     console.log(comentario);
     console.log(id_post);
     var xmlreq = CriaRequest();
@@ -117,7 +117,7 @@
     //result.innerHTML = '<img src="https://media.giphy.com/media/N256GFy1u6M6Y/giphy.gif">';
      
     // Iniciar uma requisição
-    xmlreq.open("GET", "/comentar?id_post=" + id_post, true);
+    xmlreq.open("GET", "/comentar?id_post=" + id_post + "&comentario=" + comentario, true);
     
      
     // Atribui uma função para ser executada sempre que houver uma mudança de ado
@@ -129,7 +129,7 @@
             // Verifica se o arquivo foi encontrado com sucesso
             if (xmlreq.status == 200) {
                 //result.innerHTML = xmlreq.responseText;
-                console.log(xmlreq);
+                console.log(xmlreq.responseText);
                 
 
             }else{
