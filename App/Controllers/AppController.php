@@ -24,13 +24,15 @@ class AppController extends Action{
 
         $this->view->posts = $posts;//Manda o array de posts para a timeline
 
+        
+        
 
         $usuario = Container::getModel('Usuario');
         $usuario->__set('id', $_SESSION['id']);
 
         $this->view->info_usuario = $usuario->getInfoUsuario();
 
-        $this->render('/timeline', 'layout2');
+        $this->render('/timeline', 'layout');
     }
 
     //renderiza página do usuário que está logado

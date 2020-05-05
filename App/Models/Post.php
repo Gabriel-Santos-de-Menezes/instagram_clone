@@ -61,18 +61,17 @@ class Post extends Model{
                         curtidas as c
                     where
                         c.id_post = p.id
-                ) as curtidas,
-                (
-                    select 
-                        co.comentario
-                    from 
-                        comentarios as co
-                    where
-                        co.id_post = p.id
-                ) as comentarios
+                ) as curtidas
+
             from 
                 posts as p
                 left join tb_usuarios as u on (p.id_usuario = u.id)
+                left join
+                    (
+                        select 
+                            co.comentario
+                        from comentarios as co
+                    )as comentario on (comentario.id_post = p.id)
            
             order by p.data_post desc
         ";
@@ -141,6 +140,26 @@ class Post extends Model{
         $stmt->execute();
 
         return true;
+    }   
+
+    //recuperar comentarios dos posts
+    public function totalComentarios($id_post){
+        $query = "
+            select
+                co.comentario
+                p.id_usuario
+
+            from
+                comentarios as co
+                left join posts as p on (p.id = :id_post)
+            ";
+
+        $stmt = $this->db->prepare($query);
+        $stmt->bindValue(':id_post', $id_post);
+        $stmt->execute();
+
+        //retornar um array associativo
+        return $stmt->fetchAll(\PDO::FETCH_ASSOC);//todos comentarios
     }
 
 
