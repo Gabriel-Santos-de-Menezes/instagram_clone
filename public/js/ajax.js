@@ -150,7 +150,7 @@
      var xmlreq = CriaRequest();
       
      // Iniciar uma requisição
-     xmlreq.open("GET", "/editar_perfil?img_perfil=" + img_perfil, true);
+     xmlreq.open("POST", "/editar_perfil?img_perfil=" + img_perfil, true);
      
       
      // Atribui uma função para ser executada sempre que houver uma mudança de ado

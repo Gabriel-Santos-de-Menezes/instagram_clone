@@ -43,7 +43,8 @@ class Post extends Model{
                 p.id_usuario,  
                 u.usuario, 
                 u.foto_perfil, 
-                p.imagem, p.post, 
+                p.imagem, 
+                p.post, 
                 TIMESTAMPDIFF(Second,p.data_post, now()) as data_post,
                 (
                     select
@@ -60,7 +61,15 @@ class Post extends Model{
                         curtidas as c
                     where
                         c.id_post = p.id
-                ) as curtidas
+                ) as curtidas,
+                (
+                    select 
+                        co.comentario
+                    from 
+                        comentarios as co
+                    where
+                        co.id_post = p.id
+                ) as comentarios
             from 
                 posts as p
                 left join tb_usuarios as u on (p.id_usuario = u.id)

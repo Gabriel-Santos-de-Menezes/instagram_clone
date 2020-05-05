@@ -121,13 +121,13 @@ class AppController extends Action{
         $usuario = Container::getModel('Usuario');//Instancia do modelo Usuario
         
         
-        if(isset($_GET['img_perfil'])){
+        if(isset($_POST['img_perfil'])){
             //Se o arquivo existir, poderá ser salvo no bd
             $usuario->__set('id', $_SESSION['id']);//setando id so usuário ao atributo id
-            
+            print_r($_POST[]);
             //Pegar nome da imagem
             
-            $imagem = strtolower(substr($_GET['img_perfil'], 12));
+            $imagem = strtolower(substr($_POST['img_perfil'], 12));
             
             //Pegar a extensão
             $extensao  = strtolower(substr($imagem, -4));
@@ -135,12 +135,13 @@ class AppController extends Action{
             $diretorio = "img_perfil/";
 
             echo "Estou aqui";
-            print_r($_FILES['']);
+            //print_r($_FILES['']);
             /*
             //Efetua o upload
-            move_uploaded_file($_GET['img_perfil'], $diretorio.$novo_nome);
+            move_uploaded_file($_POST['img_perfil'], $diretorio.$novo_nome);
             $usuario->__set('foto_perfil', $novo_nome);
-
+            */
+            /*
             $usuario->editar();//metodo que salva os dados setados, no banco
             */
             //header('Location: /perfil');
@@ -263,11 +264,12 @@ class AppController extends Action{
             //Intância do model 
             $post = Container::getModel('Post');
 
+
             $post->__set('id_usuario', $_SESSION['id']);
 
             $post->salvarComentario($_GET['id_post'], $_GET['comentario']);
 
-            header('Location: /timeline');
+            //header('Location: /timeline');
          }
             //return true;
 
