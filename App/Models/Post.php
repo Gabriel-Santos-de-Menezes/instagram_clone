@@ -40,7 +40,7 @@ class Post extends Model{
         $query = "
             select
                 p.id, 
-                p.id_usuario,  
+                p.id_usuario, 
                 u.usuario, 
                 u.foto_perfil, 
                 p.imagem, 
@@ -58,21 +58,22 @@ class Post extends Model{
                     select
                         count(*)
                     from
-                        curtidas as c
+                        curtidas as cu
                     where
-                        c.id_post = p.id
+                        cu.id_post = p.id
                 ) as curtidas
 
             from 
                 posts as p
-                left join tb_usuarios as u on (p.id_usuario = u.id)
-                left join
-                    (
-                        select 
-                            co.comentario
-                        from comentarios as co
-                    )as comentario on (comentario.id_post = p.id)
-           
+                left join tb_usuarios as u on (p.id_usuario = u.id) 
+        
+            union all 
+            select
+                co.comentario
+            from 
+                comentarios as co
+            where
+                id_post = 13
             order by p.data_post desc
         ";
     
