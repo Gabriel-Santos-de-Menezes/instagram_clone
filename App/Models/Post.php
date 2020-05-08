@@ -61,14 +61,7 @@ class Post extends Model{
                         curtidas as cu
                     where
                         cu.id_post = p.id
-                ) as curtidas,
-                (
-                	SELECT GROUP_CONCAT(com.comentario)
-                    from
-                        comentarios as com
-                    where 
-                        com.id_post = p.id
-                ) as comentario
+                ) as curtidas
 
             from 
                 posts as p
@@ -145,19 +138,22 @@ class Post extends Model{
     }   
 
     //recuperar comentarios dos posts
-    public function totalComentarios($id_post){
+    public function totalComentarios(){
         $query = "
-            select
-                co.comentario
-                p.id_usuario
-
-            from
-                comentarios as co
-                left join posts as p on (p.id = :id_post)
+        SELECT 
+        co.comentario,
+        p.id,
+        u.usuario
+    FROM
+        comentarios as co
+        LEFT join tb_usuarios as u on (co.id_usuario = u.id)
+        LEFT join posts as p on (p.id = p.id)
+    WHERE
+        co.id_post = p.id 
             ";
 
         $stmt = $this->db->prepare($query);
-        $stmt->bindValue(':id_usuario', $id_post);
+        $stmt->bindValue(':id_usuario', $this->__get('id_usuario'));
         $stmt->execute();
 
         //retornar um array associativo

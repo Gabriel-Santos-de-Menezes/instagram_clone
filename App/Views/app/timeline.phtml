@@ -95,7 +95,17 @@
                     </div>
                     
                     <div class="descricao">
-                        <p><strong><?=$post['id_usuario']?></strong> <?=$post['comentario']?></p>
+                        <p><strong><?=$post['id_usuario']?></strong> <?php 
+                            //Mostrar comentarios se o id do post da consulta de comentarios
+                            //for igual ao id do post da consulta dos posts
+                            foreach($this->view->comentarios as $key => $comentario){
+                                if($comentario['id'] == $post['id']){
+                                    echo "<p><strong>" .$comentario['usuario'] . "</strong> " . $comentario['comentario'] . "</p>";
+                                }
+                            }
+                            
+                        
+                        ?></p>
                     </div>
 
                     <div class="hora">

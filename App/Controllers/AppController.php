@@ -19,10 +19,12 @@ class AppController extends Action{
         $post = Container::getModel('Post');//retorna a conexão com o banco configurada
         
         $post->__set('id_usuario', $_SESSION['id']);
-
         $posts = $post->getAll();//retorna um array de todos os posts
-        print_r($posts['comentario']);
         //$comentarios = $post->totalComentarios();
+        $comentarios = $post->totalComentarios();
+       
+        $this->view->comentarios = $comentarios;//Manda o array de posts para a timeline
+
         $this->view->posts = $posts;//Manda o array de posts para a timeline
 
         
