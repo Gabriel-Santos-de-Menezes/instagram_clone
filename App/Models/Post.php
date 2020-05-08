@@ -61,20 +61,21 @@ class Post extends Model{
                         curtidas as cu
                     where
                         cu.id_post = p.id
-                ) as curtidas
+                ) as curtidas,
+                (
+                	SELECT GROUP_CONCAT(com.comentario)
+                    from
+                        comentarios as com
+                    where 
+                        com.id_post = p.id
+                ) as comentario
 
             from 
                 posts as p
-                left join tb_usuarios as u on (p.id_usuario = u.id) 
+                left join tb_usuarios as u on (p.id_usuario = u.id)
+                ORDER by p.id DESC
         
-            union all 
-            select
-                co.comentario
-            from 
-                comentarios as co
-            where
-                id_post = 13
-            order by p.data_post desc
+            
         ";
     
         $stmt = $this->db->prepare($query);
@@ -156,7 +157,7 @@ class Post extends Model{
             ";
 
         $stmt = $this->db->prepare($query);
-        $stmt->bindValue(':id_post', $id_post);
+        $stmt->bindValue(':id_usuario', $id_post);
         $stmt->execute();
 
         //retornar um array associativo

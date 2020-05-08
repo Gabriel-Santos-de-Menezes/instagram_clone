@@ -21,6 +21,7 @@ class AppController extends Action{
         $post->__set('id_usuario', $_SESSION['id']);
 
         $posts = $post->getAll();//retorna um array de todos os posts
+        print_r($posts['comentario']);
         //$comentarios = $post->totalComentarios();
         $this->view->posts = $posts;//Manda o array de posts para a timeline
 
@@ -32,7 +33,7 @@ class AppController extends Action{
 
         $this->view->info_usuario = $usuario->getInfoUsuario();
 
-        $this->render('/timeline', 'layout2');
+        $this->render('/timeline', 'layout');
     }
 
     //renderiza página do usuário que está logado
