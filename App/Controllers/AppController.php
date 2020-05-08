@@ -35,7 +35,7 @@ class AppController extends Action{
 
         $this->view->info_usuario = $usuario->getInfoUsuario();
 
-        $this->render('/timeline', 'layout');
+        $this->render('/timeline', 'layout2');
     }
 
     //renderiza página do usuário que está logado

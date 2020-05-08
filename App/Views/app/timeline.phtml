@@ -45,7 +45,7 @@
                 </div>
             </div>
         </div>
-        <?php foreach($this->view->posts as $id_post => $post){ ?>
+        <?php foreach($this->view->posts as $id_post => $post){ $cont=0; $cont++;?>
         <div class="mt-2 border post">
             <div class="row mt-2 container">
                 <div class=" col-1 ">
@@ -88,24 +88,36 @@
                             <div id="resultado_test"></div>
                         </div>
                     </div>
-                    <p class="">Curtido por <?= $post['curtidas']?> pessoas</p>
+                    <p class="curtido_por">Curtido por <?= $post['curtidas']?> pessoas</p>
 
-                    <div class="descricao">
+                    <div class="comentarios">
                         <p><strong><?=$post['usuario']?></strong> <?=$post['post']?></p>
                     </div>
                     
-                    <div class="descricao">
-                        <p><strong><?=$post['id_usuario']?></strong> <?php 
+                    <div class="comentarios">
+                        <?php 
+                            $cont = 0;
+                            $numComentarios = count($this->view->comentarios);
+                        
+                        
                             //Mostrar comentarios se o id do post da consulta de comentarios
                             //for igual ao id do post da consulta dos posts
                             foreach($this->view->comentarios as $key => $comentario){
                                 if($comentario['id'] == $post['id']){
-                                    echo "<p><strong>" .$comentario['usuario'] . "</strong> " . $comentario['comentario'] . "</p>";
+                                    $cont++;
+                                    //se tiver mais de 2 comentarios, 
+                                    //mostrar o modal para ver todos os comentarios
+                                    if($cont > 2 && $cont == $numComentarios){
+
+                                        echo '<a href="#">Ver todos os ' .$cont. ' comentários</a>';
+                                    }
+                                    else if($cont <=2){
+
+                                        echo "<p><strong>" .$comentario['usuario'] . "</strong> " . $comentario['comentario'] . "</p>";
+                                    }
                                 }
                             }
-                            
-                        
-                        ?></p>
+                        ?>
                     </div>
 
                     <div class="hora">
@@ -132,11 +144,6 @@
                                     $data_post = $data_post / 86400;
                                     echo "HÁ ". floor($data_post) . " DIAS";
                                 }
-                                
-                                //$data_atual = new DateTime();
-                                //$data_atual->format('d-m-Y H:i:s');
-                                //$tempo_post =  $data_atual->format('d-m-Y H:i:s') - $data_post;
-                                
                             
                             ?>
                         </small>
@@ -145,9 +152,9 @@
 
                     <div class="addComentario">
                         <div class="input-group mb-3">
-                            <input type="text" id="comentar" class="form-control" placeholder="Adicione um comentário..." aria-label="Recipient's username" aria-describedby="basic-addon2">
+                            <input type="text" id="<?= 'comentar'.$cont?>" class="form-control comentar" placeholder="Adicione um comentário..." aria-label="Recipient's username" aria-describedby="basic-addon2">
                             <div class="input-group-append">
-                                <button class="btn btn-outline-primary" onclick="comentar(<?= $post['comentario'] ?>)" type="button">Publicar</button>
+                                <button class="btn btn-outline-primary" onclick="comentar(<?= $post['id'] ?>)" type="button">Publicar</button>
                             </div>
                         </div>
                     </div>

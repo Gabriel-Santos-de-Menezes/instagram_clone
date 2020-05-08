@@ -139,6 +139,14 @@ body{
     border: 0 none;
     outline: 0;
 }
+.curtido_por{
+    margin: 5px;
+    font-size: 14px;
+}
+.comentarios p{
+    margin: 2px;
+    font-size: 14px;
+}
 
 /* ****** Parte do modal de postagem ***** */
 

@@ -109,6 +109,7 @@
       
     // Declaração de Variáveis
     var comentario = document.getElementById("comentar").value ;
+    
     console.log(comentario);
     console.log(id_post);
     var xmlreq = CriaRequest();
