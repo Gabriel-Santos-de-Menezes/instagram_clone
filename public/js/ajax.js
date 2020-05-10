@@ -59,11 +59,12 @@
      
  }
 
- function curtir(id_post, acao, src) {
+ function curtir(id_post, acao, src, i) {
       
     // Declaração de Variáveis
-    var coracao   = document.getElementById("curtir") ;
+    var coracao   = document.getElementById("curtir"+i) ;
     console.log(src);
+    console.log(coracao);
     var result = document.getElementById("resultado_test");
     var id_post = id_post;
     var acao = acao;
@@ -105,12 +106,12 @@
 }
 
 
- function comentar(id_post) {
-      
-    // Declaração de Variáveis
-    var comentario = document.getElementById("comentar").value ;
+ function comentar(id_post, i) {
+     
+     // Declaração de Variáveis
+     var comentario = document.getElementById("comentar"+i).value ;
+     console.log(comentario);
     
-    console.log(comentario);
     console.log(id_post);
     var xmlreq = CriaRequest();
      
@@ -132,6 +133,36 @@
                 //result.innerHTML = xmlreq.responseText;
                 console.log(xmlreq.responseText);
                 
+                
+                   // Iniciar uma requisição
+                   xmlreq.open("GET", "/timeline", true);
+                   
+                    
+                   // Atribui uma função para ser executada sempre que houver uma mudança de ado
+                   xmlreq.onreadystatechange = function(){
+                        
+                       // Verifica se foi concluído com sucesso e a conexão fechada (readyState=4)
+                       if (xmlreq.readyState == 4) {
+                            
+                           // Verifica se o arquivo foi encontrado com sucesso
+                           if (xmlreq.status == 200) {
+                               //result.innerHTML = xmlreq.responseText;
+                               console.log(xmlreq.responseText);
+                               
+                               console.log("Concluido");
+               
+               
+                           }else{
+                               result.innerHTML = "Erro: " + xmlreq.statusText;
+                               console.log("Erro ao enviar");
+                           }
+                       }
+                   };
+                   xmlreq.send(null);
+                   
+               
+               
+
 
             }else{
                 result.innerHTML = "Erro: " + xmlreq.statusText;

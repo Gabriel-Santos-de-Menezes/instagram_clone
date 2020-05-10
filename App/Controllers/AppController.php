@@ -276,7 +276,7 @@ class AppController extends Action{
 
             //header('Location: /timeline');
          }
-            //return true;
+        return true;
 
     }
 

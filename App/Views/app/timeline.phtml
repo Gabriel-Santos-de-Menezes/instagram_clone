@@ -45,7 +45,8 @@
                 </div>
             </div>
         </div>
-        <?php foreach($this->view->posts as $id_post => $post){ $cont=0; $cont++;?>
+        <?php $i = 0;?>
+        <?php foreach($this->view->posts as $id_post => $post){  $i++;?>
         <div class="mt-2 border post">
             <div class="row mt-2 container">
                 <div class=" col-1 ">
@@ -76,9 +77,9 @@
                         <div class="col-1">
                         <!-- Se o usuário não curtiu o post mostrar o caração branco se curtiu mostrar o vermelho -->
                         <?php if($post['curtida'] == 0){ ?>
-                            <a  ><img id="curtir"  onclick="curtir(<?=$post['id']?>, 'curtir', this.getAttribute('src'))" src="img/coracao.png"></a>
+                            <a  ><img id="<?php echo 'curtir'.$i;?>"  onclick="curtir(<?=$post['id']?>, 'curtir', this.getAttribute('src'), <?=$i?>)" src="img/coracao.png"></a>
                         <?php } else if($post['curtida'] == 1){ ?>
-                            <a  ><img id="curtir"  onclick="curtir(<?=$post['id']?>, 'descurtir', this.getAttribute('src'))" src="img/coracao_vermelho.png"></a>
+                            <a  ><img id="<?php echo 'curtir'.$i;?>"  onclick="curtir(<?=$post['id']?>, 'descurtir', this.getAttribute('src'), <?=$i?>)" src="img/coracao_vermelho.png"></a>
                         <?php } ?>
 
                             <div id="resultado_test"></div>
@@ -152,9 +153,9 @@
 
                     <div class="addComentario">
                         <div class="input-group mb-3">
-                            <input type="text" id="<?= 'comentar'.$cont?>" class="form-control comentar" placeholder="Adicione um comentário..." aria-label="Recipient's username" aria-describedby="basic-addon2">
+                            <input type="text" id="<?php echo 'comentar'.$i;?>" class="form-control comentar" placeholder="Adicione um comentário..." aria-label="Recipient's username" aria-describedby="basic-addon2">
                             <div class="input-group-append">
-                                <button class="btn btn-outline-primary" onclick="comentar(<?= $post['id'] ?>)" type="button">Publicar</button>
+                                <button class="btn btn-outline-primary" onclick="comentar(<?= $post['id'] ?>, <?= $i ?>)" type="button">Publicar</button>
                             </div>
                         </div>
                     </div>
