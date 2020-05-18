@@ -46,7 +46,7 @@ class Usuario extends Model{
         $query = "update tb_usuarios set nome = :nome, usuario = :usuario, email = :email, biografia = :biografia  where id = :id_usuario";
 
         $stmt = $this->db->prepare($query);
-        //$stmt->bindValue(':foto_perfil', $this->__get('foto_perfil'));
+        $stmt->bindValue(':foto_perfil', $this->__get('foto_perfil'));
         $stmt->bindValue(':id_usuario', $this->__get('id'));
         $stmt->bindValue(':nome', $this->__get('nome'));
         $stmt->bindValue(':usuario', $this->__get('usuario'));

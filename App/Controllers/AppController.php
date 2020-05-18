@@ -139,12 +139,13 @@ class AppController extends Action{
     public function editar_perfil(){
         $this->validaAutenticacao();//se for falso ira ser redirecionado para a página de login
         $usuario = Container::getModel('Usuario');//Instancia do modelo Usuario
-
         if(isset($_POST)){
+            $usuario->__set('id', $_SESSION['id']);
             $usuario->__set('nome', $_POST['nome']);
             $usuario->__set('usuario', $_POST['usuario']);
             $usuario->__set('biografia', $_POST['biografia']);
             $usuario->__set('email', $_POST['email']);
+            $usuario->__set('foto_perfil', $_POST['foto_perfil']);
 
             $usuario->editar();
             header('Location: /perfil');

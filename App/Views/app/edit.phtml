@@ -14,22 +14,26 @@
         <div class="col-9 border">
             <form action="/editar_perfil" method="POST">
                 
-                <div class="form-group row text-center mt-4">
-                    <label for="foto_perfil" class="col-sm-3 col-form-label"><a><img class="rounded-circle border foto_perfil_edit" src="<?=$this->view->info_usuario['foto_perfil']?>"></a></label>
-                    <div class="col-sm-7">
-                        <input type="text" name="foto_perfil"  class="form-control" id="nome">
+                <div class="form-group row mt-4">
+                    <label for="foto_perfil" class="display-4 text-center col-sm-3 col-form-label"><a><img class="rounded-circle border foto_perfil_edit" src="<?=$this->view->info_usuario['foto_perfil']?>"></a></label>
+                    <div class="col-sm-7 ">
+                        <label  class=""><?=$this->view->info_usuario['usuario']?></label>
+                        <div class="upload col-sm-7">
+                            <div class="inputFileOverlay">Alterar foto do perfil</div>
+                            <input required type="file" class="form-control" id="img_post" name="foto_perfil" accept="image/png, image/jpeg"  />
+                        </div>
                     </div>
                 </div>
                 <div class="form-group row text-center mt-4">
                     <label for="nome" class="col-sm-3 col-form-label">Nome</label>
                     <div class="col-sm-7">
-                        <input type="text" name="nome" value="<?=$this->view->info_usuario['nome']?>" class="form-control" id="nome" placeholder="Password">
+                        <input type="text" name="nome" value="<?=$this->view->info_usuario['nome']?>" class="form-control" id="nome" >
                     </div>
                 </div>
                 <div class="form-group row text-center mt-4">
                     <label for="usuario" class="col-sm-3 col-form-label">Nome de usuário</label>
                     <div class="col-sm-7">
-                        <input type="text" name="usuario" value="<?=$this->view->info_usuario['usuario']?>" class="form-control" id="nomeUsuario" placeholder="Password">
+                        <input type="text" name="usuario" value="<?=$this->view->info_usuario['usuario']?>" class="form-control" id="nomeUsuario" >
                     </div>
                 </div>
                 <div class="form-group row text-center mt-4">
