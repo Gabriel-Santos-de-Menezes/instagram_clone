@@ -105,6 +105,14 @@ class Route extends Bootstrap {
 			'controller' => 'AppController',
 			'action' => 'mostrar_curtidas_galeria_perfil'
 		);
+
+		//rota para editar o perfil do usuário
+		$routes['edit'] = array(
+			'route' => '/edit',
+			'controller' => 'AppController',
+			'action' => 'edit'
+		);
+
 		
 		//rota para editar o perfil do usuário
 		$routes['editar_perfil'] = array(

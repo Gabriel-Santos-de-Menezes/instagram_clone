@@ -1,0 +1,73 @@
+<div class="container pagina_edit bg-white">
+    <div class="row">
+        <div class="col-3 border">
+            <ul>
+                <li><a href="#">Editar perfil</a></li>
+                <li><a href="#">Alterar senha</a></li>
+                <li><a href="#">Aplicativos e sites</a></li>
+                <li><a href="#">Email e SMS</a></li>
+                <li><a href="#">Notificações push</a></li>
+                <li><a href="#">Gerenciar contatos</a></li>
+                <li><a href="#">Email no instagram</a></li>
+            </ul>
+        </div>
+        <div class="col-9 border">
+            <form action="/editar_perfil" method="POST">
+                
+                <div class="form-group row text-center mt-4">
+                    <label for="foto_perfil" class="col-sm-3 col-form-label"><a><img class="rounded-circle border foto_perfil_edit" src="<?=$this->view->info_usuario['foto_perfil']?>"></a></label>
+                    <div class="col-sm-7">
+                        <input type="text" name="foto_perfil"  class="form-control" id="nome">
+                    </div>
+                </div>
+                <div class="form-group row text-center mt-4">
+                    <label for="nome" class="col-sm-3 col-form-label">Nome</label>
+                    <div class="col-sm-7">
+                        <input type="text" name="nome" value="<?=$this->view->info_usuario['nome']?>" class="form-control" id="nome" placeholder="Password">
+                    </div>
+                </div>
+                <div class="form-group row text-center mt-4">
+                    <label for="usuario" class="col-sm-3 col-form-label">Nome de usuário</label>
+                    <div class="col-sm-7">
+                        <input type="text" name="usuario" value="<?=$this->view->info_usuario['usuario']?>" class="form-control" id="nomeUsuario" placeholder="Password">
+                    </div>
+                </div>
+                <div class="form-group row text-center mt-4">
+                    <label for="site" class="col-sm-3 col-form-label">Site</label>
+                    <div class="col-sm-7">
+                        <input type="text" name="site" class="form-control" id="site">
+                    </div>
+                </div>
+                <div class="form-group row text-center mt-4">
+                    <label for="biografia" class="col-sm-3 col-form-label">Biografia</label>
+                    <div class="col-sm-7">
+                        <input type="text" name="biografia" value="<?=$this->view->info_usuario['biografia']?>" class="form-control" id="biografia">
+                    </div>
+                </div>
+                <div class="form-group row text-center mt-4">
+                    <div class="col-sm-3">
+                        <!-- Vazio apénas para ocupar o espaço -->
+                    </div>
+                    <div class="col-sm-7 text-justify">
+                        <h6>Informações pessoais</h6>
+                        <small >Forneça suas informações pessoais, mesmo se a conta for usada para uma empresa, um animal de estimação ou outra coisa. Elas não farão parte do seu perfil público.</small>
+                    </div>
+                </div>
+                <div class="form-group row text-center mt-4">
+                    <label for="email" class="col-sm-3 col-form-label">Email</label>
+                    <div class="col-sm-7">
+                        <input type="email" name="email" value="<?=$this->view->info_usuario['email']?>" class="form-control" id="biografia">
+                    </div>
+                </div>
+                <div class="mt-3 row">
+                    <div class="col-sm-3">
+                        <!-- Vazio apénas para ocupar o espaço -->
+                    </div>
+                    <div class="col-sm-7">
+                        <button type="submit"  class="btn btn-primary">Enviar</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

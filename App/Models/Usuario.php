@@ -24,7 +24,7 @@ class Usuario extends Model{
     //Salvar
     public function salvar(){
 
-        $query = "insert into tb_usuarios(nome, usuario, email, foto_perfil, senha)values(:nome, :usuario, :email, :foto_perfil, :senha)";
+        $query = "insert into tb_usuarios(nome, usuario, email, foto_perfil, senha, biografia)values(:nome, :usuario, :email, :foto_perfil, :senha, '')";
 
         $stmt = $this->db->prepare($query);
         //pegar o atributoe atribuir como indice dinâmico da query
@@ -33,6 +33,7 @@ class Usuario extends Model{
         $stmt->bindValue(':usuario', $this->__get('usuario'));
         $stmt->bindValue(':senha', $this->__get('senha'));
         $stmt->bindValue(':foto_perfil', $this->__get('foto_perfil'));
+        $stmt->bindValue(':biografia', $this->__get('biografia'));
 
         $stmt->execute();
 
@@ -42,11 +43,15 @@ class Usuario extends Model{
     
     //editar
     public function editar(){
-        $query = "update tb_usuarios set foto_perfil = :foto_perfil where id = :id_usuario";
+        $query = "update tb_usuarios set nome = :nome, usuario = :usuario, email = :email, biografia = :biografia  where id = :id_usuario";
 
         $stmt = $this->db->prepare($query);
-        $stmt->bindValue(':foto_perfil', $this->__get('foto_perfil'));
+        //$stmt->bindValue(':foto_perfil', $this->__get('foto_perfil'));
         $stmt->bindValue(':id_usuario', $this->__get('id'));
+        $stmt->bindValue(':nome', $this->__get('nome'));
+        $stmt->bindValue(':usuario', $this->__get('usuario'));
+        $stmt->bindValue(':email', $this->__get('email'));
+        $stmt->bindValue(':biografia', $this->__get('biografia'));
         $stmt->execute();
 
         return $this;
@@ -76,7 +81,7 @@ class Usuario extends Model{
     //recuperar um usuário por usuario e email
     public function getUsuario(){
         
-        $query = "select nome, usuario, email from tb_usuarios where usuario = :usuario or email = :email";
+        $query = "select nome, usuario, email, biografia, from tb_usuarios where usuario = :usuario or email = :email";
 
         $stmt = $this->db->prepare($query);
         $stmt->bindValue(':usuario', $this->__get('usuario'));
@@ -134,7 +139,7 @@ class Usuario extends Model{
     //recuperar as informações do usuário
     public function getInfoUsuario(){
         $query = "
-        select id, nome, usuario, foto_perfil, biografia from tb_usuarios where id = :id_usuario";
+        select id, nome, usuario, email, foto_perfil, biografia from tb_usuarios where id = :id_usuario";
 
         $stmt = $this->db->prepare($query);
         $stmt->bindValue(':id_usuario', $this->__get('id'));

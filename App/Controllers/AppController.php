@@ -78,7 +78,8 @@ class AppController extends Action{
         //Envia os dados do usuário para a página user
         $this->view->esta_seguindo = $usuario->esta_seguindo($id_usuario_seguindo);
         $this->view->info_usuarioNaoLogado = $usuario->getInfoUsuarioNaoLogado($id_usuario_seguindo);
-        $this->view->info_usuario = $usuario->getInfoUsuario();        $this->view->info_total_seguidores = $usuario->getTotalSeguidoresNaoLogado($id_usuario_seguindo);
+        $this->view->info_usuario = $usuario->getInfoUsuario();
+        $this->view->info_total_seguidores = $usuario->getTotalSeguidoresNaoLogado($id_usuario_seguindo);
         $this->view->info_total_seguindo = $usuario->getTotalSeguindoNaoLogado($id_usuario_seguindo);
         //retorna a conexão com o banco configurada
         $post = Container::getModel('Post');
@@ -89,6 +90,20 @@ class AppController extends Action{
         
         
         $this->render('/user', 'layout2');
+    }
+
+    //Lógica para alterar perfil do usuário
+    public function edit(){
+        $this->validaAutenticacao();//se for falso ira ser redirecionado para a página de login
+        
+        $usuario = Container::getModel('Usuario');
+
+        $usuario->__set('id', $_SESSION['id']);
+        $this->view->info_usuario = $usuario->getInfoUsuario();
+
+
+    
+        $this->render('/edit', 'layout2');
     }
     
     
@@ -124,10 +139,19 @@ class AppController extends Action{
     public function editar_perfil(){
         $this->validaAutenticacao();//se for falso ira ser redirecionado para a página de login
         $usuario = Container::getModel('Usuario');//Instancia do modelo Usuario
+
+        if(isset($_POST)){
+            $usuario->__set('nome', $_POST['nome']);
+            $usuario->__set('usuario', $_POST['usuario']);
+            $usuario->__set('biografia', $_POST['biografia']);
+            $usuario->__set('email', $_POST['email']);
+
+            $usuario->editar();
+            header('Location: /perfil');
+        }
         
-        
-        if(isset($_POST['img_perfil'])){
-            //Se o arquivo existir, poderá ser salvo no bd
+        //if(isset($_POST['img_perfil'])){
+            /*//Se o arquivo existir, poderá ser salvo no bd
             $usuario->__set('id', $_SESSION['id']);//setando id so usuário ao atributo id
             print_r($_POST[]);
             //Pegar nome da imagem
@@ -150,7 +174,8 @@ class AppController extends Action{
             $usuario->editar();//metodo que salva os dados setados, no banco
             */
             //header('Location: /perfil');
-        }
+
+        //}
     }
     
     public function validaAutenticacao(){

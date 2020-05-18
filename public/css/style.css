@@ -334,3 +334,13 @@ div.upload input {
 
 
 /* ********** Fim da página user ********* */
+
+
+/* ********** Início da página edit ********* */
+.pagina_edit{
+    margin-top: 75px;
+}
+
+.foto_perfil_edit{
+    width: 40px;
+}
