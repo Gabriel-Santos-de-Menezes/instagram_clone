@@ -47,7 +47,7 @@ class IndexController extends Action {
 		$usuario->__set('email', $_POST['email']);
 		$usuario->__set('senha', md5($_POST['senha']));//colocando criptografia md5 na senha, convertendo em um rash de 32 caracteres
 		
-		$img_perfil = "/img_perfil/padrao.jpg";
+		$img_perfil = "padrao.jpg";
 		$usuario->__set('foto_perfil', $img_perfil);
 		
 		//sucesso

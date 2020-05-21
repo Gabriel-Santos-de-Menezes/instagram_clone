@@ -139,44 +139,33 @@ class AppController extends Action{
     public function editar_perfil(){
         $this->validaAutenticacao();//se for falso ira ser redirecionado para a página de login
         $usuario = Container::getModel('Usuario');//Instancia do modelo Usuario
+             
+        
         if(isset($_POST)){
+
+            
+            //Se o arquivo existir, poderá ser salvo no bd  
+            
+            //Pegar a extensão
+            $extensao = strtolower(substr($_FILES['foto_perfil']['name'], -4));
+            $novo_nome = md5(time()). $extensao;
+            $diretorio = "img_perfil/";
+            
+            //Efetua o upload
+            move_uploaded_file($_FILES['foto_perfil']['tmp_name'], $diretorio.$novo_nome);
+            $usuario->__set('foto_perfil',$novo_nome);
+            
             $usuario->__set('id', $_SESSION['id']);
             $usuario->__set('nome', $_POST['nome']);
             $usuario->__set('usuario', $_POST['usuario']);
             $usuario->__set('biografia', $_POST['biografia']);
             $usuario->__set('email', $_POST['email']);
-            $usuario->__set('foto_perfil', $_POST['foto_perfil']);
 
+                 
+            //metodo que salva os dados setados, no banco
             $usuario->editar();
             header('Location: /perfil');
         }
-        
-        //if(isset($_POST['img_perfil'])){
-            /*//Se o arquivo existir, poderá ser salvo no bd
-            $usuario->__set('id', $_SESSION['id']);//setando id so usuário ao atributo id
-            print_r($_POST[]);
-            //Pegar nome da imagem
-            
-            $imagem = strtolower(substr($_POST['img_perfil'], 12));
-            
-            //Pegar a extensão
-            $extensao  = strtolower(substr($imagem, -4));
-            $novo_nome = md5(time()). $extensao;
-            $diretorio = "img_perfil/";
-
-            echo "Estou aqui";
-            //print_r($_FILES['']);
-            /*
-            //Efetua o upload
-            move_uploaded_file($_POST['img_perfil'], $diretorio.$novo_nome);
-            $usuario->__set('foto_perfil', $novo_nome);
-            */
-            /*
-            $usuario->editar();//metodo que salva os dados setados, no banco
-            */
-            //header('Location: /perfil');
-
-        //}
     }
     
     public function validaAutenticacao(){

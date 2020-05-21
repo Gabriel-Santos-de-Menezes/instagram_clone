@@ -43,7 +43,7 @@ class Usuario extends Model{
     
     //editar
     public function editar(){
-        $query = "update tb_usuarios set nome = :nome, usuario = :usuario, email = :email, biografia = :biografia  where id = :id_usuario";
+        $query = "update tb_usuarios set nome = :nome, usuario = :usuario, email = :email, biografia = :biografia, foto_perfil = :foto_perfil  where id = :id_usuario";
 
         $stmt = $this->db->prepare($query);
         $stmt->bindValue(':foto_perfil', $this->__get('foto_perfil'));
