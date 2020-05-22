@@ -15,7 +15,7 @@
             <form action="/editar_perfil" method="POST" enctype="multipart/form-data">
                 
                 <div class="form-group row mt-4">
-                    <label for="foto_perfil" class="display-4 text-center col-sm-3 col-form-label"><a><img class="rounded-circle border foto_perfil_edit" src="<?=$this->view->info_usuario['foto_perfil']?>"></a></label>
+                    <label for="foto_perfil" class="display-4 text-center col-sm-3 col-form-label"><a><img class="rounded-circle border foto_perfil_edit" src="img_perfil/<?= $this->view->info_usuario['foto_perfil']?>"></a></label>
                     <div class="col-sm-7 ">
                         <label  class=""><?=$this->view->info_usuario['usuario']?></label>
                         <div class="upload col-sm-7">

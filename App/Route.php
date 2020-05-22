@@ -120,7 +120,13 @@ class Route extends Bootstrap {
 			'controller' => 'AppController',
 			'action' => 'editar_perfil'
 		);
-
+		
+		//rota para o direct do usuário
+		$routes['direct'] = array(
+			'route' => '/direct',
+			'controller' => 'AppController',
+			'action' => 'direct'
+		);
 
 		$this->setRoutes($routes);
 	}

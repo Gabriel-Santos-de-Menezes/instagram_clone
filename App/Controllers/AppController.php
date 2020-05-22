@@ -201,7 +201,7 @@ class AppController extends Action{
                         echo '<div class="pt-2">';
                             echo '<a href="/user?id=' .$usuario['id'] . '" class="d-flex  ml-3">';
                                 echo '<div class="d-inline-block ">';
-                                    echo '<img src="' . $usuario['foto_perfil'] .'" class="foto_perfil_pesquisa_usuario rounded-circle border" alt="foto_perfil">';
+                                    echo '<img src="img_perfil/' . $usuario['foto_perfil'] .'" class="foto_perfil_pesquisa_usuario rounded-circle border" alt="foto_perfil">';
                                 echo '</div>';
 
                                 echo '<div class="d-inline-block ml-2">';
@@ -293,6 +293,13 @@ class AppController extends Action{
          }
         return true;
 
+    }
+
+    //Direct do usuário
+    public function direct(){
+
+
+        $this->render('/direct', 'layout2');
     }
 
 

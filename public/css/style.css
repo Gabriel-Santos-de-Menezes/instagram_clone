@@ -161,10 +161,12 @@ body{
 }
 
 .foto_perfil_post{
-    width: 30px;
+    width: 32px;
+    height: 32;
 }
 .foto_perfil_pesquisa_usuario{
-    width: 30px;
+    width: 32px;
+    height: 32px;
 }
 
 
@@ -342,5 +344,16 @@ div.upload input {
 }
 
 .foto_perfil_edit{
-    width: 40px;
+    width: 38px;
+    height: 38;
+}
+/* ********** Fim da página edit ********* */
+
+
+
+/* ********** Início da página direct ********* */
+.direct{
+    margin-top: 75px;
+    border-radius: 4px;
+    height: 697px;
 }
