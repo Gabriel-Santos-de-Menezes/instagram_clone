@@ -52,10 +52,18 @@
                     <div class="col-1"><img src="img_perfil/padrao.jpg" class="rounded-circle foto_perfil_edit" alt=""></div>
                     <div class="col-4"><p>Gabriel</p></div>
                 </div>
-                
-                <form action="">
-                    <input type="text" placeholder="Mensagem" name="mensagem" class="form-control mensagem">
+                <div class="area_mensagens">
+
+                </div>
+                <form action="" method="POST">
+                    <div class="input-group mb-3 border form_mensagem">
+                        <input type="text" data-emojiable="true" data-emoji-input="unicode" onkeypress="enviar()" placeholder="Mensagem" id="mensagem" name="mensagem" class="form-control mensagem">
+                            <div class="input-group-append">
+                                <a class="btn" id="enviar" type="button"></a>
+                            </div>
+                    </div>
                 </form>
+                
             </div>
         </div> 
 

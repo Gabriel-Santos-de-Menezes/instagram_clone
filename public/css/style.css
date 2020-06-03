@@ -387,7 +387,12 @@ div.upload input {
 .inbox_usuario:hover{
     background: #F5F5F5;
 }
-.mensagem{
-
+.area_mensagens{
+    height: 590px;
+}
+.form_mensagem{
     border-radius: 15px;
+}
+.mensagem{
+    border: 0px;
 }
