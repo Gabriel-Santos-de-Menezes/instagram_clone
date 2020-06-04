@@ -297,12 +297,24 @@ class AppController extends Action{
 
     //Direct do usuário
     public function direct(){
+        //ver se a autenticação foi realizada
+        $this->validaAutenticacao();//se for falso ira ser redirecionado para a página de login
 
+        $usuario = Container::getModel('Usuario');
+        $usuario->__set('id', $_SESSION['id']);
+
+        $this->view->info_usuario = $usuario->getInfoUsuario();
 
         $this->render('/direct', 'layout2');
     }
 
+    //Enviar  mensagem no direct
+    public function enviarMensagem(){
+        //ver se a autenticação foi realizada
+        $this->validaAutenticacao();//se for falso ira ser redirecionado para a página de login
 
+        print_r($_POST);
+    }
 
 }
 ?>

@@ -128,6 +128,13 @@ class Route extends Bootstrap {
 			'action' => 'direct'
 		);
 
+		//rota para o direct do usuário
+		$routes['enviarMensagem'] = array(
+			'route' => '/enviarMensagem',
+			'controller' => 'AppController',
+			'action' => 'enviarMensagem'
+		);
+		
 		$this->setRoutes($routes);
 	}
 

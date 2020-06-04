@@ -55,11 +55,11 @@
                 <div class="area_mensagens">
 
                 </div>
-                <form action="" method="POST">
-                    <div class="input-group mb-3 border form_mensagem">
-                        <input type="text" data-emojiable="true" data-emoji-input="unicode" onkeypress="enviar()" placeholder="Mensagem" id="mensagem" name="mensagem" class="form-control mensagem">
+                <form action="/enviarMensagem" method="POST">
+                    <div class="input-group mb-3 border form_mensagem ">
+                        <input type="text"  data-emojiable="true" onkeypress="enviar()" placeholder="Mensagem" id="mensagem" name="mensagem" class="form-control mensagem pl-5">
                             <div class="input-group-append">
-                                <a class="btn" id="enviar" type="button"></a>
+                                <button class="btn"  id="enviar" type="submit">Enviar</button>
                             </div>
                     </div>
                 </form>

@@ -55,9 +55,9 @@ img.emoji {
 .emoji-picker-icon {
     cursor: pointer;
     position: absolute;
-    right: 10px;
+    left: 15px;
     top: 5px;
-    font-size: 20px;
+    font-size: 25px;
     opacity: 0.7;
     z-index: 100;
     transition: none;
@@ -125,9 +125,9 @@ img.emoji {
 
 .emoji-menu {
     position: absolute;
-    right: 0;
+    top: -235;
     z-index: 999;
-    width: 225px;
+    width: 250px;
     overflow: hidden;
     border: 1px #dfdfdf solid;
     -webkit-border-radius: 3px;
@@ -138,6 +138,17 @@ img.emoji {
     -moz-box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.1);
     box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.1);
 }
+.emoji-menu:after {
+    content: "";
+    width: 0;
+    height: 0;
+    position: absolute;
+    border-left: 20px solid transparent;
+    border-right: 20px solid transparent;
+    border-top: 20px solid #000;
+    bottom: -20px;
+    left: 20%;
+  }
 
 .emoji-items-wrap1 {
     background: #ffffff;
