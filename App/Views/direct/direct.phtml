@@ -4,7 +4,37 @@
             <div class="col-4">
                 <div class="text-center p-3 border-bottom">
                     <p class=" d-inline mb-4">Direct</p>
-                    <a href="#" class="d-inline float-right mb-4"><img src="img/edit.png" alt=""></a>
+                    <a href="#" class="d-inline float-right mb-4" data-toggle="modal" data-target="#exampleModal"><img src="img/edit.png" alt=""></a>
+                </div>
+                <!-- Modal -->
+                <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Nova Mensagem</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <p>Sugestões</p>
+                            <fomr action="pesquisarUsuario" method="get">
+                                <div class="input-group input_pesquisa mx-auto">
+                                    <label for="usuario">Para: </label>
+                                    <input onkeyup="getDados();" type="text" class="form-control pesquisa" id="pesquisar" nome="usuario" placeholder="Search">
+                                </div>
+                                <hr>
+						    </form>
+                            <div class="container">
+                                <a href="#"><img src=""></a>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-primary">Save changes</button>
+                        </div>
+                        </div>
+                    </div>
                 </div>
                 <p>Mensagens</p>
                 <div class="inbox_usuario">

@@ -24,7 +24,7 @@ class Usuario extends Model{
     //Salvar
     public function salvar(){
 
-        $query = "insert into tb_usuarios(nome, usuario, email, foto_perfil, senha, biografia)values(:nome, :usuario, :email, :foto_perfil, :senha, '')";
+        $query = "insert into tb_usuarios(nome, usuario, email, foto_perfil, senha, biografia) values(:nome, :usuario, :email, :foto_perfil, :senha, '')";
 
         $stmt = $this->db->prepare($query);
         //pegar o atributoe atribuir como indice dinâmico da query

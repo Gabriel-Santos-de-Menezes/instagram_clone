@@ -124,14 +124,14 @@ class Route extends Bootstrap {
 		//rota para o direct do usuário
 		$routes['direct'] = array(
 			'route' => '/direct',
-			'controller' => 'AppController',
+			'controller' => 'DirectController',
 			'action' => 'direct'
 		);
 
 		//rota para o direct do usuário
 		$routes['enviarMensagem'] = array(
 			'route' => '/enviarMensagem',
-			'controller' => 'AppController',
+			'controller' => 'DirectController',
 			'action' => 'enviarMensagem'
 		);
 		
