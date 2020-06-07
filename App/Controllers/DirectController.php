@@ -55,6 +55,51 @@ class DirectController extends Action{
        $mensagem->enviarMensagem();
         
     }
+
+    public function pesquisarUsuario(){
+
+        //ver se a autenticação foi realizada
+        $this->validaAutenticacao();//se for falso ira ser redirecionado para a página de login
+
+        //Verifica se existe a variável usuario
+        if(isset($_GET['usuario']) && $_GET['usuario'] != ''){
+            //retorna um obj com a conexão com banco de dados
+            $usuario = Container::getModel('Usuario');
+            $usuario->__set('usuario', $_GET['usuario']);
+            $usuario->__set('id', $_SESSION['id']);
+            if(empty($usuario)){
+                
+            }else{
+                //retorna um array com os usuarios pesquisados
+                $usuarios = $usuario->getAll(); 
+                if(!empty($usuarios)){
+                    $this->view->usuarios = $usuarios;
+                    foreach ($this->view->usuarios as $key => $usuario) {
+                        echo '<div class="pt-1 resultado_pesquisa_direct">';
+                            echo '<a href="falar_com_usuario?id=' .$usuario['id'] . '"  onclick="falar_com_usuario()" class="d-flex  ml-3">';
+                                echo '<div class="d-inline-block ">';
+                                    echo '<img src="img_perfil/' . $usuario['foto_perfil'] .'" class="foto_perfil_pesquisa_usuario rounded-circle border" alt="foto_perfil">';
+                                echo '</div>';
+
+                                echo '<div class="d-inline-block ml-2">';
+                                    echo '<p>' . $usuario['usuario']. '</p>';
+                                    echo '<p class="text-secondary p-0">' . $usuario['nome'] . '</p>';
+                                echo '</div>';
+                            echo '</a>';
+                            echo '<hr class="mb-0">';
+                        echo '</div>';
+                    }
+                } else {
+                    // Se a consulta não retornar nenhum valor, exibi mensagem para o usuário
+                    echo "Nenhum usuário encontrado!";
+                }
+            }
+
+        }
+    }
+    public function falar_com_usuario(){
+        echo "Ola";
+    }
 }
 
 ?>

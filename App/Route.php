@@ -50,7 +50,7 @@ class Route extends Bootstrap {
 			'controller' => 'AppController',
 			'action' => 'post'
 		);
-		
+		//rota para pesquisar por um usuário 
 		$routes['pesquisarUsuario'] = array(
 			'route' => '/pesquisarUsuario',
 			'controller' => 'AppController',
@@ -133,6 +133,13 @@ class Route extends Bootstrap {
 			'route' => '/enviarMensagem',
 			'controller' => 'DirectController',
 			'action' => 'enviarMensagem'
+		);
+
+		//rota para pesquisar por um usuário no direct
+		$routes['pesquisarUsuario'] = array(
+			'route' => '/pesquisarUsuario',
+			'controller' => 'DirectController',
+			'action' => 'pesquisarUsuario'
 		);
 		
 		$this->setRoutes($routes);

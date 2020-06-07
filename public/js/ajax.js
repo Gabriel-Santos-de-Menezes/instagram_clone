@@ -56,9 +56,74 @@
          }
      };
      xmlreq.send(null);
+}
+
+//pegar valor digitado e consultar os usuário
+ function getUsuarioDirect() {
+      
+     // Declaração de Variáveis
+     var usuario   = document.getElementById("pesquisar_direct").value;
+     var result = document.getElementById("resultado_direct");
+     console.log(usuario);
+     var xmlreq = CriaRequest();
+      
+     // Exibi a imagem de progresso
+     //result.innerHTML = '<img src="https://media.giphy.com/media/N256GFy1u6M6Y/giphy.gif">';
+      
+     // Iniciar uma requisição
+     xmlreq.open("GET", "/pesquisarUsuario?usuario=" + usuario, true);
+     
+      
+     // Atribui uma função para ser executada sempre que houver uma mudança de ado
+     xmlreq.onreadystatechange = function(){
+          
+         // Verifica se foi concluído com sucesso e a conexão fechada (readyState=4)
+         if (xmlreq.readyState == 4) {
+              
+             // Verifica se o arquivo foi encontrado com sucesso
+             if (xmlreq.status == 200) {
+                 result.innerHTML = xmlreq.responseText;
+             }else{
+                 result.innerHTML = "Erro: " + xmlreq.statusText;
+             }
+         }
+     };
+     xmlreq.send(null);
+     
+
+ }
+//pegar valor digitado e consultar os usuário
+ function falar_com_usuario() {
+      
+     // Declaração de Variáveis
+     var usuario   = document.getElementById("pesquisar_direct").value;
+     console.log(usuario);
+     var xmlreq = CriaRequest();
+      
+     // Exibi a imagem de progresso
+     //result.innerHTML = '<img src="https://media.giphy.com/media/N256GFy1u6M6Y/giphy.gif">';
+      
+     // Iniciar uma requisição
+     xmlreq.open("GET", "/falar_com_usuario?usuario=" + usuario, true);
+     
+      
+     // Atribui uma função para ser executada sempre que houver uma mudança de ado
+     xmlreq.onreadystatechange = function(){
+          
+         // Verifica se foi concluído com sucesso e a conexão fechada (readyState=4)
+         if (xmlreq.readyState == 4) {
+              
+             // Verifica se o arquivo foi encontrado com sucesso
+             if (xmlreq.status == 200) {
+                 result.innerHTML = xmlreq.responseText;
+             }else{
+                 result.innerHTML = "Erro: " + xmlreq.statusText;
+             }
+         }
+     };
+     xmlreq.send(null);
      
  }
-
  function curtir(id_post, acao, src, i) {
       
     // Declaração de Variáveis

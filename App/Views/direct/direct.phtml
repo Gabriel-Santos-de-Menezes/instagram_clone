@@ -8,30 +8,27 @@
                 </div>
                 <!-- Modal -->
                 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                    <div class="modal-dialog" role="document">
+                    <div class="modal-dialog nova_mensagem" role="document">
                         <div class="modal-content">
-                        <div class="modal-header">
+                        <div class="modal-header ">
                             <h5 class="modal-title" id="exampleModalLabel">Nova Mensagem</h5>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
                         </div>
                         <div class="modal-body">
-                            <p>Sugestões</p>
                             <fomr action="pesquisarUsuario" method="get">
-                                <div class="input-group input_pesquisa mx-auto">
+                                <div class="input-group input_pesquisa ">
                                     <label for="usuario">Para: </label>
-                                    <input onkeyup="getDados();" type="text" class="form-control pesquisa" id="pesquisar" nome="usuario" placeholder="Search">
+                                    <input onkeyup="getUsuarioDirect()" type="text" class="form-control pesquisa" id="pesquisar_direct" nome="usuario" placeholder="Search">
                                 </div>
                                 <hr>
+                                <span>Sugestões</span>
+                                <div id="resultado_direct" class=" mt-2"></div>
 						    </form>
                             <div class="container">
                                 <a href="#"><img src=""></a>
                             </div>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                            <button type="button" class="btn btn-primary">Save changes</button>
                         </div>
                         </div>
                     </div>

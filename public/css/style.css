@@ -396,3 +396,32 @@ div.upload input {
 .mensagem{
     border: 0px;
 }
+
+.nova_mensagem{
+    max-width: 400px;
+    max-height: 400px;
+}
+.resultado_pesquisa_direct{
+    
+    background-color: rgb(255, 255, 255);
+    border-radius: 3px;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    max-width: 400px;
+    max-height: 400px;
+    right: 0;
+    width: 100%;
+    overflow: auto;
+    text-align: center;
+}
+.resultado_pesquisa_direct p{
+    color: black;
+    margin: 0;
+    text-decoration: none;
+}
+.resultado_pesquisa_direct p:hover{
+    color: black;
+    padding: 0;
+    
+}
