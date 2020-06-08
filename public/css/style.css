@@ -375,7 +375,7 @@ div.upload input {
     vertical-align: middle;
 }
 .chat div{
-    width:x;
+    width: 96px;
     height: 96px;
     border: black 2px solid;
     border-radius: 50px;

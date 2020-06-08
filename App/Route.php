@@ -142,6 +142,12 @@ class Route extends Bootstrap {
 			'action' => 'pesquisarUsuario'
 		);
 		
+		//rota para falar com um usuário no direct
+		$routes['falar_com_usuario'] = array(
+			'route' => '/falar_com_usuario',
+			'controller' => 'DirectController',
+			'action' => 'falar_com_usuario'
+		);
 		$this->setRoutes($routes);
 	}
 

@@ -34,6 +34,7 @@
                     </div>
                 </div>
                 <p>Mensagens</p>
+                <!-- Um select para retornar todas as conversas que o usuário logado possui -->
                 <div class="inbox_usuario">
                     <a href="#">
                         <div class=" row mt-3">
@@ -64,35 +65,40 @@
                 
             </div>
             <!-- Condição para apresentar a conversa apenas se o usuário estiver selecionado -->
-            <!-- 
-
+            <?php if(!isset($_GET['id'])) { ?>
+            
                 <div class="text-center border-left chat col-8 d-flex flex-column justify-content-center align-items-center">
                     <div class="mx-auto d-block"><img src="img/direct.png" alt="direct" class=" p-1 my-4 "></div>
                     <h4>Suas mensagens</h4>
                     <small>Envie fotos e mensagens privadas para um amigo ou grupo.</small>
-                    <button class="btn btn-primary mt-3">Enviar mensagens</button>
+                    <button class="btn btn-primary mt-3" data-toggle="modal" data-target="#exampleModal">Enviar mensagens</button>
                 </div>
-             -->
-            
-            <div class="col-8 p-3 border-left">
-                <div class="row border-bottom">
-                    <div class="col-1"><img src="img_perfil/padrao.jpg" class="rounded-circle foto_perfil_edit" alt=""></div>
-                    <div class="col-4"><p>Gabriel</p></div>
-                </div>
-                <div class="area_mensagens">
 
-                </div>
-                <form action="/enviarMensagem" method="POST">
-                    <div class="input-group mb-3 border form_mensagem ">
-                        <input type="text"  data-emojiable="true" onkeypress="enviar()" placeholder="Mensagem" id="mensagem" name="mensagem" class="form-control mensagem pl-5">
-                            <div class="input-group-append">
-                                <button class="btn"  id="enviar" type="submit">Enviar</button>
+                <!-- Se clicar no usuário, vai para conversa com o mesmo -->
+                <?php 
+                }
+                else{
+                ?>
+                    <div class="col-8 p-3 border-left">
+                        <div class="row border-bottom">
+                            <div class="col-1"><img src="img_perfil/padrao.jpg" class="rounded-circle foto_perfil_edit" alt=""></div>
+                            <div class="col-4"><p>Gabriel</p></div>
+                        </div>
+                        <div class="area_mensagens">
+
+                        </div>
+                        <form action="/enviarMensagem" method="POST">
+                            <div class="input-group mb-3 border form_mensagem ">
+                                <input type="text"  data-emojiable="true" onkeypress="enviar()" placeholder="Mensagem" id="mensagem" name="mensagem" class="form-control mensagem pl-5">
+                                    <div class="input-group-append">
+                                        <button class="btn"  id="enviar" type="submit">Enviar</button>
+                                    </div>
                             </div>
+                        </form>
+                        
                     </div>
-                </form>
-                
-            </div>
-        </div> 
+                </div> 
+            <?php } ?>
 
     </div>
 </div>

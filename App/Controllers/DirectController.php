@@ -76,7 +76,7 @@ class DirectController extends Action{
                     $this->view->usuarios = $usuarios;
                     foreach ($this->view->usuarios as $key => $usuario) {
                         echo '<div class="pt-1 resultado_pesquisa_direct">';
-                            echo '<a href="falar_com_usuario?id=' .$usuario['id'] . '"  onclick="falar_com_usuario()" class="d-flex  ml-3">';
+                            echo '<a href="/falar_com_usuario?id=' .$usuario['id'] . '"   class="d-flex  ml-3">';
                                 echo '<div class="d-inline-block ">';
                                     echo '<img src="img_perfil/' . $usuario['foto_perfil'] .'" class="foto_perfil_pesquisa_usuario rounded-circle border" alt="foto_perfil">';
                                 echo '</div>';
@@ -98,7 +98,14 @@ class DirectController extends Action{
         }
     }
     public function falar_com_usuario(){
-        echo "Ola";
+
+        $this->validaAutenticacao();
+
+        if($_GET){
+            if(isset($_GET['id'])){
+                header('Location: /direct?id='.$_GET['id']);
+            }
+        }
     }
 }
 
