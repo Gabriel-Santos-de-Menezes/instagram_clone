@@ -93,14 +93,20 @@
                     </div>
                     <!-- Mensagens dos usuários -->
                     <div class="area_mensagens">
-                        <div class="container pt-4">
-                            <div class="avatar"></div>
-                            <div class="txt">Lorem ipsum dolor sit amet.</div>
-                        </div>
-                        <div class="container pt-4">
+                        <?php
+                        if (isset($this->view->mensagens)) {
+                            foreach ($this->view->mensagens as $id => $mensagem) { ?>
+                                <div class=" me pt-4">
+                                    <div class="avatar"></div>
+                                    <div class="txt"><?= $mensagem['mensagem'] ?></div>
+                                </div>
+                        <?php }
+                        } ?>
+                        <div class=" you pt-4">
                             <div class="avatar"></div>
                             <div class="txt">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam iste ratione impedit facere quibusdam odit, iusto consequuntur error alias praesentium.</div>
                         </div>
+                        
                     </div>
                     <!-- Fim Mensagens dos usuários -->
 

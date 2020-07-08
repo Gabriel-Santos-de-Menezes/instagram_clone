@@ -37,6 +37,17 @@ class Mensagem extends Model{
         
         return $stmt->execute();
     }
+
+    //recuperar mensagens no direct
+    public function Consultar(){
+        $query = "select * from mensagem where from_usuario_id = :from_usuario_id and to_usuario_id = :to_usuario_id";
+        $stmt = $this->db->prepare($query);
+        $stmt->bindValue(':from_usuario_id', $_SESSION['id']);
+        $stmt->bindValue(':to_usuario_id', $this->__get('to_usuario_id'));
+
+        $stmt->execute();
+        return $stmt->fetchAll(\PDO::FETCH_ASSOC);
+    }
     
 }
 
