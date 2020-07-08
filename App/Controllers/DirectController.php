@@ -40,10 +40,11 @@ class DirectController extends Action{
        $usuario->__set('id', $_SESSION['id']);
         print_r($_POST);
        $mensagem = Container::getModel('Mensagem');
+       print_r($_GET);
        
        $mensagem->__set('mensagem', $_POST['mensagem']);
        $mensagem->__set('from_usuario_id', $_SESSION['id']);
-       $mensagem->__set('to_usuario_id', $_POST['to_usuario_id']);
+       $mensagem->__set('to_usuario_id', $_GET['to_usuario']);
        $mensagem->__set('mensagem', $_POST['mensagem']);
        if(isset($_POST['imagem'])){
            $mensagem->__set('imagem', $_POST['imagem']);
@@ -52,7 +53,7 @@ class DirectController extends Action{
            $mensagem->__set('emoji', $_POST['emoji']);
         }
 
-       $mensagem->enviarMensagem();
+        $mensagem->salvar();
         
     }
 
@@ -103,10 +104,20 @@ class DirectController extends Action{
 
         if($_GET){
             if(isset($_GET['id'])){
-                header('Location: /direct?id='.$_GET['id']);
+                
+
+                $usuario = Container::getModel('Usuario');
+                $usuario->__set('id', $_GET['id']);
+                $this->view->info_usuario = $usuario->getInfoUsuario();
+                //print_r($this->view->info_usuario);
+                //print_r($usuario);
+                //print_r($this->view->info_usuario);
+                $mensagem = Container::getModel('Mensagem');
+                $mensagem->__set('to_usuario_id', $_GET['id']);
+                
+
+                $this->render('/direct', 'layout2');
             }
         }
     }
 }
-
-?>

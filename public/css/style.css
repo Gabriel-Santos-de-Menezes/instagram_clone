@@ -401,6 +401,51 @@ div.upload input {
     max-width: 400px;
     max-height: 400px;
 }
+
+/* Mensagens  */
+
+/* .container {
+    position: relative;
+    overflow: hidden;
+    padding: 0.5em;
+  } */
+  .avatar {
+    width: 150px;
+    height: 30px;
+    background: rgb(13, 114, 245);
+    border-radius: 30px 30px 0% 0%;
+    margin-left: 50px;
+    position: relative;
+  }
+  .avatar::after {
+    content: "";
+    position: absolute;
+    left: -53px;
+    top: 0;
+    width: 50px;
+    height: 50px;
+    box-sizing: border-box;
+    border: 4px solid #fff;
+    background-image: url(http://placecage.com/50/50);
+    overflow: hidden;
+    z-index: 100;
+    box-shadow: 0 0 10px 0 rgba(0,0,0,0.75), 0 0 0 3px rgba(255,255,255,1.0);
+    border-radius: 50%;
+  }
+  .txt{
+    position: relative;
+    color: #fff;
+    width: 200px;
+    height: auto;
+    background: rgb(13, 114, 245);
+    border-radius: 0% 0% 30px 30px;
+    box-sizing: border-box;
+    padding: 0 10px 30px 60px;
+    box-shadow: 0 6px 10px 0 rgba(0,0,0,0.25);
+  }
+/* Fim Mensagens  */
+
+
 .resultado_pesquisa_direct{
     
     background-color: rgb(255, 255, 255);

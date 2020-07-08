@@ -168,7 +168,7 @@ class Usuario extends Model{
         $stmt->bindValue(':id_usuario', $id_usuario_seguindo);
         $stmt->execute();
 
-        return $stmt->fetch(\PDO::FETCH_ASSOC);//recuperar um único array associativo
+        return $stmt->fetchAll(\PDO::FETCH_ASSOC);//recuperar um único array associativo
     }
 
 

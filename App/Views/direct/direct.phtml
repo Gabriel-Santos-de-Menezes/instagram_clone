@@ -10,26 +10,25 @@
                 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div class="modal-dialog nova_mensagem" role="document">
                         <div class="modal-content">
-                        <div class="modal-header ">
-                            <h5 class="modal-title" id="exampleModalLabel">Nova Mensagem</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                        <div class="modal-body">
-                            <fomr action="pesquisarUsuario" method="get">
-                                <div class="input-group input_pesquisa ">
-                                    <label for="usuario">Para: </label>
-                                    <input onkeyup="getUsuarioDirect()" type="text" class="form-control pesquisa" id="pesquisar_direct" nome="usuario" placeholder="Search">
-                                </div>
-                                <hr>
-                                <span>Sugestões</span>
-                                <div id="resultado_direct" class=" mt-2"></div>
-						    </form>
-                            <div class="container">
-                                <a href="#"><img src=""></a>
+                            <div class="modal-header ">
+                                <h5 class="modal-title" id="exampleModalLabel">Nova Mensagem</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
                             </div>
-                        </div>
+                            <div class="modal-body">
+                                <fomr action="pesquisarUsuario" method="get">
+                                    <div class="input-group input_pesquisa ">
+                                        <label for="usuario">Para: </label>
+                                        <input onkeyup="getUsuarioDirect()" type="text" class="form-control pesquisa" id="pesquisar_direct" nome="usuario" placeholder="Search">
+                                    </div>
+                                    <span class="mt-4">Sugestões</span>
+                                    <div id="resultado_direct" class=" mt-2"></div>
+                                    </form>
+                                    <div class="container">
+                                        <a href="#"><img src=""></a>
+                                    </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -39,7 +38,9 @@
                     <a href="#">
                         <div class=" row mt-3">
                             <div class="col-2"><img src="img_perfil/padrao.jpg" class="rounded-circle foto_perfil_edit" alt=""></div>
-                            <div class="col"><p>Gabriel</p></div>
+                            <div class="col">
+                                <p>Gabriel</p>
+                            </div>
                         </div>
                         <small>Online há 3 h</small>
                     </a>
@@ -48,7 +49,9 @@
                     <a href="#">
                         <div class=" row mt-3">
                             <div class="col-2"><img src="img_perfil/padrao.jpg" class="rounded-circle foto_perfil_edit" alt=""></div>
-                            <div class="col"><p>Gabriel</p></div>
+                            <div class="col">
+                                <p>Gabriel</p>
+                            </div>
                         </div>
                         <small>Online há 3 h</small>
                     </a>
@@ -57,16 +60,18 @@
                     <a href="#">
                         <div class=" row mt-3">
                             <div class="col-2"><img src="img_perfil/padrao.jpg" class="rounded-circle foto_perfil_edit" alt=""></div>
-                            <div class="col"><p>Gabriel</p></div>
+                            <div class="col">
+                                <p>Gabriel</p>
+                            </div>
                         </div>
                         <small>Online há 3 h</small>
                     </a>
                 </div>
-                
+
             </div>
             <!-- Condição para apresentar a conversa apenas se o usuário estiver selecionado -->
-            <?php if(!isset($_GET['id'])) { ?>
-            
+            <?php if (!isset($_GET['id'])) { ?>
+
                 <div class="text-center border-left chat col-8 d-flex flex-column justify-content-center align-items-center">
                     <div class="mx-auto d-block"><img src="img/direct.png" alt="direct" class=" p-1 my-4 "></div>
                     <h4>Suas mensagens</h4>
@@ -75,30 +80,46 @@
                 </div>
 
                 <!-- Se clicar no usuário, vai para conversa com o mesmo -->
-                <?php 
-                }
-                else{
-                ?>
-                    <div class="col-8 p-3 border-left">
-                        <div class="row border-bottom">
-                            <div class="col-1"><img src="img_perfil/padrao.jpg" class="rounded-circle foto_perfil_edit" alt=""></div>
-                            <div class="col-4"><p>Gabriel</p></div>
-                        </div>
-                        <div class="area_mensagens">
+            <?php
+            } else {
+            ?>
 
+                <div class="col-8 p-3 border-left">
+                    <div class="row border-bottom">
+                        <div class="col-1"><img src="img_perfil/padrao.jpg" class="rounded-circle foto_perfil_edit" alt=""></div>
+                        <div class="col-4">
+                            <p><?= $this->view->info_usuario['usuario'] ?></p>
                         </div>
-                        <form action="/enviarMensagem" method="POST">
-                            <div class="input-group mb-3 border form_mensagem ">
-                                <input type="text"  data-emojiable="true" onkeypress="enviar()" placeholder="Mensagem" id="mensagem" name="mensagem" class="form-control mensagem pl-5">
-                                    <div class="input-group-append">
-                                        <button class="btn"  id="enviar" type="submit">Enviar</button>
-                                    </div>
-                            </div>
-                        </form>
-                        
                     </div>
-                </div> 
-            <?php } ?>
+                    <!-- Mensagens dos usuários -->
+                    <div class="area_mensagens">
+                        <div class="container pt-4">
+                            <div class="avatar"></div>
+                            <div class="txt">Lorem ipsum dolor sit amet.</div>
+                        </div>
+                        <div class="container pt-4">
+                            <div class="avatar"></div>
+                            <div class="txt">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam iste ratione impedit facere quibusdam odit, iusto consequuntur error alias praesentium.</div>
+                        </div>
+                    </div>
+                    <!-- Fim Mensagens dos usuários -->
+
+                    <!-- Envia a mensagem para o usuário selecionado-->
+                    <form action="/enviarMensagem?to_usuario=<?= $_GET['id'] ?>" method="POST">
+                        <div class="input-group mb-3 border form_mensagem ">
+                            <input type="text" data-emojiable="true" onkeypress="enviar()" placeholder="Mensagem" id="mensagem" name="mensagem" class="form-control mensagem pl-5">
+                            <div class="input-group-append">
+                                <button class="btn" id="enviar" type="submit">Enviar</button>
+                            </div>
+                        </div>
+                    </form>
+
+                </div>
+        </div>
+
+    <?php
+            }
+    ?>
 
     </div>
 </div>
