@@ -223,8 +223,6 @@ div.upload input {
     cursor: pointer;
 }
 
-
-
 /* ****** Fim da parte do modal de postagem ***** */
 
 /* ********** Fim da página Timeline ********* */
@@ -261,9 +259,7 @@ div.upload input {
 .config_perfil{
     border-radius: 8px;
 }
-.info_seguir a{
-    
-}
+
 .info_bio p{
     margin-bottom: 5px;
 }
@@ -364,6 +360,7 @@ div.upload input {
     margin-top: 75px;
     border-radius: 4px;
     height: 697px;
+    width: 95%;
 }
 .direct .users{
     height: 100%;
@@ -389,12 +386,14 @@ div.upload input {
 }
 .area_mensagens{
     height: 590px;
+    overflow: auto;
 }
 .form_mensagem{
     border-radius: 15px;
 }
 .mensagem{
-    border: 0px;
+    border: 1px solid;
+    border-radius: 15px 0 0 15px;
 }
 
 .nova_mensagem{
@@ -409,7 +408,7 @@ div.upload input {
     overflow: hidden;
     padding: 0.5em;
   } */
-  .avatar {
+ /*  .avatar {
     width: 150px;
     height: 30px;
     background: rgb(13, 114, 245);
@@ -433,26 +432,30 @@ div.upload input {
     box-shadow: 0 0 10px 0 rgba(0,0,0,0.75), 0 0 0 3px rgba(255,255,255,1.0);
     border-radius: 50%;
     
-  }
+  } */
   .txt{
     position: relative;
-    color: #fff;
-    width: 200px;
+    max-width: 230px;
     height: auto;
-    background: rgb(13, 114, 245);
-    border-radius: 0% 0% 30px 30px;
+    border: 1px solid #efefef;
+    border-radius: 30px 30px 30px 30px;
     box-sizing: border-box;
-    padding: 0 10px 30px 60px;
-    box-shadow: 0 6px 10px 0 rgba(0,0,0,0.25);
+    padding: 10px 15px 10px 15px;
     
+    font-size: 14px;
   }
 
  .me{
-     float: right;
-     clear: both;
+    float: right;
+    clear: both;
+}
+
+.me div{
+    background: #efefef;
  }
  .you{
-     clear: both;
+    clear: both;
+    width: auto; 
  }
 
 /* Fim Mensagens  */

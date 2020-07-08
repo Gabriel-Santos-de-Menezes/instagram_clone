@@ -121,6 +121,7 @@ class DirectController extends Action
                 $mensagem->__set('from_usuario_id', $_SESSION['id']);
                 
                 $this->view->mensagens = $mensagem->Consultar();
+                
 
 
                 $this->render('/direct', 'layout2');

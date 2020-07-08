@@ -95,25 +95,30 @@
                     <div class="area_mensagens">
                         <?php
                         if (isset($this->view->mensagens)) {
-                            foreach ($this->view->mensagens as $id => $mensagem) { ?>
-                                <div class=" me pt-4">
-                                    <div class="avatar"></div>
+                            foreach ($this->view->mensagens as $id => $mensagem) { 
+                                $quem = '';
+                                //atribuir um classe you para deixar a mensagem a direita
+                                if(isset($_GET['id']) && $mensagem['from_usuario_id'] != $_SESSION['id']){
+                                    $quem = "you";
+                                }else
+                                    $quem = "me";        
+                        ?>
+                                <div class=" <?= $quem ?> pt-4">
                                     <div class="txt"><?= $mensagem['mensagem'] ?></div>
                                 </div>
                         <?php }
                         } ?>
-                        <div class=" you pt-4">
+                        <!-- <div class=" you pt-4">
                             <div class="avatar"></div>
                             <div class="txt">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam iste ratione impedit facere quibusdam odit, iusto consequuntur error alias praesentium.</div>
-                        </div>
-                        
+                        </div> -->                        
                     </div>
                     <!-- Fim Mensagens dos usuários -->
 
                     <!-- Envia a mensagem para o usuário selecionado-->
                     <form action="/enviarMensagem?to_usuario=<?= $_GET['id'] ?>" method="POST">
                         <div class="input-group mb-3 border form_mensagem ">
-                            <input type="text" data-emojiable="true" onkeypress="enviar()" placeholder="Mensagem" id="mensagem" name="mensagem" class="form-control mensagem pl-5">
+                            <input type="text" data-emojiable="true" onkeypress="enviar()" placeholder="Mensagem" id="mensagem" name="mensagem" class="form-control mensagem pl-5 ">
                             <div class="input-group-append">
                                 <button class="btn" id="enviar" type="submit">Enviar</button>
                             </div>

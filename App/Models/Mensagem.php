@@ -40,7 +40,22 @@ class Mensagem extends Model{
 
     //recuperar mensagens no direct
     public function Consultar(){
-        $query = "select * from mensagem where from_usuario_id = :from_usuario_id and to_usuario_id = :to_usuario_id";
+        $query = "select * from mensagem where 
+                    (from_usuario_id = :from_usuario_id and to_usuario_id = :to_usuario_id) ||
+                    (from_usuario_id = :to_usuario_id and to_usuario_id =:from_usuario_id )";
+        $stmt = $this->db->prepare($query);
+        $stmt->bindValue(':from_usuario_id', $_SESSION['id']);
+        $stmt->bindValue(':to_usuario_id', $this->__get('to_usuario_id'));
+
+        $stmt->execute();
+        return $stmt->fetchAll(\PDO::FETCH_ASSOC);
+    }
+
+    //recuperar os usuários com quem o usuário logado têm conversas
+    public function ConsultarConversas(){
+        $query = "select id, usuario from usuario, mensagem where 
+                    (from_usuario_id = :from_usuario_id and to_usuario_id = :to_usuario_id) ||
+                    (from_usuario_id = :to_usuario_id and to_usuario_id =:from_usuario_id )";
         $stmt = $this->db->prepare($query);
         $stmt->bindValue(':from_usuario_id', $_SESSION['id']);
         $stmt->bindValue(':to_usuario_id', $this->__get('to_usuario_id'));
@@ -50,7 +65,3 @@ class Mensagem extends Model{
     }
     
 }
-
-
-
-?>
