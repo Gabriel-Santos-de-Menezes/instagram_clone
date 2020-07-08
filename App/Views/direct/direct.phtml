@@ -34,39 +34,19 @@
                 </div>
                 <p>Mensagens</p>
                 <!-- Um select para retornar todas as conversas que o usuário logado possui -->
-                <div class="inbox_usuario">
-                    <a href="#">
-                        <div class=" row mt-3">
-                            <div class="col-2"><img src="img_perfil/padrao.jpg" class="rounded-circle foto_perfil_edit" alt=""></div>
-                            <div class="col">
-                                <p>Gabriel</p>
+                <?php foreach($this->view->DirectUsuarios as $id => $usuario){ ?>
+                    <div class="inbox_usuario">
+                        <a href="#">
+                            <div class=" row mt-3">
+                                <div class="col-2"><img src="img_perfil/padrao.jpg" class="rounded-circle foto_perfil_edit" alt=""></div>
+                                <div class="col">
+                                    <p><?= $usuario['usuario'] ?></p>
+                                </div>
                             </div>
-                        </div>
-                        <small>Online há 3 h</small>
-                    </a>
-                </div>
-                <div class="inbox_usuario">
-                    <a href="#">
-                        <div class=" row mt-3">
-                            <div class="col-2"><img src="img_perfil/padrao.jpg" class="rounded-circle foto_perfil_edit" alt=""></div>
-                            <div class="col">
-                                <p>Gabriel</p>
-                            </div>
-                        </div>
-                        <small>Online há 3 h</small>
-                    </a>
-                </div>
-                <div class="inbox_usuario">
-                    <a href="#">
-                        <div class=" row mt-3">
-                            <div class="col-2"><img src="img_perfil/padrao.jpg" class="rounded-circle foto_perfil_edit" alt=""></div>
-                            <div class="col">
-                                <p>Gabriel</p>
-                            </div>
-                        </div>
-                        <small>Online há 3 h</small>
-                    </a>
-                </div>
+                            <small>Online há 3 h</small>
+                        </a>
+                    </div>
+                <?php } ?>
 
             </div>
             <!-- Condição para apresentar a conversa apenas se o usuário estiver selecionado -->

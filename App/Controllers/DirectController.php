@@ -31,6 +31,8 @@ class DirectController extends Action
 
         $this->view->info_usuario = $usuario->getInfoUsuario();
 
+        $this->view->DirectUsuarios = $usuario->ConsultarConversas();
+
         $this->render('/direct', 'layout2');
     }
 
@@ -121,8 +123,6 @@ class DirectController extends Action
                 $mensagem->__set('from_usuario_id', $_SESSION['id']);
                 
                 $this->view->mensagens = $mensagem->Consultar();
-                
-
 
                 $this->render('/direct', 'layout2');
             }

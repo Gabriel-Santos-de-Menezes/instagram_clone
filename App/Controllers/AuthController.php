@@ -26,6 +26,11 @@ class AuthController extends Action{
         if($usuario->__get('id') != '' && $usuario->__get('nome') != '' && $usuario->__get('usuario') != ''){
             
             session_start();
+            
+            if(!isset($_SESSION['start_login'])) { // se não tiver pego tempo que logou
+                $_SESSION['start_login'] = time(); //pega tempo que logou
+                 
+            }
 
             //Setar a super global session com os indices id, nome e usuário
             $_SESSION['id'] = $usuario->__get('id');
@@ -47,6 +52,3 @@ class AuthController extends Action{
     }
 
 }
-
-
-?>
