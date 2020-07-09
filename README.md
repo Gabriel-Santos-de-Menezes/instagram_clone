@@ -35,6 +35,7 @@ Além de ter a aparêcia igual a do instagram, também possui diversas funcional
 - Boas práticas de utilização do git
 - Uso de bibliotecas
 
+<<<<<<< HEAD
 <hr>
 
 ### Tela de Login
@@ -62,6 +63,8 @@ Além de ter a aparêcia igual a do instagram, também possui diversas funcional
 ![alt text](https://github.com/Gabriel-Santos-de-Menezes/instagram_clone/tree/master/prints/tela_direct_chat.png)
 
 
+=======
+>>>>>>> 8e05250170bbe384bf38bb3f6e3260f96c526ef3
 <hr>
 <p>Creat by Gabriel Santos de Menezes</p>
 
