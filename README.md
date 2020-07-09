@@ -1,15 +1,40 @@
-# instagram_clone
-<p>Clone do instagram em sua versão web, com alguns detalhes diferenciados.</p>
+# Clone do Instagram
+Clone do instagram em sua versão web, com alguns detalhes diferenciados.
+# :computer: Sobre o projeto
+ O instagram clone é um projeto com a finalidade de colocar em prática os meus conhecimentos adiquiridos. 
+Além de ter a aparêcia igual a do instagram, também possui diversas funcionalidades parecidas, com algum ajustes pensando uso via descktop.
 
-<p>Esse projeto proporciona um bom aprendizado, tonando muito conteúdo teórico em prática.</p>
-<ul>Nele contém: 
-    <li>Manipulação de dados no banco</li> 
-    <li>Padrão MVC com a especificação psr-4</li>
-    <li>PHP OO com boas práticas de desenvolvimento</li>
-    <li>Bootstrap 4</li>
-    <li>JavaScript</li>
-    <li>entre outras peculiaridades.<li>
-</ul>
+### Tecnologias usadas
+- PHP com padrão MVC
+- JavaScript
+- Bootstrap
+- Mysql
+- Ajax
+- Composer
+- Arquitetura MVC
+
+### :rocket: Funcionalidades do Clone do Instagram 
+
+- [X] Cadastro de usuário :bust_in_silhouette:
+- [X] Editar informações do usuário :memo:
+- [X] Postar foto com descrição 
+- [X] Seguir ou deixar de seguir outro usuário :busts_in_silhouette:
+- [X] Comentar no post de outros usuarios :speech_balloon:
+- [X] Curtir posts de outros usuarios :+1:
+- [X] Pesquisar por usuários :mag_right:
+- [X] Visualizar o perfil de outros usuários :eyes:
+- [X] Direct com chat para troca de mensagens :envelope:
+
+
+### :green_book: Conhecimentos  utilizados                            
+
+- Manipulação de dados no banco
+- Padrão MVC com a especificação psr-4
+- PHP com boas práticas de desenvolvimento
+- Orientação a Objetos
+- Boas práticas de utilização do git
+- Uso de bibliotecas
+
 <hr>
 <p>Creat by Gabriel Santos de Menezes</p>
 
