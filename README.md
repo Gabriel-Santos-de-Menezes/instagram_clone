@@ -35,36 +35,34 @@ Além de ter a aparêcia igual a do instagram, também possui diversas funcional
 - Boas práticas de utilização do git
 - Uso de bibliotecas
 
-<<<<<<< HEAD
+
 <hr>
 
 ### Tela de Login
-![alt text](https://github.com/Gabriel-Santos-de-Menezes/instagram_clone/tree/master/prints/tela_login.png)
+![alt text](https://github.com/Gabriel-Santos-de-Menezes/instagram_clone/blob/master/prints/tela_login.png)
 
 ### Tela de Cadastro
-![alt text](https://github.com/Gabriel-Santos-de-Menezes/instagram_clone/tree/master/prints/tela_cadastro.png)
+![alt text](https://github.com/Gabriel-Santos-de-Menezes/instagram_clone/blob/master/prints/tela_cadastro.png)
 
 ### Timeline
-![alt text](https://github.com/Gabriel-Santos-de-Menezes/instagram_clone/tree/master/prints/timileni.png)
+![alt text](https://github.com/Gabriel-Santos-de-Menezes/instagram_clone/blob/master/prints/timilene.png)
 
 ### Postar
-![alt text](https://github.com/Gabriel-Santos-de-Menezes/instagram_clone/tree/master/prints/post.png)
+![alt text](https://github.com/Gabriel-Santos-de-Menezes/instagram_clone/blob/master/prints/post.png)
 
 ### Tela de perfil
-![alt text](https://github.com/Gabriel-Santos-de-Menezes/instagram_clone/tree/master/prints/tela_perfilo_logado.png)
+![alt text](https://github.com/Gabriel-Santos-de-Menezes/instagram_clone/blob/master/prints/tela_perfil_logado.png)
 
 ### Editar perfil
-![alt text](https://github.com/Gabriel-Santos-de-Menezes/instagram_clone/tree/master/prints/editar_perfil.png)
+![alt text](https://github.com/Gabriel-Santos-de-Menezes/instagram_clone/blob/master/prints/editar_perfil.png)
 
 ### Direct
-![alt text](https://github.com/Gabriel-Santos-de-Menezes/instagram_clone/tree/master/prints/tela_direct_inicial.png)
+![alt text](https://github.com/Gabriel-Santos-de-Menezes/instagram_clone/blob/master/prints/tela_direct_inicial.png)
 
 ### Chat do Direct
-![alt text](https://github.com/Gabriel-Santos-de-Menezes/instagram_clone/tree/master/prints/tela_direct_chat.png)
+![alt text](https://github.com/Gabriel-Santos-de-Menezes/instagram_clone/blob/master/prints/tela_direct_chat.png)
 
 
-=======
->>>>>>> 8e05250170bbe384bf38bb3f6e3260f96c526ef3
 <hr>
 <p>Creat by Gabriel Santos de Menezes</p>
 
