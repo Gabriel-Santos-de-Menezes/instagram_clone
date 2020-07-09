@@ -27,9 +27,6 @@ class AppController extends Action{
 
         $this->view->posts = $posts;//Manda o array de posts para a timeline
 
-        
-        
-
         $usuario = Container::getModel('Usuario');
         $usuario->__set('id', $_SESSION['id']);
 

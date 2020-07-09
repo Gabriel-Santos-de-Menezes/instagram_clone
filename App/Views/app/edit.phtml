@@ -17,7 +17,6 @@
                 <div class="form-group row mt-4">
                     <label for="foto_perfil" class="display-4 text-center col-sm-3 col-form-label"><a><img class="rounded-circle border foto_perfil_edit" src="img_perfil/<?= $this->view->info_usuario['foto_perfil']?>"></a></label>
                     <div class="col-sm-7 ">
-                        <label  class=""><?=$this->view->info_usuario['usuario']?></label>
                         <div class="upload col-sm-7">
                             <div class="inputFileOverlay">Alterar foto do perfil</div>
                             <input required type="file" class="form-control" id="img_post" name="foto_perfil" accept="image/png, image/jpeg"  />
@@ -68,7 +67,7 @@
                         <!-- Vazio apénas para ocupar o espaço -->
                     </div>
                     <div class="col-sm-7">
-                        <button type="submit"  class="btn btn-primary">Enviar</button>
+                        <button type="submit"  class="btn btn-primary">Salvar</button>
                     </div>
                 </div>
             </form>

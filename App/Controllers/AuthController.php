@@ -14,9 +14,6 @@ class AuthController extends Action{
         
         $usuario = Container::getModel('Usuario');
 
-        //Pegar os valores dos inputes e colocar nos atributos
-        //$usuario->__set('nome',$_POST['nome']); 
-        //$usuario->__set('email',$_POST['email']);
         $usuario->__set('usuario',$_POST['usuario']);
         $usuario->__set('senha', md5($_POST['senha']));
 
@@ -27,10 +24,6 @@ class AuthController extends Action{
             
             session_start();
             
-            if(!isset($_SESSION['start_login'])) { // se não tiver pego tempo que logou
-                $_SESSION['start_login'] = time(); //pega tempo que logou
-                 
-            }
 
             //Setar a super global session com os indices id, nome e usuário
             $_SESSION['id'] = $usuario->__get('id');
