@@ -32,7 +32,7 @@ class DirectController extends Action
         $this->view->info_usuario = $usuario->getInfoUsuario();
 
         $this->view->DirectUsuarios = $usuario->ConsultarConversas();
-
+        
         $this->render('/direct', 'layout2');
     }
 
@@ -55,14 +55,13 @@ class DirectController extends Action
         if (isset($_POST['imagem'])) {
             $mensagem->__set('imagem', $_POST['imagem']);
         }
-        if (isset($_POST['emoji'])) {
-            $mensagem->__set('emoji', $_POST['emoji']);
-        }
-
+        
         $mensagem->salvar();
+         
+        header('Location: /falar_com_usuario?id='. $_GET['to_usuario']);
     }
 
-    public function pesquisarUsuario()
+    public function pesquisarUsuarioDirect()
     {
 
         //ver se a autenticação foi realizada
@@ -112,18 +111,23 @@ class DirectController extends Action
 
 
                 $usuario = Container::getModel('Usuario');
-                $usuario->__set('id', $_GET['id']);
+
+                //seta o id do usuário que está logado 
+                $usuario->__set('id', $_SESSION['id']);
                 $this->view->info_usuario = $usuario->getInfoUsuario();
-                //print_r($this->view->info_usuario);
-                //print_r($usuario);
-                //print_r($this->view->info_usuario);
+                
+                //seta o id do usuário que está conversando 
+                $usuario->__set('id', $_GET['id']);
+                $this->view->dados_usuario = $usuario->getInfoUsuario();
+
                 $mensagem = Container::getModel('Mensagem');
                 $mensagem->__set('to_usuario_id', $_GET['id']);
 
                 $mensagem->__set('from_usuario_id', $_SESSION['id']);
                 
                 $this->view->mensagens = $mensagem->Consultar();
-
+                $this->view->DirectUsuarios = $usuario->ConsultarConversas();
+                
                 $this->render('/direct', 'layout2');
             }
         }

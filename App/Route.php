@@ -136,10 +136,10 @@ class Route extends Bootstrap {
 		);
 
 		//rota para pesquisar por um usuário no direct
-		$routes['pesquisarUsuario'] = array(
-			'route' => '/pesquisarUsuario',
+		$routes['pesquisarUsuarioDirect'] = array(
+			'route' => '/pesquisarUsuarioDirect',
 			'controller' => 'DirectController',
-			'action' => 'pesquisarUsuario'
+			'action' => 'pesquisarUsuarioDirect'
 		);
 		
 		//rota para falar com um usuário no direct
@@ -148,6 +148,8 @@ class Route extends Bootstrap {
 			'controller' => 'DirectController',
 			'action' => 'falar_com_usuario'
 		);
+
+		
 		$this->setRoutes($routes);
 	}
 

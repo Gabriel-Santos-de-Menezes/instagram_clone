@@ -71,7 +71,7 @@
      //result.innerHTML = '<img src="https://media.giphy.com/media/N256GFy1u6M6Y/giphy.gif">';
       
      // Iniciar uma requisição
-     xmlreq.open("GET", "/pesquisarUsuario?usuario=" + usuario, true);
+     xmlreq.open("GET", "/pesquisarUsuarioDirect?usuario=" + usuario, true);
      
       
      // Atribui uma função para ser executada sempre que houver uma mudança de ado

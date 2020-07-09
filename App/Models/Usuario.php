@@ -243,7 +243,7 @@ class Usuario extends Model{
 
     //recuperar os usuários com quem o usuário logado têm conversas
     public function ConsultarConversas(){
-        $query = "select id, usuario from tb_usuarios, mensagem where 
+        $query = "select id, usuario, foto_perfil from tb_usuarios, mensagem where 
                     (id = from_usuario_id or id = to_usuario_id) and 
                     (:id = from_usuario_id or :id = to_usuario_id)
                     GROUP BY id;";

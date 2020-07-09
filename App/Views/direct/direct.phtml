@@ -34,16 +34,15 @@
                 </div>
                 <p>Mensagens</p>
                 <!-- Um select para retornar todas as conversas que o usuário logado possui -->
-                <?php foreach($this->view->DirectUsuarios as $id => $usuario){ ?>
+                <?php foreach ($this->view->DirectUsuarios as $id => $usuario) { ?>
                     <div class="inbox_usuario">
-                        <a href="#">
+                        <a href="/falar_com_usuario?id=<?= $usuario['id'] ?>">
                             <div class=" row mt-3">
-                                <div class="col-2"><img src="img_perfil/padrao.jpg" class="rounded-circle foto_perfil_edit" alt=""></div>
+                                <div class="col-2"><img src="/img_perfil/<?= $usuario['foto_perfil'] ?>" class="rounded-circle foto_perfil_edit" alt=""></div>
                                 <div class="col">
                                     <p><?= $usuario['usuario'] ?></p>
                                 </div>
                             </div>
-                            <small>Online há 3 h</small>
                         </a>
                     </div>
                 <?php } ?>
@@ -66,22 +65,22 @@
 
                 <div class="col-8 p-3 border-left">
                     <div class="row border-bottom">
-                        <div class="col-1"><img src="img_perfil/padrao.jpg" class="rounded-circle foto_perfil_edit" alt=""></div>
+                        <div class="col-1"><img src="img_perfil/<?= $this->view->dados_usuario['foto_perfil'] ?>" class="rounded-circle foto_perfil_edit" alt=""></div>
                         <div class="col-4">
-                            <p><?= $this->view->info_usuario['usuario'] ?></p>
+                            <p><?= $this->view->dados_usuario['usuario'] ?></p>
                         </div>
                     </div>
                     <!-- Mensagens dos usuários -->
                     <div class="area_mensagens">
                         <?php
                         if (isset($this->view->mensagens)) {
-                            foreach ($this->view->mensagens as $id => $mensagem) { 
+                            foreach ($this->view->mensagens as $id => $mensagem) {
                                 $quem = '';
                                 //atribuir um classe you para deixar a mensagem a direita
-                                if(isset($_GET['id']) && $mensagem['from_usuario_id'] != $_SESSION['id']){
+                                if (isset($_GET['id']) && $mensagem['from_usuario_id'] != $_SESSION['id']) {
                                     $quem = "you";
-                                }else
-                                    $quem = "me";        
+                                } else
+                                    $quem = "me";
                         ?>
                                 <div class=" <?= $quem ?> pt-4">
                                     <div class="txt"><?= $mensagem['mensagem'] ?></div>
@@ -91,7 +90,7 @@
                         <!-- <div class=" you pt-4">
                             <div class="avatar"></div>
                             <div class="txt">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam iste ratione impedit facere quibusdam odit, iusto consequuntur error alias praesentium.</div>
-                        </div> -->                        
+                        </div> -->
                     </div>
                     <!-- Fim Mensagens dos usuários -->
 

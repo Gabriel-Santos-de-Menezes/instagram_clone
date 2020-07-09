@@ -11,7 +11,7 @@ a {
     color: inherit;
 }
 body{
-    background-color: #FAF8F8;
+    background-color: #FAFAFA;
 }
 
 
@@ -52,7 +52,7 @@ body{
 
 #pagina_home{
     margin-top: 46px;
-    background-color: rgb(250, 246, 246);
+    background-color: #FAFAFA;
 }
 .home_icones img{
     width: 22px;
@@ -70,7 +70,7 @@ body{
 
 .resultado_pesquisa{
     position: absolute;
-    background-color: rgb(255, 255, 255);
+    background-color: #FAFAFA;
     border-radius: 3px;
     margin-left: auto;
     margin-right: auto;
@@ -235,7 +235,7 @@ div.upload input {
     margin-left: auto;
     margin-left: auto;
     margin-top: 46px;
-    background-color:#FAF8F8;  
+    background-color:#FAFAFA;
 }
 .pagina_perfil_container{
     max-width: 935px;

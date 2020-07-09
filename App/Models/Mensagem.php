@@ -24,16 +24,14 @@ class Mensagem extends Model{
 
     //salvar
     public function Salvar(){
-        $query = "insert into mensagem (mensagem, from_usuario_id, to_usuario_id, imagem, emoji) 
-                    values(:mensagem, :from_usuario_id, :to_usuario_id, :imagem, :emoji)";
+        $query = "insert into mensagem (mensagem, from_usuario_id, to_usuario_id, imagem) 
+                    values(:mensagem, :from_usuario_id, :to_usuario_id, :imagem)";
     
         $stmt = $this->db->prepare($query);
         $stmt->bindValue(':mensagem', $this->__get('mensagem'));
         $stmt->bindValue(':from_usuario_id', $_SESSION['id']);
         $stmt->bindValue(':to_usuario_id', $this->__get('to_usuario_id'));
-        $stmt->bindValue(':imagem', $this->__get('imagem'));
-        $stmt->bindValue(':emoji', $this->__get('emoji'));
-        
+        $stmt->bindValue(':imagem', $this->__get('imagem'));        
         
         return $stmt->execute();
     }
