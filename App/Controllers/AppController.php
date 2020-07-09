@@ -45,11 +45,10 @@ class AppController extends Action{
 
         $post = Container::getModel('Post');//retorna a conexão com o banco configurada
         $post->__set('id_usuario', $_SESSION['id']);
-
-        $posts = $post->getPostUsuario();
+ 
         $this->view->info_total_posts = $post->getTotalPostUsuario();
 
-        $this->view->posts = $posts;//Manda o array de posts para o perfil
+        $this->view->posts = $post->getPostUsuario();;//Manda o array de posts para o perfil
         
         $usuario = Container::getModel('Usuario');
         $usuario->__set('id', $_SESSION['id']);
@@ -76,11 +75,14 @@ class AppController extends Action{
         $id_usuario_seguindo = isset($_GET['id']) ? $_GET['id'] : '';
 
         //Envia os dados do usuário para a página user
+        $this->view->info_usuario = $usuario->getInfoUsuario();
+
         $this->view->esta_seguindo = $usuario->esta_seguindo($id_usuario_seguindo);
         $this->view->info_usuarioNaoLogado = $usuario->getInfoUsuarioNaoLogado($id_usuario_seguindo);
-        $this->view->info_usuario = $usuario->getInfoUsuario();
         $this->view->info_total_seguidores = $usuario->getTotalSeguidoresNaoLogado($id_usuario_seguindo);
         $this->view->info_total_seguindo = $usuario->getTotalSeguindoNaoLogado($id_usuario_seguindo);
+        
+        
         //retorna a conexão com o banco configurada
         $post = Container::getModel('Post');
         $post->__set('id_usuario', $_GET['id']);

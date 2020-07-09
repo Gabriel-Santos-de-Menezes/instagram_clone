@@ -1,5 +1,5 @@
-<?php 
-    
+<?php
+
 ?>
 <section class="pagina_perfil ">
     <div class="container-fluid mx-auto pagina_perfil_container">
@@ -7,26 +7,32 @@
             <div class="row pt-4 align-items-center">
                 <div class="col-4">
                     <!-- Small modal -->
-                    <a href="" data-toggle="modal" data-target=".bd-example-modal-md"><div class="pb-5"><img class="rounded-circle" id="foto_perfil" src="img_perfil/<?= $this->view->info_usuario['foto_perfil']?>" alt="perfil"></div></a>
+                    <a href="" data-toggle="modal" data-target=".bd-example-modal-md">
+                        <div class="pb-5"><img class="rounded-circle" id="foto_perfil" src="img_perfil/<?= $this->view->info_usuario['foto_perfil'] ?>" alt="perfil"></div>
+                    </a>
                     <div class="modal fade bd-example-modal-md" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
                         <div class="modal-dialog modal-dialog-centered ">
                             <div class="modal-content ml-auto text-center pt-2 border modal_edit_foto_perfil">
                                 <h5>Alterar foto de perfil</h5>
                                 <div class="">
                                     <form action="/editar_perfil" name="form" id="form" method="post" enctype="multipart/form-data">
-                                        <div class="upload_foto_perfil editar_img_perfil" >
+                                        <div class="upload_foto_perfil editar_img_perfil">
                                             <label for="img_perfil_edit" id="edit_img" class="inputFileOverlay_foto_perfil text-primary">
                                                 Carregar imagem
-                                                <input required type="file" class="" onchange="carregar_img_perfil()"  id="img_perfil_edit" name="img_perfil_edit" accept="image/png, image/jpeg"  /></label>
-                                                <!-- <input required type="file" class="" onchange="carregar_img_perfil()"  id="img_perfil_edit" name="img_perfil_edit" accept="image/png, image/jpeg"  /></label> -->
-                                            </div>
+                                                <input required type="file" class="" onchange="carregar_img_perfil()" id="img_perfil_edit" name="img_perfil_edit" accept="image/png, image/jpeg" /></label>
+                                            <!-- <input required type="file" class="" onchange="carregar_img_perfil()"  id="img_perfil_edit" name="img_perfil_edit" accept="image/png, image/jpeg"  /></label> -->
+                                        </div>
                                     </form>
                                 </div>
                                 <div class="border pt-2">
-                                <a href="#" class="text-danger"><p>Remover foto atual</p></a>
+                                    <a href="#" class="text-danger">
+                                        <p>Remover foto atual</p>
+                                    </a>
                                 </div>
                                 <div class="border pt-2">
-                                    <a href="#" class="text-secondary"><p>Cancelar</p></a>
+                                    <a href="#" class="text-secondary">
+                                        <p>Cancelar</p>
+                                    </a>
                                 </div>
                                 <div></div>
                                 <div></div>
@@ -34,10 +40,10 @@
                         </div>
                     </div>
                 </div>
-    
+
                 <div class="col-8">
                     <div class="">
-                        <h4 class="d-inline text-secondary"><?= $this->view->info_usuario['usuario']?></h4>
+                        <h4 class="d-inline text-secondary"><?= $this->view->info_usuario['usuario'] ?></h4>
                         <a href="/edit" class="btn btn-light border d-inline ml-3">Editar perfil</a>
                         <a class="nav-link dropdown d-inline" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"><img class="img_config ml-3" src="img/config.png"></a>
                         <ul class="text-right">
@@ -47,7 +53,7 @@
                                 <a class="dropdown-item" href="#">Cancelar</a>
                             </div>
                         </ul>
-    
+
                     </div>
                     <div class="mt-2 info_seguir">
                         <a class="d-inline"><?= $this->view->info_total_posts['total_posts'] ?> publicações</a>
@@ -55,28 +61,39 @@
                         <a class="d-inline ml-2"><?= $this->view->info_total_seguindo['total_seguindo'] ?> seguindo</a>
                     </div>
                     <div class="mt-4 info_bio">
-                        <p><strong><?= $this->view->info_usuario['nome']?></strong></p>
-                        <p><?= $this->view->info_usuario['biografia']?></p>
+                        <p><strong><?= $this->view->info_usuario['nome'] ?></strong></p>
+                        <p><?= $this->view->info_usuario['biografia'] ?></p>
                         <a href="#" class="text-primary">LinkBio</a>
                     </div>
                 </div>
             </div>
-            
+
         </div>
         <hr>
-                <div class="posts_perfil text-center">
-                    <a href="#" class="text-secondary"><img src="img/publication.png" alt="">  PUBLICAÇÕES</a>
-                </div>
-                
-                <div class="mt-3   row">
-                    
-                    <?php foreach($this->view->posts as $id_post => $post){ ?>
-                        <div class="col-4" id="post_img_perfil">
-                            <a href="#" class="mb-4 d-block" onmouseover="mostar_curtidas()" onmouseover="tirar_curtidas()"><img class="posts_galeria img-fluid " src="uploads/<?=$post['imagem']?>" alt=""></a>
+        <div class="posts_perfil text-center">
+            <a href="#" class="text-secondary"><img src="img/publication.png" alt="publicações"> PUBLICAÇÕES</a>
+        </div>
+
+        <div class="mt-3   row">
+
+            <?php foreach ($this->view->posts as $id_post => $post) { ?>
+                <div class="col-4" id="post_img_perfil">
+                    <div class="galeria_perfil">
+                        <a href="#" class="mb-4 d-block" onmouseover="mostar_curtidas()" onmouseover="tirar_curtidas()"><img class="posts_galeria img-fluid " src="uploads/<?= $post['imagem'] ?>" alt=""></a>
+                        <div class="capa text-white">
+                            <div class="mr-4">
+                                <img src="img/coracaoBranco.png" alt="">
+                                <span><?= $post['curtidas']?></span> 
+                            </div>
+                            <div class="">
+                                <img src="img/balao-fala-branco.png" alt="comentarios">
+                                <span><?= $post['comentarios']?></span> 
+                            </div>
                         </div>
-                    <?php } ?>
+                    </div>
                 </div>
-                
+            <?php } ?>
+        </div>
+
     </div>
 </section>
-

@@ -80,7 +80,16 @@ class Post extends Model{
 
 
     public function getPostUsuario(){
-        $query = "select id, post, imagem from posts where id_usuario = :id_usuario";
+        $query = "select
+                    p.id, p.post, p.imagem, 
+                    (select count(curtidas.id) from curtidas 
+                    where curtidas.id_post = p.id) as curtidas,
+                    (select count(comentarios.id) from comentarios 
+                    where comentarios.id_post = p.id) as comentarios
+                from 
+                    posts as p
+                where
+                    p.id_usuario = :id_usuario";
         
         $stmt = $this->db->prepare($query);
         $stmt->bindValue(':id_usuario', $this->__get('id_usuario'));
@@ -160,8 +169,12 @@ class Post extends Model{
         return $stmt->fetchAll(\PDO::FETCH_ASSOC);//todos comentarios
     }
 
+    //pegar total de curtidas
+    public function totalCurtidas(){
+        $query = "select count(*) as totalCurtidas
+                 from curtidas where id_post = :id_post";
+                     
+    }
+
 
 }
-
-
-?>
